@@ -1,10 +1,16 @@
 import json
 
 
-def read_esno_table(psk, code):
+def read_esno_dict(psk, code):
     with open('esno_table.json') as file:
-        esno_table = json.load(file)
-        return esno_table[psk][code]
+        esno_dict = json.load(file)
+        return esno_dict[psk][code]
+    
+
+def read_pls_dict():
+    with open('pls_table.json') as file:
+        pls_dict = json.load(file)
+        return pls_dict
     
     
 def insert_initial_noise(psk, code, initial_noise):

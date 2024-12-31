@@ -11,7 +11,7 @@ def get_auth(username, password, ip):
     return f"Bearer {response.json()['token']}"
 
 
-def get_stats(token, ip):
+def get_status(token, ip):
     try:
         data = requests.get(f"http://{ip}/api/status", headers={'Authorization': token})
     except TimeoutError as e:
@@ -38,3 +38,8 @@ def update_modulator(token, ip):
             "gold_code":0,"carrier_mode":"CM_MODULATED","power_up_state":"On",
             "acm_mode":"AcmModeOff","buc_power":False,"buc_10MHz_output":False}
     response = requests.post(f"http://{ip}/api/modulator", headers={'Authorization': token}, json=data)
+    
+
+def change_modcod(token, ip, pls):
+    data = [{"index":0,"enable":True,"pls_code":pls,"isi":0,"label":"D0:D1:D2:D3:D4:D5","label_type":"6-Byte","vlan":4096}]
+    response = requests.post(f"http://{ip}/api/encapsulator", headers={'Authorization': token}, json=data)
