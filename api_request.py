@@ -31,6 +31,7 @@ def get_current_noise(token, ip):
 def update_noise(token, ip, data):
     requests.post(f"http://{ip}/api/fpga_write", headers={'Authorization': token}, json=data)
     
+    
 def update_modulator(token, ip):
     data = {"enable":True,"frequency":1200000,"symbol_rate":12000,
             "power":-30,"roll_off":"Alpha_020","spectral_inversion":False,
