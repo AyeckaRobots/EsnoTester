@@ -48,11 +48,7 @@ def adjustNoise(ip):
         print("No connection established. exiting program.")
         return
     
-    data = {"enable":True,"frequency":1200000,"symbol_rate":12000,
-            "power":-30,"roll_off":"Alpha_020","spectral_inversion":False,
-            "gold_code":0,"carrier_mode":"CM_MODULATED","power_up_state":"On",
-            "acm_mode":"AcmModeOff","buc_power":False,"buc_10MHz_output":False}
-    response = requests.post(f"http://{ip}/api/modulator", headers={'Authorization': token}, json=data)	
+    update_modulator(token, ip)
     
     distance, current_esno, psk, code = evaluate_esno(token, ip)
     
