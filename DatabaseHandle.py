@@ -23,7 +23,7 @@ data = {
         "8/9": 11.7,
         "9/10": 12
     },
-    "16PSK": {
+    "16APSK": {
         "2/3": 10.2,
         "3/4": 11.1,
         "4/5": 12.1,
@@ -31,7 +31,7 @@ data = {
         "8/9": 13.9,
         "9/10": 14.2
     },
-    "32PSK": {
+    "32APSK": {
         "3/4": 13.9,
         "4/5": 14.8,
         "5/6": 15.4,
@@ -61,15 +61,47 @@ def init_db():
                     modulation TEXT NOT NULL,
                     code TEXT NOT NULL,
                     exp_esno REAL NOT NULL)''')
+    
+    db.execute('''CREATE TABLE IF NOT EXISTS initial_noise_table (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    modulation TEXT NOT NULL,
+                    code TEXT NOT NULL,
+                    initial_noise REAL NOT NULL)''')
     # Insert data
     for modulation, codes in data.items():
         for code, exp_esno in codes.items():
             db.execute("INSERT INTO info_table (modulation, code, exp_esno) VALUES (?, ?, ?)", (modulation, code, exp_esno))
     db.commit()  # Commit the changes
 
-def insert_db(modulation, code, exp_esno):
+def delete_table(table_name="initial_noise_table"):
+    try:
+        # Connect to the database
+        db = get_db()
+
+        # Execute the DROP TABLE command
+        db.execute(f"DROP TABLE IF EXISTS {table_name}")
+
+        # Commit the changes and close the connection
+        db.commit()
+
+        print(f"Table '{table_name}' has been deleted successfully.")
+        return True
+    except sqlite3.Error as e:
+        print(f"Error deleting table '{table_name}': {e}")
+        return False
+
+
+def insert_db_info(modulation, code, exp_esno):
     db = get_db()
     db.execute("INSERT INTO info_table (modulation, code, exp_esno) VALUES (?, ?, ?)", (modulation, code, exp_esno))
+    db.commit()  # Commit the changes
+
+def insert_db_initial_noise(modulation, code, initial_noise):
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(f"DELETE FROM initial_noise_table WHERE modulation = ? AND code = ?", (modulation, code))
+    
+    cursor.execute("INSERT INTO initial_noise_table (modulation, code, initial_noise) VALUES (?, ?, ?)", (modulation, code, initial_noise))
     db.commit()  # Commit the changes
 
 def get_data_as_string():
@@ -80,7 +112,13 @@ def get_data_as_string():
     # Format the rows into a string
     esno_dict = {}
     for info in info_table:
-        esno_dict[f"{info[0]}"] = {f"{info[1]}": {f"{info[2]}": info[3]}}
+        # esno_dict[f"{info[0]}"] = {f"{info[1]}": {f"{info[2]}": info[3]}}
+        try:
+            if type(esno_dict[f"{info[1]}"]) != dict:
+                esno_dict[f"{info[1]}"] = {}
+        except:
+            esno_dict.update({f"{info[1]}" : {}})
+        esno_dict[f"{info[1]}"].update({f"{info[2]}": info[3]})
 
     return esno_dict
 
@@ -92,6 +130,7 @@ def close_db():
         db = None
 
 def main():
+    # delete_table()
     init_db()
     print(get_data_as_string())  # Print the data as a string
     close_db()  # Close the database connection
