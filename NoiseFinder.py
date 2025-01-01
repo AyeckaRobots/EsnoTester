@@ -32,10 +32,11 @@ def evaluate_esno(token, ip):
 
 
 def get_modcod(token, ip):
-    signal_type = get_status(token, ip)['signal_type']
-    psk, code = (signal_type.split("_")[1] + "_" + signal_type.split("_")[2]).split("PSK")
-    code = code.replace("_", "/")
-    psk = psk + "PSK"
+    signal_pls_code = get_status(token, ip)['test_pattern_pls_code']
+    psk, code = get_modcod_from_pls(signal_pls_code)
+    # psk, code = (signal_type.split("_")[1] + "_" + signal_type.split("_")[2]).split("PSK")
+    # code = code.replace("_", "/")
+    # psk = psk + "PSK"
     return psk, code
 
 

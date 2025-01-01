@@ -13,7 +13,7 @@ def get_auth(username, password, ip):
 
 def get_status(token, ip):
     try:
-        data = requests.get(f"http://{ip}/api/status", headers={'Authorization': token})
+        data = requests.get(f"http://{ip}/api/settings", headers={'Authorization': token})
     except TimeoutError as e:
         print(f"No response from {ip}, error: {e}")
         return -1
@@ -41,5 +41,13 @@ def update_modulator(token, ip):
     
 
 def change_modcod(token, ip, pls):
-    data = [{"index":0,"enable":True,"pls_code":pls,"isi":0,"label":"D0:D1:D2:D3:D4:D5","label_type":"6-Byte","vlan":4096}]
-    response = requests.post(f"http://{ip}/api/encapsulator", headers={'Authorization': token}, json=data)
+    data = {"system":{"description":"","device":"SM1X","external_10MHz_clock_source":False,
+                  "minimal_free_disk_space":50,"symbol_rate_ranges":[30000,60000,120000,240000],
+                  "temperature_threshold":60,"tod":{"enable":True,"internal":False},"version_history":4},
+            "rx":{"acm_max_pls":"16APSK","acm_max_pls_options":["N/A","QPSK","8APSK","16APSK","32APSK","64APSK","128APSK","256APSK"],
+                  "annex_m":False,"configuration_delay":0,"egress":{"destination_ip":"225.21.21.21","destination_port":2121,"source_port":1212},
+                  "ldpc_capacity":180,"pls_filter":"OFF","reconfigure_attempts":0,"search_mode":"SAT_COLD","slices":16,
+                  "symbol_rate":{"min":100,"max":460000},"test_pattern_type":"Simple"},
+            "tx":{"acm_link_margin":10,"annex_m":False,"aupc":False,"packetization_delay":1,"sdfec_on":False,"symbol_rate":{"min":100,"max":460000},
+                  "test_pattern_pls_code":pls,"test_pattern_slice":0,"test_pattern_type":"Simple"}}
+    response = requests.post(f"http://{ip}/api/settings", headers={'Authorization': token}, json=data)

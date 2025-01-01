@@ -29,3 +29,13 @@ def read_initial_noise(psk, code):
         esno_table = json.load(file)
         return esno_table[psk][code]
     
+    
+def get_modcod_from_pls(pls):
+    with open("pls_table.json") as file:
+        pls_table = json.load(file)
+        
+        for modulation, codes in pls_table.items():
+            for code, value in codes.items():
+                if value == pls:
+                    return modulation, code
+        print("couldnt find matching modcod to: ", pls)

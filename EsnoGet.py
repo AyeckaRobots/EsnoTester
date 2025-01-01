@@ -1,4 +1,4 @@
-import threading
+
 import time
 from snmp import Engine, SNMPv1
 
@@ -18,7 +18,7 @@ def read_current_esno():
         
         current_esno = host.get(".1.3.6.1.4.1.37576.4.2.1.3.0")
         return current_esno.toString()
-    
+
 
 def load(t):
     index = 0
