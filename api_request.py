@@ -21,11 +21,32 @@ def get_status(token, ip):
     return data.json()['tx']
 
 
+def get_serial_number(token, ip):
+    try:
+        data = requests.get(f"http://{ip}/api/status", headers={'Authorization': token})
+    except TimeoutError as e:
+        print(f"No response from {ip}, error: {e}")
+        return -1
+
+    return data.json()['serial_number']
+
+
 def get_current_noise(token, ip):
     data = [{"address":24688}]
     response = requests.post(f"http://{ip}/api/fpga_read", headers={'Authorization': token}, json=data)
     # print(response.json())
     return response.json()[0]["value"]
+
+
+def get_advanced_stats(token, ip):
+    try:
+        data = requests.get(f"http://{ip}/api/advanced_status", headers={'Authorization': token})
+    except TimeoutError as e:
+        print(f"No response from {ip}, error: {e}")
+        return -1
+
+    # print("agg: ", data.json()["agg_slices"][0])
+    return data.json()["agg_slices"][0]
 
 
 def update_noise(token, ip, data):
@@ -50,4 +71,9 @@ def change_modcod(token, ip, pls):
                   "symbol_rate":{"min":100,"max":460000},"test_pattern_type":"Simple"},
             "tx":{"acm_link_margin":10,"annex_m":False,"aupc":False,"packetization_delay":1,"sdfec_on":False,"symbol_rate":{"min":100,"max":460000},
                   "test_pattern_pls_code":pls,"test_pattern_slice":0,"test_pattern_type":"Simple"}}
+
     response = requests.post(f"http://{ip}/api/settings", headers={'Authorization': token}, json=data)
+    
+    
+def reset_advanced_stats(token, ip):
+    requests.get(f"http://{ip}/api/reset_advanced_status", headers={'Authorization': token})

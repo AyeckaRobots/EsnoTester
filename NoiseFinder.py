@@ -47,7 +47,6 @@ def set_initial_noise(token, ip, psk, code):
     
     data = [{"address":24688, "value": initial}]
     
-    print("setting noise to: ", data)
     update_noise(token, ip, data)
 
 
