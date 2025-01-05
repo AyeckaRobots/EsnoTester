@@ -1,7 +1,9 @@
 from AllModCodNoiseFinder import start_noise_finder, set_pls_list
-from status_requester import start_logging
+from api_request import get_serial_number
+from status_requester import init_logger, start_logging
 from NoiseFinder import get_token
-import threading
+import os
+
 
 def main():
     
@@ -24,10 +26,13 @@ def main():
     if not receiver_token:
         return
     
-    time_per_modcod = 200  # 60 seconds
+    time_per_modcod = 60  # 60 seconds
     
     
     pls_list = set_pls_list()
+    
+    clear_logfile(receiver_token, receiver_ip)
+    init_logger(receiver_token, receiver_ip)
     
     for pls in pls_list:
         
@@ -39,7 +44,14 @@ def main():
         # noise_finder = threading.Thread(target=start_noise_finder, args=[receiver_token, receiver_ip, [pls]])
         
         
+def clear_logfile(token, ip):
+    sn = get_serial_number(token, ip)
     
+    if os.path.exists(f"SN{sn}.log"):
+        os.remove(f"SN{sn}.log")
+    else:
+        return  
+
 
 if __name__ == "__main__":
     main()

@@ -38,10 +38,10 @@ def get_modcod_from_pls(pls):
     with open("pls_table.json") as file:
         pls_table = json.load(file)
         
-        for modulation, codes in pls_table.items():
+        for modulation, codes in pls_table.items(): 
             for code, value in codes.items():
                 if value == pls:
-                    print(f"found: {modulation}, {code}. Starting tests...")
+                    # print(f"found: {modulation}, {code}. Starting tests...")
                     return modulation, code
         print("couldnt find matching modcod to: ", pls)
   
@@ -60,8 +60,8 @@ def insert_result_dict(psk, code, missed_counter, sn):
         json.dump(data, jsonFile, indent=4)
         jsonFile.truncate()
 
-def create_result_dict(token, ip):
-    sn = get_serial_number(token, ip)
+
+def create_result_dict(sn):
     if os.path.exists(f"SN{sn}.json"):
         return sn
     
@@ -109,4 +109,3 @@ def create_result_dict(token, ip):
         jsonFile.seek(0)  # rewind
         json.dump(data, jsonFile, indent=4)
         jsonFile.truncate()
-    return sn

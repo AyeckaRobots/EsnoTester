@@ -1,9 +1,9 @@
 {
     "QPSK": {
-        "1/4": "Failed",
-        "1/3": "Passed",
+        "1/4": "Passed",
+        "1/3": "Failed",
         "2/5": "Passed",
-        "1/2": "Failed",
+        "1/2": "Passed",
         "3/5": "Passed",
         "2/3": "Passed",
         "3/4": "Passed",

@@ -1,23 +1,25 @@
 import time
+import threading
 
-from api_request import get_advanced_stats, reset_advanced_stats
+from NoiseFinder import get_token
+from api_request import get_advanced_stats, get_serial_number, reset_advanced_stats
 from JsonHandler import create_result_dict, get_modcod_from_pls, insert_result_dict
 from EsnoGet import load
 import logging
 import keyboard
 from datetime import datetime
 
-import threading
-
-current_missed_counter = 0
-
-# read_esno()
-logging.basicConfig(filename="newfile.log",
-                    format='%(asctime)s %(message)s',
-                    filemode='a')
 logger = logging.getLogger()
 
 logger.setLevel(logging.WARNING)  # change to warning to ignore frame and bit-rate changes and vice versa.
+current_missed_counter = 0
+
+def init_logger(token, ip):
+    sn = get_serial_number(token, ip)
+    
+    logging.basicConfig(filename=f"SN{sn}.log",
+                        format='%(asctime)s %(message)s',
+                        filemode='a')
 
 
 def log_stats(info, current_bit_rate, current_esno, current_frame_counter):
@@ -36,10 +38,11 @@ def start_logging(token, ip, pls, t=-999):
     
     reset_advanced_stats(token, ip)
     load(5)
+    psk, code = get_modcod_from_pls(pls)
     
     info = {"frame_counter":0 , "missed_counter":0 , "bit_rate":0 , "esno":0, "offset":0, 'done': False}
     
-    threading.Thread(target=inputs, args=[info]).start()
+    threading.Thread(target=inputs, args=[info, psk, code]).start()
 
     while t > 0 or t <= -999:
         print("sending req (press 'i' for info, 'r' to reset missed)")
@@ -77,18 +80,18 @@ def start_logging(token, ip, pls, t=-999):
     if info["missed_counter"] > 0:
         print(f"⚠︎⚠︎⚠︎ {info["missed_counter"]} frames have been missed! ⚠︎⚠︎⚠︎")
     
-    psk, code = get_modcod_from_pls(pls)
-    sn = create_result_dict(token, ip)
+    sn = get_serial_number(token, ip)
+    create_result_dict(sn)
     insert_result_dict(psk, code, info["missed_counter"], sn)
     
 
             
-def inputs(info: dict):
+def inputs(info: dict, psk, code):
     
     while not info['done']:
         if keyboard.is_pressed('i'):
             print(f"-----------------------------------------------\nCard Activity Report {datetime.today().strftime('%H:%M:%S')}")
-            print(f"Status:\nCurrent frame: {info['frame_counter']}\nAmount missed: {info['missed_counter']}\nCurrent esno {info['esno']}")
+            print(f"Status:\nCurrent frame: {info['frame_counter']}\nAmount missed: {info['missed_counter']}\nCurrent esno {info['esno']}, modcod: {psk} {code}")
             print("-----------------------------------------------")
             time.sleep(1)
         if keyboard.is_pressed('r'):
@@ -105,7 +108,12 @@ def main():
     ipaddress = input("Enter the ip of the device. (just press enter for 192.168.10.200)")
     if ipaddress == '':
         ipaddress = "192.168.10.200"
-    start_logging(ipaddress)
+    
+    token = get_token(ipaddress)
+    
+    init_logger(token, ipaddress)
+    
+    start_logging(token, ipaddress)
 
 
 if __name__ == "__main__":
