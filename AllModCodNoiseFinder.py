@@ -2,7 +2,14 @@ from api_request import change_modcod
 from NoiseFinder import adjustNoise, get_token
 from JsonHandler import read_pls_dict
 
+
 def get_pls_list():
+    """
+    A function that returns a list containing all pls codes for DVBs2
+
+    Returns:
+        list: a list containing all pls codes for DVBs2
+    """
     
     pls_dict = read_pls_dict()
     pls_list = []
@@ -14,6 +21,13 @@ def get_pls_list():
     return pls_list
 
 def set_pls_list():
+    """
+    A function that reads input from user for specific pls code or all
+    pls codes, and returns a list accordingly
+
+    Returns:
+        list: pls code list according to the user's input
+    """
     pls_list = get_pls_list()
     
     try:
@@ -28,7 +42,14 @@ def set_pls_list():
 
 
 def start_noise_finder(token, ipaddr, pls_list):
+    """A function that reaches to the sm1x web api and
+    checks for each pls in @pls_list what the correct noise value is
 
+    Args:
+        token str: the auth token for the api
+        ipaddr str: the ip of the api server
+        pls_list list: list of pls codes to iterate over
+    """
     for pls in pls_list:
         change_modcod(token, ipaddr, pls)
         modcod = adjustNoise(token, ipaddr)
@@ -39,7 +60,13 @@ def start_noise_finder(token, ipaddr, pls_list):
         
 
 def main():
-
+    """
+    This Python file is used for finding the correct noise value for
+    a single pls code (pls is a combination of modulation and code)
+    or for each and every modulation and code (modcod)
+    such that the target esno and the measured esno are almost identical
+    """
+    
     ipaddr = input("Enter the ip of the device. (press enter for 192.168.15.10) ")
     if ipaddr == '':
         ipaddr = "192.168.15.10"
