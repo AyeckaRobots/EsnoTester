@@ -10,9 +10,9 @@ def get_auth(username, password, ip):
     """A function to get an auth token for the api server
 
     Args:
-        username str: the username for the login page
-        password str: the password for the login page
-        ip str: the ip of the api server
+        username (str): the username for the login page
+        password (str): the password for the login page
+        ip (str): the ip of the api server
 
     Returns:
         str: a string for the authorization header
@@ -29,8 +29,8 @@ def get_rx_status(token, ip):
     """A function that retrieves the rx status data of the device
 
     Args:
-        token str: string for the authorization header
-        ip str: the ip of the api server
+        token (str): string for the authorization header
+        ip (str): the ip of the api server
 
     Returns:
         success:   dict: the current status of the rx component
@@ -49,8 +49,8 @@ def get_serial_number(token, ip):
     """A function that retrieves the serial number of the device
 
     Args:
-        token str: string for the authorization header
-        ip str: the ip of the api server
+        token (str): string for the authorization header
+        ip (str): the ip of the api server
 
     Returns:
         success:   int: the serial number of the device being tested
@@ -70,8 +70,8 @@ def get_current_noise(token, ip):
     being used. 
 
     Args:
-        token str: string for the authorization header
-        ip str: the ip of the api server
+        token (str): string for the authorization header
+        ip (str): the ip of the api server
 
     Returns:
         int: the noise value currently being used
@@ -85,8 +85,8 @@ def get_advanced_stats(token, ip):
     """A function that retrieves the advanced status data of the device
 
     Args:
-        token str: string for the authorization header
-        ip str: the ip of the api server
+        token (str): string for the authorization header
+        ip (str): the ip of the api server
 
     Returns:
         success:   dict: the current status of the test signal
@@ -98,7 +98,6 @@ def get_advanced_stats(token, ip):
         print(f"No response from {ip}, error: {e}")
         return -1
 
-    # print("agg: ", data.json()["agg_slices"][0])
     return data.json()["agg_slices"][0]
 
 
@@ -107,9 +106,9 @@ def update_noise(token, ip, data):
     (currently used to update the noise) 
 
     Args:
-        token str: string for the authorization header
-        ip str: the ip of the api server
-        data dict: the location and new value for the fpga
+        token (str): string for the authorization header
+        ip (str): the ip of the api server
+        data (dict): the location and new value for the fpga
     """
     requests.post(f"http://{ip}/api/fpga_write", headers={'Authorization': token}, json=data)
     
@@ -120,8 +119,8 @@ def update_modulator(token, ip):
     but were coppied from the website for the post request to work.
 
     Args:
-        token str: string for the authorization header
-        ip str: the ip of the api server
+        token (str): string for the authorization header
+        ip (str): the ip of the api server
     """
     data = {"enable":True,"frequency":1200000,"symbol_rate":12000,
             "power":-30,"roll_off":"Alpha_020","spectral_inversion":False,
@@ -131,6 +130,14 @@ def update_modulator(token, ip):
     
 
 def change_modcod(token, ip, pls):
+    """A function that sets the modcod of the device to the given pls
+    (each pls corresponeds to a modcod)
+
+    Args:
+        token (str): string for the authorization header
+        ip (str): the ip of the api server
+        pls (int): the pls to set
+    """
     data = {"system":{"description":"","device":"SM1X","external_10MHz_clock_source":False,
                   "minimal_free_disk_space":50,"symbol_rate_ranges":[30000,60000,120000,240000],
                   "temperature_threshold":60,"tod":{"enable":True,"internal":False},"version_history":4},
@@ -145,4 +152,11 @@ def change_modcod(token, ip, pls):
     
     
 def reset_advanced_stats(token, ip):
+    """A function that resets the advanced stats back to 0's
+    when testing and checking for missed frames it is important to reset it.
+
+    Args:
+        token (str): string for the authorization header
+        ip (str): the ip of the api server
+    """
     requests.get(f"http://{ip}/api/reset_advanced_status", headers={'Authorization': token})

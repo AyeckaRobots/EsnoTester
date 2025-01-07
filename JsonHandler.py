@@ -1,22 +1,42 @@
 import json
 import os
 
-from api_request import get_serial_number
-
 
 def read_esno_dict(psk, code):
+    """Opens esno_table.json and returns value for specific modcod
+
+    Args:
+        psk (str): the modulation
+        code (str): the code (error handling rate)
+
+    Returns:
+        int: the expected value for the modcod
+    """
     with open('esno_table.json') as file:
         esno_dict = json.load(file)
         return esno_dict[psk][code]
     
 
 def read_pls_dict():
+    """Opens pls_table.json and returns it whole
+
+    Returns:
+        dict: the pls for each modcod
+    """
     with open('pls_table.json') as file:
         pls_dict = json.load(file)
         return pls_dict
     
     
 def insert_initial_noise(psk, code, initial_noise):
+    """Adds the given @initial_noise for a specific modcod to
+    the initial_noise.json file
+
+    Args:
+        psk (str): the modulation
+        code (str): the code
+        initial_noise (int): the noise to start from for next time the modcod is tested
+    """
     with open("initial_noise.json", "r+") as jsonFile:
         data = json.load(jsonFile)
 
@@ -28,25 +48,50 @@ def insert_initial_noise(psk, code, initial_noise):
         
         
 def read_initial_noise(psk, code):
+    """Reads the initial noise for a given modcod 
+
+    Args:
+        psk (str): the modulation
+        code (str): the code
+
+    Returns:
+        int: the inital_noise for the given modcod
+    """
     with open('initial_noise.json') as file:
         esno_table = json.load(file)
         return esno_table[psk][code]
     
     
 def get_modcod_from_pls(pls):
-    # print(pls)
+    """A function to convert pls to modcod
+
+    Args:
+        pls (int): the pls to convert
+
+    Returns:
+        succses:    tuple: modulation and code (both string)
+        fail:   str: no match for pls requested
+    """
     with open("pls_table.json") as file:
         pls_table = json.load(file)
         
         for modulation, codes in pls_table.items(): 
             for code, value in codes.items():
                 if value == pls:
-                    # print(f"found: {modulation}, {code}. Starting tests...")
                     return modulation, code
         print("couldnt find matching modcod to: ", pls)
   
         
 def insert_result_dict(psk, code, missed_counter, sn):
+    """Adds a result (passed/failed for specific modcod) to the json file with corresponding name to
+    the device's SN.
+
+    Args:
+        psk (str): the modulation
+        code (str): the code
+        missed_counter (int): amount of missed frames
+        sn (int): the serial number of the device
+    """
     with open(f"SN{sn}.json", "r+") as jsonFile:
         data = json.load(jsonFile)
 
@@ -62,50 +107,23 @@ def insert_result_dict(psk, code, missed_counter, sn):
 
 
 def create_result_dict(sn):
+    """Creates a results file if it didn't already exist,
+      fills it with empty value for modcods
+
+    Args:
+        sn (int): the serial number if the device
+    """
+    
     if os.path.exists(f"SN{sn}.json"):
-        return sn
+        return
     
     with open(f"SN{sn}.json", "x"):
         print(f"Created the test results file in the directory: SN{sn}.json")
     with open(f"SN{sn}.json", "r+") as jsonFile:
-        data = {
-    "QPSK": {
-        "1/4": "",
-        "1/3": "",
-        "2/5": "",
-        "1/2": "",
-        "3/5": "",
-        "2/3": "",
-        "3/4": "",
-        "4/5": "",
-        "5/6": "",
-        "8/9": "",
-        "9/10": ""
-    },
-    "8PSK": {
-        "3/5": "",
-        "2/3": "",
-        "3/4": "",
-        "5/6": "",
-        "8/9": "",
-        "9/10": ""
-    },
-    "16APSK": {
-        "2/3": "",
-        "3/4": "",
-        "4/5": "",
-        "5/6": "",
-        "8/9": "",
-        "9/10": ""
-    },
-    "32APSK": {
-        "3/4": "",
-        "4/5": "",
-        "5/6": "",
-        "8/9": "",
-        "9/10": ""
-    }
-}
+        data = ""
+        with open("emptyModCod.json", 'r') as file:
+            data = json.load(file)
+
         jsonFile.seek(0)  # rewind
         json.dump(data, jsonFile, indent=4)
         jsonFile.truncate()

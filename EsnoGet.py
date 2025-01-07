@@ -4,6 +4,12 @@ from snmp import Engine, SNMPv1
 
 
 def read_current_esno():
+    """A function to get the current esno read by the novelsat
+    modem using snmp
+
+    Returns:
+        str: the esno read by novelsat modem
+    """
 
     with Engine(SNMPv1, defaultCommunity=b"public") as engine:
         host = engine.Manager("172.19.200.199")
@@ -21,6 +27,12 @@ def read_current_esno():
 
 
 def load(t):
+    """A function that creates a loading animation on the consule while counting down
+    acts as time.sleep() for t larger than 0.2s
+
+    Args:
+        t (int): time untill function ends
+    """
     index = 0
     time_elapsed = 0
     sign = ['/', '-', '\\', '|'] 

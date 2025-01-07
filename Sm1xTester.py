@@ -6,6 +6,10 @@ import os
 
 
 def main():
+    """
+    This Python file is used for testing what modcods does the Sm1x connected pass with no missed frames and what modcods
+    it fails.
+    """
     
     modulator_ip = input("Enter the ip of the noise finder device. (press enter for 192.168.15.10) ")
     if modulator_ip == '':
@@ -41,10 +45,14 @@ def main():
         
         print("\ndone!")
         
-        # noise_finder = threading.Thread(target=start_noise_finder, args=[receiver_token, receiver_ip, [pls]])
-        
         
 def clear_logfile(token, ip):
+    """removes the logfile if it exists
+
+    Args:
+        token (str): string for the authorization header
+        ip (str): the ip of the tested device
+    """
     sn = get_serial_number(token, ip)
     
     if os.path.exists(f"SN{sn}.log"):

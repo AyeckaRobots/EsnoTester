@@ -46,9 +46,9 @@ def start_noise_finder(token, ipaddr, pls_list):
     checks for each pls in @pls_list what the correct noise value is
 
     Args:
-        token str: the auth token for the api
-        ipaddr str: the ip of the api server
-        pls_list list: list of pls codes to iterate over
+        token (str): the auth token for the api
+        ipaddr (str): the ip of the api server
+        pls_list (list): list of pls codes to iterate over
     """
     for pls in pls_list:
         change_modcod(token, ipaddr, pls)
@@ -62,7 +62,7 @@ def start_noise_finder(token, ipaddr, pls_list):
 def main():
     """
     This Python file is used for finding the correct noise value for
-    a single pls code (pls is a combination of modulation and code)
+    a single pls code (pls is single-valued to modulation and code)
     or for each and every modulation and code (modcod)
     such that the target esno and the measured esno are almost identical
     """
