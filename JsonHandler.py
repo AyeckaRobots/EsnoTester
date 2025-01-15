@@ -1,8 +1,8 @@
 import json
 import os
+from Sm1xTester import STANDARD_USE
 
-
-def read_esno_dict(psk, code):
+def read_esno_dict(psk, code, standard=STANDARD_USE):
     """Opens esno_table.json and returns value for specific modcod
 
     Args:
@@ -14,7 +14,7 @@ def read_esno_dict(psk, code):
     """
     with open('esno_table.json') as file:
         esno_dict = json.load(file)
-        return esno_dict[psk][code]
+        return esno_dict[standard ][psk][code]
     
 
 def read_pls_dict():
@@ -28,7 +28,7 @@ def read_pls_dict():
         return pls_dict
     
     
-def insert_initial_noise(psk, code, initial_noise):
+def insert_initial_noise(psk, code, initial_noise, standard=STANDARD_USE):
     """Adds the given @initial_noise for a specific modcod to
     the initial_noise.json file
 
@@ -40,14 +40,14 @@ def insert_initial_noise(psk, code, initial_noise):
     with open("initial_noise.json", "r+") as jsonFile:
         data = json.load(jsonFile)
 
-        data[psk][code] = initial_noise
+        data[standard][psk][code] = initial_noise
 
         jsonFile.seek(0)  # rewind
         json.dump(data, jsonFile, indent=4)
         jsonFile.truncate()
         
         
-def read_initial_noise(psk, code):
+def read_initial_noise(psk, code, standard=STANDARD_USE):
     """Reads the initial noise for a given modcod 
 
     Args:
@@ -59,10 +59,10 @@ def read_initial_noise(psk, code):
     """
     with open('initial_noise.json') as file:
         esno_table = json.load(file)
-        return esno_table[psk][code]
+        return esno_table[standard][psk][code]
     
     
-def get_modcod_from_pls(pls):
+def get_modcod_from_pls(pls, standard=STANDARD_USE):
     """A function to convert pls to modcod
 
     Args:
@@ -75,14 +75,14 @@ def get_modcod_from_pls(pls):
     with open("pls_table.json") as file:
         pls_table = json.load(file)
         
-        for modulation, codes in pls_table.items(): 
+        for modulation, codes in pls_table[standard].items():
             for code, value in codes.items():
                 if value == pls:
                     return modulation, code
         print("couldnt find matching modcod to: ", pls)
   
         
-def insert_result_dict(psk, code, missed_counter, sn):
+def insert_result_dict(psk, code, missed_counter, sn, standard=STANDARD_USE):
     """Adds a result (passed/failed for specific modcod) to the json file with corresponding name to
     the device's SN.
 
@@ -96,9 +96,9 @@ def insert_result_dict(psk, code, missed_counter, sn):
         data = json.load(jsonFile)
 
         if missed_counter > 0:
-            data[psk][code] = "Failed"
+            data[standard][psk][code] = "Failed"
         else:
-            data[psk][code] = "Passed"
+            data[standard][psk][code] = "Passed"
 
 
         jsonFile.seek(0)  # rewind

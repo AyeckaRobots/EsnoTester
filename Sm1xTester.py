@@ -4,8 +4,10 @@ from status_requester import init_logger, start_logging
 from NoiseFinder import get_token
 import os
 
+STANDARD_USE = "s2"
 
 def main():
+    global STANDARD_USE
     """
     This Python file is used for testing what modcods does the Sm1x connected pass with no missed frames and what modcods
     it fails.
@@ -29,22 +31,35 @@ def main():
     
     if not receiver_token:
         return
-    
-    time_per_modcod = 60  # 60 seconds
-    
-    
-    pls_list = set_pls_list()
+
+    standard = input("write standard to go through, s2 or s2x. (press enter for both)")
+
     
     clear_logfile(receiver_token, receiver_ip)
     init_logger(receiver_token, receiver_ip)
-    
+
+    if standard == '':
+        STANDARD_USE = 's2'
+        start_sm1x_tester(modulator_token, modulator_ip, receiver_token, receiver_ip)
+        STANDARD_USE = 's2x'
+        start_sm1x_tester(modulator_token, modulator_ip, receiver_token, receiver_ip)
+
+    elif standard == 's2' or standard == 's2x':
+        STANDARD_USE = standard
+        start_sm1x_tester(modulator_token, modulator_ip, receiver_token, receiver_ip)
+
+    else:
+        print("Unknown standard, exiting program...")
+
+
+def start_sm1x_tester(modulator_token, modulator_ip, receiver_token, receiver_ip):
+    time_per_modcod = 60  # 60 seconds
+    pls_list = set_pls_list()
     for pls in pls_list:
-        
         start_noise_finder(modulator_token, modulator_ip, [pls])
         start_logging(receiver_token, receiver_ip, pls, time_per_modcod)
-        
+
         print("\ndone!")
-        
         
 def clear_logfile(token, ip):
     """removes the logfile if it exists

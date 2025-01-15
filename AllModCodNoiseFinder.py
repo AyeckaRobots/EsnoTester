@@ -33,8 +33,8 @@ def set_pls_list():
     try:
         specific_pls = int(input("Enter specific pls for single test. (press enter for all) "))
 
-        if specific_pls:
-            pls_list = [pls_list[(specific_pls-5)//4]]  # works for s2 by ayecka
+        if specific_pls in pls_list:
+            pls_list = [specific_pls]
     except:
         pass
     
