@@ -48,10 +48,6 @@ def set_initial_noise(token, ip, psk, code):
 
 
 def adjustNoise(token, ip):
-    expected_esno = 0
-    
-    update_modulator(token, ip)
-    
     psk, code = get_modcod(token, ip)
     set_initial_noise(token, ip, psk, code)
     

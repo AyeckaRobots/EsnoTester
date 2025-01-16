@@ -160,3 +160,11 @@ def reset_advanced_stats(token, ip):
         ip (str): the ip of the api server
     """
     requests.get(f"http://{ip}/api/reset_advanced_status", headers={'Authorization': token})
+
+def set_freq(modulator_token, modulator_ip, receiver_token, receiver_ip, freq):
+    data = {"enable": True, "frequency": freq*1000, "symbol_rate": 12000,
+            "power": -30, "roll_off": "Alpha_020", "spectral_inversion": False,
+            "gold_code": 0, "carrier_mode": "CM_MODULATED", "power_up_state": "On",
+            "acm_mode": "AcmModeOff", "buc_power": False, "buc_10MHz_output": False}
+    response_modulator = requests.post(f"http://{modulator_ip}/api/modulator", headers={'Authorization': modulator_token}, json=data)
+    response_reciever = requests.post(f"http://{receiver_ip}/api/modulator", headers={'Authorization': receiver_token},json=data)

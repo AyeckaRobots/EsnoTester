@@ -1,4 +1,4 @@
-from api_request import change_modcod
+from api_request import change_modcod, update_modulator
 from NoiseFinder import adjustNoise, get_token
 from JsonHandler import read_pls_dict
 
@@ -75,7 +75,8 @@ def main():
     
     if not token:
         return
-    
+
+    update_modulator(token, ipaddr)
     pls_list = set_pls_list()
     start_noise_finder(token, ipaddr, pls_list)
     

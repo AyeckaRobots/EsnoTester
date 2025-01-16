@@ -2,7 +2,7 @@ import time
 import threading
 
 from NoiseFinder import get_token
-from api_request import get_advanced_stats, get_serial_number, reset_advanced_stats
+from api_request import get_advanced_stats, get_serial_number, reset_advanced_stats, update_modulator
 from JsonHandler import create_result_dict, get_modcod_from_pls, insert_result_dict
 from EsnoGet import load
 import logging
@@ -162,7 +162,7 @@ def main():
         ipaddress = "192.168.10.200"
     
     token = get_token(ipaddress)
-    
+    update_modulator(token, ipaddress)
     init_logger(token, ipaddress)
     
     start_logging(token, ipaddress)
