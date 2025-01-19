@@ -1,3 +1,4 @@
+import StaticVars
 from api_request import get_serial_number, set_freq
 from status_requester import init_logger
 from NoiseFinder import get_token
@@ -12,18 +13,18 @@ def main():
     it fails.
     """
 
-    modulator_ip = input("Enter the ip of the noise finder device. (press enter for 192.168.15.10) ")
+    modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {StaticVars.modulator_ip}) ")
     if modulator_ip == '':
-        modulator_ip = "192.168.15.10"
+        modulator_ip = StaticVars.modulator_ip
 
     modulator_token = get_token(modulator_ip)
 
     if not modulator_token:
         return
 
-    receiver_ip = input("Enter the ip of the tested device. (press enter for 192.168.10.200) ")
+    receiver_ip = input(f"Enter the ip of the tested device. (press enter for {StaticVars.device_ip}) ")
     if receiver_ip == '':
-        receiver_ip = "192.168.10.200"
+        receiver_ip = StaticVars.device_ip
 
     receiver_token = get_token(receiver_ip)
 

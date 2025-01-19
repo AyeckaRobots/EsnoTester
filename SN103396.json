@@ -1,0 +1,74 @@
+{
+    "s2": {
+        "QPSK": {
+            "1/4": "Passed",
+            "3/5": "Passed",
+            "5/6": "Passed",
+            "9/10": "Passed"
+        },
+        "8PSK": {
+            "3/5": "Passed",
+            "3/4": "Passed",
+            "5/6": "Passed",
+            "9/10": "Passed"
+        },
+        "16APSK": {
+            "2/3": "Passed",
+            "4/5": "Passed",
+            "5/6": "Passed",
+            "9/10": "Passed"
+        },
+        "32APSK": {
+            "3/4": "Passed",
+            "4/5": "Passed",
+            "8/9": "Passed",
+            "9/10": "Passed"
+        }
+    },
+    "s2x": {
+        "QPSK": {
+            "13/45": "Passed",
+            "4/15": "Passed",
+            "7/15": "Passed",
+            "32/45": "Passed"
+        },
+        "8APSK": {
+            "5/9-L": "Passed",
+            "26/45-L": "Passed"
+        },
+        "8PSK": {
+            "23/36": "Passed",
+            "13/18": "Passed",
+            "8/15": "Passed",
+            "32/45": "Passed"
+        },
+        "16APSK": {
+            "1/2-L": "Passed",
+            "26/45": "Passed",
+            "7/9": "Passed",
+            "32/45": "Passed"
+        },
+        "32APSK": {
+            "2/3-L": "Passed",
+            "11/15": "Passed",
+            "7/9": "Passed",
+            "2/3": "Passed"
+        },
+        "64APSK": {
+            "32/45-L": "Passed",
+            "7/9": "Passed",
+            "4/5": "Passed",
+            "5/6": "Passed"
+        },
+        "128APSK": {
+            "3/4": "Passed",
+            "7/9": "Passed"
+        },
+        "256APSK": {
+            "29/45-L": "Passed",
+            "2/3-L": "Passed",
+            "32/45": "Passed",
+            "3/4": "Passed"
+        }
+    }
+}

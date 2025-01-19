@@ -1,10 +1,11 @@
+import StaticVars
 from EsnoGet import read_current_esno
 from api_request import *
 from JsonHandler import *
 
 max_noise = 115232  # 1c220
 min_noise = 114688  # 1c000
-allowed_esno_error = 0.1
+allowed_esno_error = StaticVars.esno_acceptable
 error_multiplier = 10
 
 def print_noise_dict(distances):
@@ -93,14 +94,14 @@ def get_token(ipaddr):
 
 def main():
 
-    ipaddress = input("Enter the ip of the device. (press enter for 192.168.15.10)")
-    if ipaddr == '':
-        ipaddr = "192.168.15.10"
+    modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {StaticVars.modulator_ip}) ")
+    if modulator_ip == '':
+        modulator_ip = StaticVars.modulator_ip
         
-    token = get_token()
+    token = get_token(modulator_ip)
     
     if token:
-        adjustNoise(token, ipaddress)
+        adjustNoise(token, modulator_ip)
 
 
 if __name__ == "__main__":

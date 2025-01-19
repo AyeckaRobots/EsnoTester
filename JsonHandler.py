@@ -1,8 +1,24 @@
 import json
 import os
-from Sm1xTester import STANDARD_USE
 
-def read_esno_dict(psk, code, standard=STANDARD_USE):
+def get_standard():
+    with open("standard.json") as file:
+        return json.load(file)['standard']
+
+
+def update_standard(standard):
+
+    with open("standard.json", 'r+') as json_file:
+        data = json.load(json_file)
+
+        data['standard'] = standard
+
+        json_file.seek(0)  # rewind
+        json.dump(data, json_file, indent=4)
+        json_file.truncate()
+
+
+def read_esno_dict(psk, code):
     """Opens esno_table.json and returns value for specific modcod
 
     Args:
@@ -12,6 +28,7 @@ def read_esno_dict(psk, code, standard=STANDARD_USE):
     Returns:
         int: the expected value for the modcod
     """
+    standard = get_standard()
     with open('esno_table.json') as file:
         esno_dict = json.load(file)
         return esno_dict[standard ][psk][code]
@@ -23,12 +40,13 @@ def read_pls_dict():
     Returns:
         dict: the pls for each modcod
     """
+    standard = get_standard()
     with open('pls_table.json') as file:
         pls_dict = json.load(file)
-        return pls_dict
+        return pls_dict[standard]
     
     
-def insert_initial_noise(psk, code, initial_noise, standard=STANDARD_USE):
+def insert_initial_noise(psk, code, initial_noise):
     """Adds the given @initial_noise for a specific modcod to
     the initial_noise.json file
 
@@ -37,6 +55,7 @@ def insert_initial_noise(psk, code, initial_noise, standard=STANDARD_USE):
         code (str): the code
         initial_noise (int): the noise to start from for next time the modcod is tested
     """
+    standard = get_standard()
     with open("initial_noise.json", "r+") as jsonFile:
         data = json.load(jsonFile)
 
@@ -47,7 +66,7 @@ def insert_initial_noise(psk, code, initial_noise, standard=STANDARD_USE):
         jsonFile.truncate()
         
         
-def read_initial_noise(psk, code, standard=STANDARD_USE):
+def read_initial_noise(psk, code):
     """Reads the initial noise for a given modcod 
 
     Args:
@@ -57,12 +76,13 @@ def read_initial_noise(psk, code, standard=STANDARD_USE):
     Returns:
         int: the inital_noise for the given modcod
     """
+    standard = get_standard()
     with open('initial_noise.json') as file:
         esno_table = json.load(file)
         return esno_table[standard][psk][code]
     
     
-def get_modcod_from_pls(pls, standard=STANDARD_USE):
+def get_modcod_from_pls(pls):
     """A function to convert pls to modcod
 
     Args:
@@ -72,6 +92,7 @@ def get_modcod_from_pls(pls, standard=STANDARD_USE):
         succses:    tuple: modulation and code (both string)
         fail:   str: no match for pls requested
     """
+    standard = get_standard()
     with open("pls_table.json") as file:
         pls_table = json.load(file)
         
@@ -82,7 +103,7 @@ def get_modcod_from_pls(pls, standard=STANDARD_USE):
         print("couldnt find matching modcod to: ", pls)
   
         
-def insert_result_dict(psk, code, missed_counter, sn, standard=STANDARD_USE):
+def insert_result_dict(psk, code, missed_counter, sn):
     """Adds a result (passed/failed for specific modcod) to the json file with corresponding name to
     the device's SN.
 
@@ -92,6 +113,7 @@ def insert_result_dict(psk, code, missed_counter, sn, standard=STANDARD_USE):
         missed_counter (int): amount of missed frames
         sn (int): the serial number of the device
     """
+    standard = get_standard()
     with open(f"SN{sn}.json", "r+") as jsonFile:
         data = json.load(jsonFile)
 

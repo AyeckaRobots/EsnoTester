@@ -1,6 +1,7 @@
 import time
 import threading
 
+import StaticVars
 from NoiseFinder import get_token
 from api_request import get_advanced_stats, get_serial_number, reset_advanced_stats, update_modulator
 from JsonHandler import create_result_dict, get_modcod_from_pls, insert_result_dict
@@ -85,6 +86,7 @@ def start_logging(token, ip, pls=None, t=-999):
             current_frame_counter = agg['frame_counter']
         except KeyError as e:
             print(e)
+            load(2)
             continue
         
         try:
@@ -157,15 +159,15 @@ def main():
     (ofc if there are it logs the stats to the .log file)
     """
 
-    ipaddress = input("Enter the ip of the device. (just press enter for 192.168.10.200)")
-    if ipaddress == '':
-        ipaddress = "192.168.10.200"
+    receiver_ip = input(f"Enter the ip of the tested device. (press enter for {StaticVars.device_ip}) ")
+    if receiver_ip == '':
+        receiver_ip = StaticVars.device_ip
     
-    token = get_token(ipaddress)
-    update_modulator(token, ipaddress)
-    init_logger(token, ipaddress)
+    token = get_token(receiver_ip)
+    update_modulator(token, receiver_ip)
+    init_logger(token, receiver_ip)
     
-    start_logging(token, ipaddress)
+    start_logging(token, receiver_ip)
 
 
 if __name__ == "__main__":

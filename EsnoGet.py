@@ -27,17 +27,17 @@ def read_current_esno():
 
 
 def load(t):
-    """A function that creates a loading animation on the consule while counting down
+    """A function that creates a loading animation on the console while counting down
     acts as time.sleep() for t larger than 0.2s
 
     Args:
-        t (int): time untill function ends
+        t (int): time until function ends
     """
     index = 0
     time_elapsed = 0
     sign = ['/', '-', '\\', '|'] 
     while time_elapsed < t:
-        print (f"Loading... [{sign[index]}]", end="\r")
+        print(f"Loading... [{sign[index]}]", end="\r", flush=True)
         time.sleep(0.2)
         time_elapsed += 0.2
         index = (index + 1) % 4

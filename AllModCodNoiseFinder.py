@@ -1,3 +1,4 @@
+import StaticVars
 from api_request import change_modcod, update_modulator
 from NoiseFinder import adjustNoise, get_token
 from JsonHandler import read_pls_dict
@@ -66,19 +67,19 @@ def main():
     or for each and every modulation and code (modcod)
     such that the target esno and the measured esno are almost identical
     """
-    
-    ipaddr = input("Enter the ip of the device. (press enter for 192.168.15.10) ")
-    if ipaddr == '':
-        ipaddr = "192.168.15.10"
+
+    modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {StaticVars.modulator_ip}) ")
+    if modulator_ip == '':
+        modulator_ip = StaticVars.modulator_ip
         
-    token = get_token(ipaddr)
+    token = get_token(modulator_ip)
     
     if not token:
         return
 
-    update_modulator(token, ipaddr)
+    update_modulator(token, modulator_ip)
     pls_list = set_pls_list()
-    start_noise_finder(token, ipaddr, pls_list)
+    start_noise_finder(token, modulator_ip, pls_list)
     
         
 if __name__ == "__main__":
