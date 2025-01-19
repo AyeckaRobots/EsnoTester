@@ -1,8 +1,7 @@
-from AllModCodNoiseFinder import start_noise_finder, set_pls_list
 from api_request import get_serial_number, set_freq
-from status_requester import init_logger, start_logging
+from status_requester import init_logger
 from NoiseFinder import get_token
-from Sm1xTester import set_standard
+from Sm1xTester import set_standard, check_esno_input
 import os
 
 
@@ -39,17 +38,19 @@ def main():
 
     standard = input("write standard to go through, s2 or s2x. (press enter for both)")
 
+    check_esno = check_esno_input()
+
     clear_logfile(receiver_token, receiver_ip)
     init_logger(receiver_token, receiver_ip)
 
     if freq == '':
         for i in range (1,25):
             set_freq(modulator_token, modulator_ip, receiver_token, receiver_ip, i*50 + 900)
-            set_standard(modulator_token, modulator_ip, receiver_token, receiver_ip, standard)
+            set_standard(modulator_token, modulator_ip, receiver_token, receiver_ip, standard, check_esno)
 
     elif 950 <= freq <= 2150:
         set_freq(modulator_token, modulator_ip, receiver_token, receiver_ip, freq)
-        set_standard(modulator_token, modulator_ip, receiver_token, receiver_ip, standard)
+        set_standard(modulator_token, modulator_ip, receiver_token, receiver_ip, standard, check_esno)
 
     else:
         print("Invalid frequency, exiting program...")

@@ -41,10 +41,8 @@ def set_initial_noise(token, ip, psk, code):
     initial = read_initial_noise(psk, code)
     if not initial:
         return
-    
-    data = [{"address":24688, "value": initial}]
-    
-    update_noise(token, ip, data)
+
+    update_noise(token, ip, initial)
 
 
 def adjustNoise(token, ip):
@@ -56,7 +54,7 @@ def adjustNoise(token, ip):
         esno_multiplier_rate = max(1, min(3, abs(4 / expected_esno)))
     except ZeroDivisionError as e:
         esno_multiplier_rate = 2
-        
+
     distances = {distance: get_current_noise(token, ip)}
     while abs(distance) > allowed_esno_error:
         print_noise_dict(distances)
@@ -67,9 +65,8 @@ def adjustNoise(token, ip):
         # print(datetime.datetime())
             
         new_noise = int(max(min_noise, min(max_noise, distances[distance] + distance*error_multiplier*esno_multiplier_rate)))
-        
-        data = [{"address":24688, "value": new_noise}]
-        update_noise(token, ip, data)
+
+        update_noise(token, ip, new_noise)
         
         distance, current_esno, psk, code, expected_esno = evaluate_esno(token, ip)   
     

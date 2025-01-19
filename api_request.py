@@ -101,15 +101,16 @@ def get_advanced_stats(token, ip):
     return data.json()["agg_slices"][0]
 
 
-def update_noise(token, ip, data):
+def update_noise(token, ip, value):
     """A function that sets a fpga parameter according to the @data passed 
     (currently used to update the noise) 
 
     Args:
         token (str): string for the authorization header
         ip (str): the ip of the api server
-        data (dict): the location and new value for the fpga
+        value (int): the new noise value for fpga to set.
     """
+    data = [{"address":24688, "value": value}]
     requests.post(f"http://{ip}/api/fpga_write", headers={'Authorization': token}, json=data)
     
     
