@@ -32,7 +32,7 @@ def main():
         return
 
     try:
-        freq = int(input("write a frequency between 950 and 2150. (press enter for all)"))
+        freq = input("write a frequency between 950 and 2150. (press enter for all)")
     except:
         freq = 1200
         print("Invalid frequency, set to 1200")
@@ -49,8 +49,8 @@ def main():
             set_freq(modulator_token, modulator_ip, receiver_token, receiver_ip, i*50 + 900)
             set_standard(modulator_token, modulator_ip, receiver_token, receiver_ip, standard, check_esno)
 
-    elif 950 <= freq <= 2150:
-        set_freq(modulator_token, modulator_ip, receiver_token, receiver_ip, freq)
+    elif 950 <= int(freq) <= 2150:
+        set_freq(modulator_token, modulator_ip, receiver_token, receiver_ip, int(freq))
         set_standard(modulator_token, modulator_ip, receiver_token, receiver_ip, standard, check_esno)
 
     else:

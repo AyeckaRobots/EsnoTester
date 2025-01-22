@@ -1,34 +1,21 @@
-from AllModCodNoiseFinder import start_noise_finder, set_pls_list, get_pls_list
-from api_request import get_serial_number, set_freq, update_noise
-from status_requester import init_logger, start_logging
-from NoiseFinder import get_token
-from JsonHandler import update_standard
+from AllModCodNoiseFinder import start_noise_finder, set_pls_list
+from GlobalFuncs import update_pls_list
+from api_request import get_serial_number, update_noise
+from status_requester import start_logging
+
 import os
 import StaticVars
 
 
 
 def set_standard(modulator_token, modulator_ip, receiver_token, receiver_ip, standard, adjust_noise=False):
-    if standard == '':
-        update_standard('s2')
-        start_sm1x_tester(modulator_token, modulator_ip, receiver_token, receiver_ip, adjust_noise)
-        update_standard('s2x')
-        start_sm1x_tester(modulator_token, modulator_ip, receiver_token, receiver_ip, adjust_noise, skip_pls_selection=True)
-
-    elif standard == 's2' or standard == 's2x':
-        update_standard(standard)
-        start_sm1x_tester(modulator_token, modulator_ip, receiver_token, receiver_ip, adjust_noise)
-
-    else:
-        print("Invalid standard, exiting program...")
+    pls_list = update_pls_list(standard)
+    start_sm1x_tester(modulator_token, modulator_ip, receiver_token, receiver_ip, pls_list, adjust_noise)
 
 
-def start_sm1x_tester(modulator_token, modulator_ip, receiver_token, receiver_ip, adjust_noise=False, skip_pls_selection=False):
-    time_per_modcod = 30  # 60 seconds
-    if skip_pls_selection:
-        pls_list = get_pls_list()
-    else:
-        pls_list = set_pls_list()
+def start_sm1x_tester(modulator_token, modulator_ip, receiver_token, receiver_ip, pls_list, adjust_noise=False):
+    time_per_modcod = StaticVars.time_per_modcod  # 60 seconds
+    pls_list = set_pls_list(pls_list)
 
     if not adjust_noise:
         update_noise(modulator_token, modulator_ip, 0)
@@ -66,44 +53,44 @@ def check_esno_input():
     else:
         return False
 
-
-def main():
-    """
-    This Python file is used for testing what modcods does the Sm1x connected pass with no missed frames and what modcods
-    it fails.
-    """
-    
-    modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {StaticVars.modulator_ip}) ")
-    if modulator_ip == '':
-        modulator_ip = StaticVars.modulator_ip
-    
-    modulator_token = get_token(modulator_ip)
-    
-    if not modulator_token:
-        return
-    
-    
-    receiver_ip = input(f"Enter the ip of the tested device. (press enter for {StaticVars.device_ip}) ")
-    if receiver_ip == '':
-        receiver_ip = StaticVars.device_ip
-    
-    receiver_token = get_token(receiver_ip)
-    
-    if not receiver_token:
-        return
-
-    standard = input("write standard to go through, s2 or s2x. (press enter for both) ")
-
-    check_esno = check_esno_input()
-
-    set_freq(modulator_token, modulator_ip, receiver_token, receiver_ip, 1200)
-
-    clear_logfile(receiver_token, receiver_ip)
-    init_logger(receiver_token, receiver_ip)
-
-    set_standard(modulator_token, modulator_ip, receiver_token, receiver_ip, standard, check_esno)
-
-
-
-if __name__ == "__main__":
-    main()
+#
+# def main():
+#     """
+#     This Python file is used for testing what modcods does the Sm1x connected pass with no missed frames and what modcods
+#     it fails.
+#     """
+#
+#     modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {StaticVars.modulator_ip}) ")
+#     if modulator_ip == '':
+#         modulator_ip = StaticVars.modulator_ip
+#
+#     modulator_token = get_token(modulator_ip)
+#
+#     if not modulator_token:
+#         return
+#
+#
+#     receiver_ip = input(f"Enter the ip of the tested device. (press enter for {StaticVars.device_ip}) ")
+#     if receiver_ip == '':
+#         receiver_ip = StaticVars.device_ip
+#
+#     receiver_token = get_token(receiver_ip)
+#
+#     if not receiver_token:
+#         return
+#
+#     standard = input("write standard to go through, s2 or s2x. (press enter for both) ")
+#
+#     check_esno = check_esno_input()
+#
+#     set_freq(modulator_token, modulator_ip, receiver_token, receiver_ip, 1200)
+#
+#     clear_logfile(receiver_token, receiver_ip)
+#     init_logger(receiver_token, receiver_ip)
+#
+#     set_standard(modulator_token, modulator_ip, receiver_token, receiver_ip, standard, check_esno)
+#
+#
+#
+# if __name__ == "__main__":
+#     main()

@@ -16,30 +16,30 @@ def print_noise_dict(distances):
 def get_esno_pls(token, ip):
     esno = int(read_current_esno().split('(')[1][0:-1]) / 100
     
-    psk, code = get_modcod(token, ip)
-    return (esno, psk, code)
+    pls = get_modcod(token, ip)
+    return (esno, pls)
 
 
 def evaluate_esno(token, ip):
-    esno, psk, code = get_esno_pls(token, ip)
+    esno, pls = get_esno_pls(token, ip)
     
-    exp_esno = float(read_esno_dict(psk, code))
+    exp_esno = float(read_esno_dict(pls))
     print("#####################")
-    print(f"modulation: {psk}\ncode: {code}")
+    print(f"pls: {pls}")
     print(f"current esno: {esno}\nexp. esno: {exp_esno}")
     print("#####################")
 
-    return round(esno - exp_esno, 2), esno, psk, code, exp_esno
+    return round(esno - exp_esno, 2), esno, pls, exp_esno
 
 
 def get_modcod(token, ip):
     signal_pls_code = get_rx_status(token, ip)['test_pattern_pls_code']
-    psk, code = get_modcod_from_pls(signal_pls_code)
-    return psk, code
+    # psk, code = get_modcod_from_pls(signal_pls_code)
+    return signal_pls_code
 
 
-def set_initial_noise(token, ip, psk, code):
-    initial = read_initial_noise(psk, code)
+def set_initial_noise(token, ip, pls):
+    initial = read_initial_noise(pls)
     if not initial:
         return
 
@@ -47,10 +47,10 @@ def set_initial_noise(token, ip, psk, code):
 
 
 def adjustNoise(token, ip):
-    psk, code = get_modcod(token, ip)
-    set_initial_noise(token, ip, psk, code)
+    pls = get_modcod(token, ip)
+    set_initial_noise(token, ip, pls)
     
-    distance, current_esno, psk, code, expected_esno = evaluate_esno(token, ip)
+    distance, current_esno, pls, expected_esno = evaluate_esno(token, ip)
     try:
         esno_multiplier_rate = max(1, min(3, abs(4 / expected_esno)))
     except ZeroDivisionError as e:
@@ -69,14 +69,14 @@ def adjustNoise(token, ip):
 
         update_noise(token, ip, new_noise)
         
-        distance, current_esno, psk, code, expected_esno = evaluate_esno(token, ip)   
+        distance, current_esno, pls, expected_esno = evaluate_esno(token, ip)
     
         distances.update({distance: get_current_noise(token, ip)})
         
         
     print_noise_dict(distances)
-    insert_initial_noise(psk, code, [*distances.values()][-1])
-    return f"{psk} {code}"
+    insert_initial_noise(pls, [*distances.values()][-1])
+    return f"{pls}"
 
 
 def get_token(ipaddr):

@@ -1,27 +1,8 @@
 import StaticVars
 from api_request import change_modcod, update_modulator
 from NoiseFinder import adjustNoise, get_token
-from JsonHandler import read_pls_dict
 
-
-def get_pls_list():
-    """
-    A function that returns a list containing all pls codes for DVBs2
-
-    Returns:
-        list: a list containing all pls codes for DVBs2
-    """
-    
-    pls_dict = read_pls_dict()
-    pls_list = []
-    
-    for modulation, codes in pls_dict.items():
-        for code, value in codes.items():
-            pls_list.append(value)
-            
-    return pls_list
-
-def set_pls_list():
+def set_pls_list(pls_list):
     """
     A function that reads input from user for specific pls code or all
     pls codes, and returns a list accordingly
@@ -29,8 +10,7 @@ def set_pls_list():
     Returns:
         list: pls code list according to the user's input
     """
-    pls_list = get_pls_list()
-    
+
     try:
         specific_pls = int(input("Enter specific pls for single test. (press enter for all) "))
 
@@ -38,7 +18,7 @@ def set_pls_list():
             pls_list = [specific_pls]
     except:
         pass
-    
+
     return pls_list
 
 
@@ -53,10 +33,10 @@ def start_noise_finder(token, ipaddr, pls_list):
     """
     for pls in pls_list:
         change_modcod(token, ipaddr, pls)
-        modcod = adjustNoise(token, ipaddr)
+        pls = adjustNoise(token, ipaddr)
         
         print("")
-        print(f"Finished for modcod: {modcod}")
+        print(f"Finished for pls: {pls}")
         print("")
         
 

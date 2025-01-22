@@ -1,24 +1,7 @@
 import json
 import os
 
-def get_standard():
-    with open("standard.json") as file:
-        return json.load(file)['standard']
-
-
-def update_standard(standard):
-
-    with open("standard.json", 'r+') as json_file:
-        data = json.load(json_file)
-
-        data['standard'] = standard
-
-        json_file.seek(0)  # rewind
-        json.dump(data, json_file, indent=4)
-        json_file.truncate()
-
-
-def read_esno_dict(psk, code):
+def read_esno_dict(pls):
     """Opens esno_table.json and returns value for specific modcod
 
     Args:
@@ -28,25 +11,12 @@ def read_esno_dict(psk, code):
     Returns:
         int: the expected value for the modcod
     """
-    standard = get_standard()
-    with open('esno_table.json') as file:
-        esno_dict = json.load(file)
-        return esno_dict[standard ][psk][code]
-    
-
-def read_pls_dict():
-    """Opens pls_table.json and returns it whole
-
-    Returns:
-        dict: the pls for each modcod
-    """
-    standard = get_standard()
-    with open('pls_table.json') as file:
+    with open('PlsDict.json') as file:
         pls_dict = json.load(file)
-        return pls_dict[standard]
+        return pls_dict[f"{pls}"]['exp_esno']
     
     
-def insert_initial_noise(psk, code, initial_noise):
+def insert_initial_noise(pls, initial_noise):
     """Adds the given @initial_noise for a specific modcod to
     the initial_noise.json file
 
@@ -55,18 +25,17 @@ def insert_initial_noise(psk, code, initial_noise):
         code (str): the code
         initial_noise (int): the noise to start from for next time the modcod is tested
     """
-    standard = get_standard()
-    with open("initial_noise.json", "r+") as jsonFile:
-        data = json.load(jsonFile)
+    with open('PlsDict.json', 'r+') as file:
+        data = json.load(file)
 
-        data[standard][psk][code] = initial_noise
+        data[f"{pls}"]['initial_noise'] = initial_noise
 
-        jsonFile.seek(0)  # rewind
-        json.dump(data, jsonFile, indent=4)
-        jsonFile.truncate()
+        file.seek(0)  # rewind
+        json.dump(data, file, indent=4)
+        file.truncate()
         
         
-def read_initial_noise(psk, code):
+def read_initial_noise(pls):
     """Reads the initial noise for a given modcod 
 
     Args:
@@ -76,34 +45,15 @@ def read_initial_noise(psk, code):
     Returns:
         int: the inital_noise for the given modcod
     """
-    standard = get_standard()
-    with open('initial_noise.json') as file:
-        esno_table = json.load(file)
-        return esno_table[standard][psk][code]
-    
-    
-def get_modcod_from_pls(pls):
-    """A function to convert pls to modcod
+    with open('PlsDict.json') as file:
+        pls_dict = json.load(file)
+        return pls_dict[f"{pls}"]['initial_noise']
 
-    Args:
-        pls (int): the pls to convert
-
-    Returns:
-        succses:    tuple: modulation and code (both string)
-        fail:   str: no match for pls requested
-    """
-    standard = get_standard()
-    with open("pls_table.json") as file:
-        pls_table = json.load(file)
+def initialize_result_dict(sn):
+    import shutil
+    shutil.copyfile("PlsDict.json", f"SN{sn}.json")
         
-        for modulation, codes in pls_table[standard].items():
-            for code, value in codes.items():
-                if value == pls:
-                    return modulation, code
-        print("couldnt find matching modcod to: ", pls)
-  
-        
-def insert_result_dict(psk, code, missed_counter, sn):
+def insert_result_dict(pls, missed_counter, sn):
     """Adds a result (passed/failed for specific modcod) to the json file with corresponding name to
     the device's SN.
 
@@ -113,39 +63,42 @@ def insert_result_dict(psk, code, missed_counter, sn):
         missed_counter (int): amount of missed frames
         sn (int): the serial number of the device
     """
-    standard = get_standard()
+
+    if not os.path.exists(f"SN{sn}.json"):
+        initialize_result_dict(sn)
+
     with open(f"SN{sn}.json", "r+") as jsonFile:
         data = json.load(jsonFile)
 
         if missed_counter > 0:
-            data[standard][psk][code] = "Failed"
+            data[f"{pls}"]['test_result'] = "Failed"
         else:
-            data[standard][psk][code] = "Passed"
+            data[f"{pls}"]['test_result'] = "Passed"
 
 
         jsonFile.seek(0)  # rewind
         json.dump(data, jsonFile, indent=4)
         jsonFile.truncate()
 
-
-def create_result_dict(sn):
-    """Creates a results file if it didn't already exist,
-      fills it with empty value for modcods
-
-    Args:
-        sn (int): the serial number if the device
-    """
-    
-    if os.path.exists(f"SN{sn}.json"):
-        return
-    
-    with open(f"SN{sn}.json", "x"):
-        print(f"Created the test results file in the directory: SN{sn}.json")
-    with open(f"SN{sn}.json", "r+") as jsonFile:
-        data = ""
-        with open("emptyModCod.json", 'r') as file:
-            data = json.load(file)
-
-        jsonFile.seek(0)  # rewind
-        json.dump(data, jsonFile, indent=4)
-        jsonFile.truncate()
+#
+# def create_result_dict(sn):
+#     """Creates a results file if it didn't already exist,
+#       fills it with empty value for modcods
+#
+#     Args:
+#         sn (int): the serial number if the device
+#     """
+#
+#     if os.path.exists(f"SN{sn}.json"):
+#         return
+#
+#     with open(f"SN{sn}.json", "x"):
+#         print(f"Created the test results file in the directory: SN{sn}.json")
+#     with open(f"SN{sn}.json", "r+") as jsonFile:
+#         data = ""
+#         with open("emptyModCod.json", 'r') as file:
+#             data = json.load(file)
+#
+#         jsonFile.seek(0)  # rewind
+#         json.dump(data, jsonFile, indent=4)
+#         jsonFile.truncate()

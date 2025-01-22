@@ -4,8 +4,8 @@ import threading
 import StaticVars
 from NoiseFinder import get_token
 from api_request import get_advanced_stats, get_serial_number, reset_advanced_stats, update_modulator
-from JsonHandler import create_result_dict, get_modcod_from_pls, insert_result_dict
-from EsnoGet import load
+from JsonHandler import insert_result_dict
+from GlobalFuncs import load
 import logging
 import keyboard
 from datetime import datetime
@@ -66,8 +66,7 @@ def start_logging(token, ip, pls=None, t=-999):
 
     info = {"frame_counter":0 , "missed_counter":0 , "bit_rate":0 , "esno":0, "offset":0, 'done': False}
     if pls:
-        psk, code = get_modcod_from_pls(pls)
-        threading.Thread(target=inputs, args=[info, psk, code]).start()
+        threading.Thread(target=inputs, args=[info, pls]).start()
     else:
         threading.Thread(target=inputs, args=[info]).start()
     
@@ -111,12 +110,11 @@ def start_logging(token, ip, pls=None, t=-999):
         print(f"⚠︎⚠︎⚠︎ {info["missed_counter"]} frames have been missed! ⚠︎⚠︎⚠︎")
     
     sn = get_serial_number(token, ip)
-    create_result_dict(sn)
-    insert_result_dict(psk, code, info["missed_counter"], sn)
+    insert_result_dict(pls, info["missed_counter"], sn)
     
 
             
-def inputs(info: dict, psk=None, code=None):
+def inputs(info: dict, pls):
     """A function that checks for user input, if user
     pressed i, print the current status of the device.
     if user pressed r, reset the shown missed frames
@@ -132,8 +130,7 @@ def inputs(info: dict, psk=None, code=None):
             print(f"-----------------------------------------------\nCard Activity Report {datetime.today().strftime('%H:%M:%S')}")
             print(f"Status:\nCurrent frame: {info['frame_counter']}\nAmount missed: {info['missed_counter']}\nCurrent esno {info['esno']}")
 
-            if psk and code:
-                print(f"modcod: {psk} {code}")
+            print(f"pls: {pls}")
 
             print("-----------------------------------------------")
             time.sleep(1)

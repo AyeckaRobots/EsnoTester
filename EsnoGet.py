@@ -1,7 +1,5 @@
-
-import time
 from snmp import Engine, SNMPv1
-
+from GlobalFuncs import load
 
 def read_current_esno():
     """A function to get the current esno read by the novelsat
@@ -24,25 +22,6 @@ def read_current_esno():
         
         current_esno = host.get(".1.3.6.1.4.1.37576.4.2.1.3.0")
         return current_esno.toString()
-
-
-def load(t):
-    """A function that creates a loading animation on the console while counting down
-    acts as time.sleep() for t larger than 0.2s
-
-    Args:
-        t (int): time until function ends
-    """
-    index = 0
-    time_elapsed = 0
-    sign = ['/', '-', '\\', '|'] 
-    while time_elapsed < t:
-        print(f"Loading... [{sign[index]}]", end="\r", flush=True)
-        time.sleep(0.2)
-        time_elapsed += 0.2
-        index = (index + 1) % 4
-            
-            
 
 
 if __name__ == "__main__":
