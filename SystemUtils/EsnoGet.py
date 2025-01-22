@@ -1,3 +1,5 @@
+import time
+
 from snmp import Engine, SNMPv1
 from SystemUtils.Utils import load
 
