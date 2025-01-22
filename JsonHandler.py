@@ -11,7 +11,7 @@ def read_esno_dict(pls):
     Returns:
         int: the expected value for the modcod
     """
-    with open('PlsDict.json') as file:
+    with open('SystemUtils/PlsDict.json') as file:
         pls_dict = json.load(file)
         return pls_dict[f"{pls}"]['exp_esno']
     
@@ -25,7 +25,7 @@ def insert_initial_noise(pls, initial_noise):
         code (str): the code
         initial_noise (int): the noise to start from for next time the modcod is tested
     """
-    with open('PlsDict.json', 'r+') as file:
+    with open('SystemUtils/PlsDict.json', 'r+') as file:
         data = json.load(file)
 
         data[f"{pls}"]['initial_noise'] = initial_noise
@@ -45,13 +45,13 @@ def read_initial_noise(pls):
     Returns:
         int: the inital_noise for the given modcod
     """
-    with open('PlsDict.json') as file:
+    with open('SystemUtils/PlsDict.json') as file:
         pls_dict = json.load(file)
         return pls_dict[f"{pls}"]['initial_noise']
 
 def initialize_result_dict(sn):
     import shutil
-    shutil.copyfile("PlsDict.json", f"SN{sn}.json")
+    shutil.copyfile("SystemUtils/PlsDict.json", f"TestResults/SN{sn}.json")
         
 def insert_result_dict(pls, missed_counter, sn):
     """Adds a result (passed/failed for specific modcod) to the json file with corresponding name to
@@ -64,10 +64,10 @@ def insert_result_dict(pls, missed_counter, sn):
         sn (int): the serial number of the device
     """
 
-    if not os.path.exists(f"SN{sn}.json"):
+    if not os.path.exists(f"TestResults/SN{sn}.json"):
         initialize_result_dict(sn)
 
-    with open(f"SN{sn}.json", "r+") as jsonFile:
+    with open(f"TestResults/SN{sn}.json", "r+") as jsonFile:
         data = json.load(jsonFile)
 
         if missed_counter > 0:

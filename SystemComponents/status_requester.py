@@ -1,11 +1,11 @@
 import time
 import threading
 
-import StaticVars
-from NoiseFinder import get_token
-from api_request import get_advanced_stats, get_serial_number, reset_advanced_stats, update_modulator
+from SystemUtils import StaticVars
+from SystemComponents.NoiseFinder import get_token
+from ApiRequest import get_advanced_stats, get_serial_number, reset_advanced_stats, update_modulator
 from JsonHandler import insert_result_dict
-from GlobalFuncs import load
+from SystemUtils.Utils import load
 import logging
 import keyboard
 from datetime import datetime
@@ -24,7 +24,7 @@ def init_logger(token, ip):
     """
     sn = get_serial_number(token, ip)
     
-    logging.basicConfig(filename=f"SN{sn}.log",
+    logging.basicConfig(filename=f"TestResults/SN{sn}.log",
                         format='%(asctime)s %(message)s',
                         filemode='a')
 

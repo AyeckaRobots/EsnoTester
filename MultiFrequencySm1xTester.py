@@ -1,8 +1,8 @@
-import StaticVars
-from api_request import get_serial_number, set_freq
-from status_requester import init_logger
-from NoiseFinder import get_token
-from Sm1xTester import set_standard, check_esno_input
+from SystemUtils import StaticVars
+from ApiRequest import get_serial_number, set_freq
+from SystemComponents.status_requester import init_logger
+from SystemComponents.NoiseFinder import get_token
+from SystemComponents.Sm1xTester import set_standard, check_esno_input
 import os
 
 
@@ -66,8 +66,8 @@ def clear_logfile(token, ip):
     """
     sn = get_serial_number(token, ip)
 
-    if os.path.exists(f"SN{sn}.log"):
-        os.remove(f"SN{sn}.log")
+    if os.path.exists(f"TestResults/SN{sn}.log"):
+        os.remove(f"TestResults/SN{sn}.log")
     else:
         return
 

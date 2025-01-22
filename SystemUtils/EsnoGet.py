@@ -1,5 +1,5 @@
 from snmp import Engine, SNMPv1
-from GlobalFuncs import load
+from SystemUtils.Utils import load
 
 def read_current_esno():
     """A function to get the current esno read by the novelsat

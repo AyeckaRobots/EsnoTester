@@ -1,6 +1,6 @@
-import StaticVars
-from api_request import change_modcod, update_modulator
-from NoiseFinder import adjustNoise, get_token
+from SystemUtils import StaticVars
+from ApiRequest import change_modcod, update_modulator
+from SystemComponents.NoiseFinder import adjustNoise, get_token
 
 def set_pls_list(pls_list):
     """

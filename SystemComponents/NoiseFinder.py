@@ -1,6 +1,6 @@
-import StaticVars
-from EsnoGet import read_current_esno
-from api_request import *
+from SystemUtils import StaticVars
+from SystemUtils.EsnoGet import read_current_esno
+from ApiRequest import *
 from JsonHandler import *
 
 max_noise = 115232  # 1c220

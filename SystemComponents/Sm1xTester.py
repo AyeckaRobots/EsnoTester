@@ -1,11 +1,10 @@
 from AllModCodNoiseFinder import start_noise_finder, set_pls_list
-from GlobalFuncs import update_pls_list
-from api_request import get_serial_number, update_noise
+from SystemUtils.Utils import update_pls_list
+from ApiRequest import get_serial_number, update_noise
 from status_requester import start_logging
 
 import os
-import StaticVars
-
+from SystemUtils import StaticVars
 
 
 def set_standard(modulator_token, modulator_ip, receiver_token, receiver_ip, standard, adjust_noise=False):
