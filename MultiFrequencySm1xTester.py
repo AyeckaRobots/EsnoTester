@@ -1,7 +1,5 @@
-import json
 
-from JsonHandler import set_token_json
-from SystemUtils import StaticVars
+from JsonHandler import set_token_json, read_target_ip, update_target_ip
 from ApiRequest import get_serial_number, set_freq
 from SystemComponents.status_requester import init_logger
 from SystemComponents.NoiseFinder import get_token
@@ -16,23 +14,27 @@ def main():
     it fails.
     """
 
-    modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {StaticVars.modulator_ip}) ")
+    modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {read_target_ip('modulator')}) ")
     if modulator_ip == '':
-        modulator_ip = StaticVars.modulator_ip
+        modulator_ip = read_target_ip("modulator")
 
     modulator_token = get_token(modulator_ip)
 
     if not modulator_token:
         return
 
-    receiver_ip = input(f"Enter the ip of the tested device. (press enter for {StaticVars.device_ip}) ")
+    update_target_ip('modulator', modulator_ip)
+
+    receiver_ip = input(f"Enter the ip of the tested device. (press enter for {read_target_ip('receiver')}) ")
     if receiver_ip == '':
-        receiver_ip = StaticVars.device_ip
+        receiver_ip = read_target_ip("receiver")
 
     receiver_token = get_token(receiver_ip)
 
     if not receiver_token:
         return
+
+    update_target_ip('receiver', receiver_ip)
 
     try:
         freq = input("write a frequency between 950 and 2150. (press enter for all)")

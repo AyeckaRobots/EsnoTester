@@ -5,7 +5,7 @@ these functions are used throughout the codebase.
 """
 import requests
 
-from JsonHandler import get_token_json
+from JsonHandler import get_token_json, read_target_ip
 from SystemUtils import StaticVars
 
 
@@ -117,7 +117,7 @@ def update_noise(token, ip, value):
     requests.post(f"http://{ip}/api/fpga_write", headers={'Authorization': token}, json=data)
     
     
-def update_modulator(token, ip):
+def set_modulator_freq_1200M(token, ip):
     """A function that sets the moducaltor (tx) frequency to 1200M 
     (neccesery for the test) all other variables are changeable
     but were coppied from the website for the post request to work.
@@ -175,12 +175,13 @@ def set_freq(modulator_token, modulator_ip, receiver_token, receiver_ip, freq):
              [{"lnb_1v_compensation":False,"lnb_reference":"R_OFF", "lnb_tone":"T_OFF", "lnb_voltage":"V_OFF","rf_source":2},
              {"lnb_1v_compensation":False,"lnb_tone":"T_OFF","lnb_voltage":"V_OFF","rf_source":1,"lnb_reference":"R_OFF"}]
              ,"rf_source":1,"roll_off":"RT_AUTO","acm_mode":"AcmModeFollowTx","acm_frame_length":"AcmNormalFrame","gold_code":0}
-    response_modulator = requests.post(f"http://{modulator_ip}/api/modulator", headers={'Authorization': modulator_token}, json=data)
-    response_reciever = requests.post(f"http://{receiver_ip}/api/demodulator", headers={'Authorization': receiver_token},json=data2)
+
+    requests.post(f"http://{modulator_ip}/api/modulator", headers={'Authorization': modulator_token}, json=data)
+    requests.post(f"http://{receiver_ip}/api/demodulator", headers={'Authorization': receiver_token},json=data2)
 
 
 def read_esno_api():
-    reciever_ip = StaticVars.device_ip
-    reciever_token = get_token_json('receiver')
-    data = requests.get(f"http://{reciever_ip}/api/advanced_status", headers={'Authorization': reciever_token})
+    receiver_ip = read_target_ip('receiver')
+    receiver_token = get_token_json('receiver')
+    data = requests.get(f"http://{receiver_ip}/api/advanced_status", headers={'Authorization': receiver_token})
     return data.json()["agg_slices"][0]['esno']

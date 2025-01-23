@@ -1,6 +1,6 @@
 {
     "modulator_ip": "192.168.15.47",
-    "device_ip": "192.168.15.110",
+    "receiver_ip": "192.168.15.110",
     "receiver_token": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mzc1NTEyNjAsIm5iZiI6MTczNzU1MTI2MCwianRpIjoiYTI1NDFkNjMtZjE5MS00Zjk3LTk4NjctMTcwMzg2N2QyY2RhIiwiZXhwIjoxNzM3NTgwMDYwLCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.BhBD9xlA7jng2NQpXSm9PBnh2xKvnns-Vtx4VlbTGEU",
     "modulator_token": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mzc1NTEyNTksIm5iZiI6MTczNzU1MTI1OSwianRpIjoiMTJlNzk2YmEtM2FhZS00ZjdjLTk2N2ItNmRmNjVkYjliY2Y1IiwiZXhwIjoxNzM3NTgwMDU5LCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.Ry7YV-FxaP5IoqXK5Rv-XRk2x_Rlwrw_GGluJE-4dbE"
 }

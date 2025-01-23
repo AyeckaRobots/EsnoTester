@@ -89,14 +89,18 @@ def get_token(ipaddr):
 
 def main():
 
-    modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {StaticVars.modulator_ip}) ")
+    modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {read_target_ip('modulator')}) ")
     if modulator_ip == '':
-        modulator_ip = StaticVars.modulator_ip
-        
-    token = get_token(modulator_ip)
-    
-    if token:
-        adjustNoise(token, modulator_ip)
+        modulator_ip = read_target_ip("modulator")
+
+    modulator_token = get_token(modulator_ip)
+
+    if not modulator_token:
+        return
+
+    update_target_ip('modulator', modulator_ip)
+
+    adjustNoise(modulator_token, modulator_ip)
 
 
 if __name__ == "__main__":

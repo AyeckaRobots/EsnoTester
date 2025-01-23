@@ -104,16 +104,39 @@ def insert_result_dict(pls, missed_counter, sn):
 #         jsonFile.truncate()
 
 def get_token_json(token_type):
-    with open('SystemUtils/token.json') as file:
+
+    with open('SystemUtils/IpToken.json') as file:
         data = json.load(file)
         return data[f"{token_type}_token"]
 
 
 def set_token_json(receiver_token, modulator_token):
-    with open(f"SystemUtils/token.json", "r+") as jsonFile:
+    with open(f"SystemUtils/IpToken.json", "r+") as jsonFile:
         data = json.load(jsonFile)
+
         data['receiver_token'] = receiver_token
         data['modulator_token'] = modulator_token
+
+        jsonFile.seek(0)  # rewind
+        json.dump(data, jsonFile, indent=4)
+        jsonFile.truncate()
+
+
+def read_target_ip(target_type):
+    # target type is: modulator, receiver
+    with open(f"SystemUtils/IpToken.json") as jsonFile:
+
+        data = json.load(jsonFile)
+        return data[f"{target_type}_ip"]
+
+
+def update_target_ip(target_type, new_ip):
+    # target type is: modulator, receiver
+    with open(f"SystemUtils/IpToken.json", "r+") as jsonFile:
+        data = json.load(jsonFile)
+
+        data[f"{target_type}_ip"] = new_ip
+
         jsonFile.seek(0)  # rewind
         json.dump(data, jsonFile, indent=4)
         jsonFile.truncate()

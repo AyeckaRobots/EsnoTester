@@ -1,5 +1,6 @@
+from JsonHandler import update_target_ip, read_target_ip
 from SystemUtils import StaticVars
-from ApiRequest import change_modcod, update_modulator
+from ApiRequest import change_modcod
 from SystemComponents.NoiseFinder import adjustNoise, get_token
 
 def set_pls_list(pls_list):
@@ -48,17 +49,19 @@ def main():
     such that the target esno and the measured esno are almost identical
     """
 
-    modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {StaticVars.modulator_ip}) ")
+    modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {read_target_ip('modulator')}) ")
     if modulator_ip == '':
-        modulator_ip = StaticVars.modulator_ip
-        
-    token = get_token(modulator_ip)
-    
-    if not token:
+        modulator_ip = read_target_ip("modulator")
+
+    modulator_token = get_token(modulator_ip)
+
+    if not modulator_token:
         return
 
+    update_target_ip('modulator', modulator_ip)
+
     pls_list = set_pls_list(StaticVars.all_pls_simplified)
-    start_noise_finder(token, modulator_ip, pls_list)
+    start_noise_finder(modulator_token, modulator_ip, pls_list)
     
         
 if __name__ == "__main__":

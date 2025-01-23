@@ -3,8 +3,8 @@ import threading
 
 from SystemUtils import StaticVars
 from SystemComponents.NoiseFinder import get_token
-from ApiRequest import get_advanced_stats, get_serial_number, reset_advanced_stats, update_modulator
-from JsonHandler import insert_result_dict
+from ApiRequest import get_advanced_stats, get_serial_number, reset_advanced_stats, set_modulator_freq_1200M
+from JsonHandler import insert_result_dict, update_target_ip, read_target_ip
 from SystemUtils.Utils import load
 import logging
 import keyboard
@@ -156,15 +156,21 @@ def main():
     (ofc if there are it logs the stats to the .log file)
     """
 
-    receiver_ip = input(f"Enter the ip of the tested device. (press enter for {StaticVars.device_ip}) ")
+    receiver_ip = input(f"Enter the ip of the tested device. (press enter for {read_target_ip('receiver')}) ")
     if receiver_ip == '':
-        receiver_ip = StaticVars.device_ip
+        receiver_ip = read_target_ip("receiver")
+
+    receiver_token = get_token(receiver_ip)
+
+    if not receiver_token:
+        return
+
+    update_target_ip('receiver', receiver_ip)
+
+    set_modulator_freq_1200M(receiver_token, receiver_ip)
+    init_logger(receiver_token, receiver_ip)
     
-    token = get_token(receiver_ip)
-    update_modulator(token, receiver_ip)
-    init_logger(token, receiver_ip)
-    
-    start_logging(token, receiver_ip)
+    start_logging(receiver_token, receiver_ip)
 
 
 if __name__ == "__main__":

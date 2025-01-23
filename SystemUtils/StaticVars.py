@@ -1,11 +1,8 @@
 time_per_modcod = 30
 esno_acceptable = 0.3
-modulator_ip = '192.168.15.47'
-device_ip = '192.168.15.110'
 
 s2_starting_index = 4
 s2x_starting_index = 132
-
 
 all_pls_simplified = [
 #S2
@@ -238,9 +235,9 @@ all_pls_simplified = [
     215,
 ]
 
-def fancy_print(lis):
+def fancy_print(pls_list):
     print('{')
-    for pls in lis:
+    for pls in pls_list:
         print(f"\t'{pls['plscode']}': ", "{")
         for key, value in pls.items():
             if type(value) == str:
@@ -249,4 +246,3 @@ def fancy_print(lis):
                 print(f"\t\t'{key}': {value},")
         print("\t},")
     print('}')
-
