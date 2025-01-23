@@ -57,8 +57,7 @@ def main():
     if not token:
         return
 
-    update_modulator(token, modulator_ip)
-    pls_list = set_pls_list()
+    pls_list = set_pls_list(StaticVars.all_pls_simplified)
     start_noise_finder(token, modulator_ip, pls_list)
     
         

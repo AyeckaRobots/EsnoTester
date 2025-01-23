@@ -7,9 +7,9 @@
         "plscode": 4,
         "modcod": "FE_SAT_QPSK_14",
         "pilots": false,
-        "initial_noise": 115176,
+        "initial_noise": 115098,
         "exp_esno": -2.35,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "8": {
         "standard": "S2",
@@ -19,7 +19,7 @@
         "plscode": 8,
         "modcod": "FE_SAT_QPSK_13",
         "pilots": false,
-        "initial_noise": 115159,
+        "initial_noise": 0,
         "exp_esno": -1.24,
         "test_result": ""
     },
@@ -31,7 +31,7 @@
         "plscode": 12,
         "modcod": "FE_SAT_QPSK_25",
         "pilots": false,
-        "initial_noise": 115090,
+        "initial_noise": 0,
         "exp_esno": -0.3,
         "test_result": ""
     },
@@ -43,7 +43,7 @@
         "plscode": 16,
         "modcod": "FE_SAT_QPSK_12",
         "pilots": false,
-        "initial_noise": 115031,
+        "initial_noise": 0,
         "exp_esno": 1.0,
         "test_result": ""
     },
@@ -55,7 +55,7 @@
         "plscode": 20,
         "modcod": "FE_SAT_QPSK_35",
         "pilots": false,
-        "initial_noise": 114988,
+        "initial_noise": 0,
         "exp_esno": 2.23,
         "test_result": ""
     },
@@ -67,7 +67,7 @@
         "plscode": 24,
         "modcod": "FE_SAT_QPSK_23",
         "pilots": false,
-        "initial_noise": 114934,
+        "initial_noise": 0,
         "exp_esno": 3.1,
         "test_result": ""
     },
@@ -79,7 +79,7 @@
         "plscode": 28,
         "modcod": "FE_SAT_QPSK_34",
         "pilots": false,
-        "initial_noise": 114923,
+        "initial_noise": 0,
         "exp_esno": 4.03,
         "test_result": ""
     },
@@ -91,7 +91,7 @@
         "plscode": 32,
         "modcod": "FE_SAT_QPSK_45",
         "pilots": false,
-        "initial_noise": 114893,
+        "initial_noise": 0,
         "exp_esno": 4.68,
         "test_result": ""
     },
@@ -103,7 +103,7 @@
         "plscode": 36,
         "modcod": "FE_SAT_QPSK_56",
         "pilots": false,
-        "initial_noise": 114874,
+        "initial_noise": 0,
         "exp_esno": 5.18,
         "test_result": ""
     },
@@ -115,7 +115,7 @@
         "plscode": 40,
         "modcod": "FE_SAT_QPSK_89",
         "pilots": false,
-        "initial_noise": 114884,
+        "initial_noise": 0,
         "exp_esno": 6.2,
         "test_result": ""
     },
@@ -127,7 +127,7 @@
         "plscode": 44,
         "modcod": "FE_SAT_QPSK_910",
         "pilots": false,
-        "initial_noise": 114879,
+        "initial_noise": 0,
         "exp_esno": 6.42,
         "test_result": ""
     },
@@ -139,9 +139,9 @@
         "plscode": 6,
         "modcod": "FE_SAT_QPSK_14",
         "pilots": false,
-        "initial_noise": 115073,
+        "initial_noise": 0,
         "exp_esno": 0.3575,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "10": {
         "standard": "S2",
@@ -151,7 +151,7 @@
         "plscode": 10,
         "modcod": "FE_SAT_QPSK_13",
         "pilots": false,
-        "initial_noise": 115042,
+        "initial_noise": 0,
         "exp_esno": 0.6155,
         "test_result": ""
     },
@@ -163,7 +163,7 @@
         "plscode": 14,
         "modcod": "FE_SAT_QPSK_25",
         "pilots": false,
-        "initial_noise": 115031,
+        "initial_noise": 0,
         "exp_esno": 0.7446,
         "test_result": ""
     },
@@ -175,7 +175,7 @@
         "plscode": 18,
         "modcod": "FE_SAT_QPSK_12",
         "pilots": false,
-        "initial_noise": 115031,
+        "initial_noise": 0,
         "exp_esno": 0.8306,
         "test_result": ""
     },
@@ -187,7 +187,7 @@
         "plscode": 22,
         "modcod": "FE_SAT_QPSK_35",
         "pilots": false,
-        "initial_noise": 115008,
+        "initial_noise": 0,
         "exp_esno": 1.1317,
         "test_result": ""
     },
@@ -199,7 +199,7 @@
         "plscode": 26,
         "modcod": "FE_SAT_QPSK_23",
         "pilots": false,
-        "initial_noise": 115041,
+        "initial_noise": 0,
         "exp_esno": 1.2607,
         "test_result": ""
     },
@@ -211,7 +211,7 @@
         "plscode": 30,
         "modcod": "FE_SAT_QPSK_34",
         "pilots": false,
-        "initial_noise": 114982,
+        "initial_noise": 0,
         "exp_esno": 1.3897,
         "test_result": ""
     },
@@ -223,7 +223,7 @@
         "plscode": 34,
         "modcod": "FE_SAT_QPSK_45",
         "pilots": false,
-        "initial_noise": 115046,
+        "initial_noise": 0,
         "exp_esno": 1.4757,
         "test_result": ""
     },
@@ -235,7 +235,7 @@
         "plscode": 38,
         "modcod": "FE_SAT_QPSK_56",
         "pilots": false,
-        "initial_noise": 114992,
+        "initial_noise": 0,
         "exp_esno": 1.5618,
         "test_result": ""
     },
@@ -247,7 +247,7 @@
         "plscode": 42,
         "modcod": "FE_SAT_QPSK_89",
         "pilots": false,
-        "initial_noise": 115011,
+        "initial_noise": 0,
         "exp_esno": 1.6908,
         "test_result": ""
     },
@@ -259,9 +259,9 @@
         "pilots": true,
         "plscode": 5,
         "modcod": "FE_SAT_QPSK_14",
-        "initial_noise": 115164,
+        "initial_noise": 0,
         "exp_esno": -2.35,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "9": {
         "standard": "S2",
@@ -271,7 +271,7 @@
         "pilots": true,
         "plscode": 9,
         "modcod": "FE_SAT_QPSK_13",
-        "initial_noise": 115104,
+        "initial_noise": 0,
         "exp_esno": -1.24,
         "test_result": ""
     },
@@ -283,7 +283,7 @@
         "pilots": true,
         "plscode": 13,
         "modcod": "FE_SAT_QPSK_25",
-        "initial_noise": 115075,
+        "initial_noise": 0,
         "exp_esno": -0.3,
         "test_result": ""
     },
@@ -295,7 +295,7 @@
         "pilots": true,
         "plscode": 17,
         "modcod": "FE_SAT_QPSK_12",
-        "initial_noise": 115031,
+        "initial_noise": 0,
         "exp_esno": 1.0,
         "test_result": ""
     },
@@ -307,7 +307,7 @@
         "pilots": true,
         "plscode": 21,
         "modcod": "FE_SAT_QPSK_35",
-        "initial_noise": 114988,
+        "initial_noise": 0,
         "exp_esno": 2.23,
         "test_result": ""
     },
@@ -319,7 +319,7 @@
         "pilots": true,
         "plscode": 25,
         "modcod": "FE_SAT_QPSK_23",
-        "initial_noise": 114952,
+        "initial_noise": 0,
         "exp_esno": 3.1,
         "test_result": ""
     },
@@ -331,7 +331,7 @@
         "pilots": true,
         "plscode": 29,
         "modcod": "FE_SAT_QPSK_34",
-        "initial_noise": 114923,
+        "initial_noise": 0,
         "exp_esno": 4.03,
         "test_result": ""
     },
@@ -343,7 +343,7 @@
         "pilots": true,
         "plscode": 33,
         "modcod": "FE_SAT_QPSK_45",
-        "initial_noise": 114910,
+        "initial_noise": 0,
         "exp_esno": 4.68,
         "test_result": ""
     },
@@ -355,7 +355,7 @@
         "pilots": true,
         "plscode": 37,
         "modcod": "FE_SAT_QPSK_56",
-        "initial_noise": 114897,
+        "initial_noise": 0,
         "exp_esno": 5.18,
         "test_result": ""
     },
@@ -367,7 +367,7 @@
         "pilots": true,
         "plscode": 41,
         "modcod": "FE_SAT_QPSK_89",
-        "initial_noise": 114884,
+        "initial_noise": 0,
         "exp_esno": 6.2,
         "test_result": ""
     },
@@ -379,7 +379,7 @@
         "pilots": true,
         "plscode": 45,
         "modcod": "FE_SAT_QPSK_910",
-        "initial_noise": 114870,
+        "initial_noise": 0,
         "exp_esno": 6.42,
         "test_result": ""
     },
@@ -391,9 +391,9 @@
         "pilots": true,
         "plscode": 7,
         "modcod": "FE_SAT_QPSK_14",
-        "initial_noise": 115036,
+        "initial_noise": 0,
         "exp_esno": 0.3575,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "11": {
         "standard": "S2",
@@ -403,7 +403,7 @@
         "pilots": true,
         "plscode": 11,
         "modcod": "FE_SAT_QPSK_13",
-        "initial_noise": 115042,
+        "initial_noise": 0,
         "exp_esno": 0.6155,
         "test_result": ""
     },
@@ -415,7 +415,7 @@
         "pilots": true,
         "plscode": 15,
         "modcod": "FE_SAT_QPSK_25",
-        "initial_noise": 115031,
+        "initial_noise": 0,
         "exp_esno": 0.7446,
         "test_result": ""
     },
@@ -427,7 +427,7 @@
         "pilots": true,
         "plscode": 19,
         "modcod": "FE_SAT_QPSK_12",
-        "initial_noise": 115031,
+        "initial_noise": 0,
         "exp_esno": 0.8306,
         "test_result": ""
     },
@@ -439,7 +439,7 @@
         "pilots": true,
         "plscode": 23,
         "modcod": "FE_SAT_QPSK_35",
-        "initial_noise": 115008,
+        "initial_noise": 0,
         "exp_esno": 1.1317,
         "test_result": ""
     },
@@ -451,7 +451,7 @@
         "pilots": true,
         "plscode": 27,
         "modcod": "FE_SAT_QPSK_23",
-        "initial_noise": 115015,
+        "initial_noise": 0,
         "exp_esno": 1.2607,
         "test_result": ""
     },
@@ -463,7 +463,7 @@
         "pilots": true,
         "plscode": 31,
         "modcod": "FE_SAT_QPSK_34",
-        "initial_noise": 115002,
+        "initial_noise": 0,
         "exp_esno": 1.3897,
         "test_result": ""
     },
@@ -475,7 +475,7 @@
         "pilots": true,
         "plscode": 35,
         "modcod": "FE_SAT_QPSK_45",
-        "initial_noise": 115003,
+        "initial_noise": 0,
         "exp_esno": 1.4757,
         "test_result": ""
     },
@@ -487,7 +487,7 @@
         "pilots": true,
         "plscode": 39,
         "modcod": "FE_SAT_QPSK_56",
-        "initial_noise": 114992,
+        "initial_noise": 0,
         "exp_esno": 1.5618,
         "test_result": ""
     },
@@ -499,7 +499,7 @@
         "pilots": true,
         "plscode": 43,
         "modcod": "FE_SAT_QPSK_89",
-        "initial_noise": 114989,
+        "initial_noise": 0,
         "exp_esno": 1.6908,
         "test_result": ""
     },
@@ -511,7 +511,7 @@
         "plscode": 48,
         "modcod": "FE_SAT_8PSK_35",
         "pilots": false,
-        "initial_noise": 114892,
+        "initial_noise": 0,
         "exp_esno": 5.5,
         "test_result": ""
     },
@@ -523,7 +523,7 @@
         "plscode": 52,
         "modcod": "FE_SAT_8PSK_23",
         "pilots": false,
-        "initial_noise": 114859,
+        "initial_noise": 0,
         "exp_esno": 6.62,
         "test_result": ""
     },
@@ -535,7 +535,7 @@
         "plscode": 56,
         "modcod": "FE_SAT_8PSK_34",
         "pilots": false,
-        "initial_noise": 114846,
+        "initial_noise": 0,
         "exp_esno": 7.91,
         "test_result": ""
     },
@@ -547,7 +547,7 @@
         "plscode": 60,
         "modcod": "FE_SAT_8PSK_56",
         "pilots": false,
-        "initial_noise": 114819,
+        "initial_noise": 0,
         "exp_esno": 9.35,
         "test_result": ""
     },
@@ -559,7 +559,7 @@
         "plscode": 64,
         "modcod": "FE_SAT_8PSK_89",
         "pilots": false,
-        "initial_noise": 114784,
+        "initial_noise": 0,
         "exp_esno": 10.69,
         "test_result": ""
     },
@@ -571,7 +571,7 @@
         "plscode": 68,
         "modcod": "FE_SAT_8PSK_910",
         "pilots": false,
-        "initial_noise": 114844,
+        "initial_noise": 0,
         "exp_esno": 10.98,
         "test_result": ""
     },
@@ -583,7 +583,7 @@
         "plscode": 50,
         "modcod": "FE_SAT_8PSK_35",
         "pilots": false,
-        "initial_noise": 114990,
+        "initial_noise": 0,
         "exp_esno": 1.692,
         "test_result": ""
     },
@@ -595,7 +595,7 @@
         "plscode": 54,
         "modcod": "FE_SAT_8PSK_23",
         "pilots": false,
-        "initial_noise": 114989,
+        "initial_noise": 0,
         "exp_esno": 1.885,
         "test_result": ""
     },
@@ -607,7 +607,7 @@
         "plscode": 58,
         "modcod": "FE_SAT_8PSK_34",
         "pilots": false,
-        "initial_noise": 114944,
+        "initial_noise": 0,
         "exp_esno": 2.0779,
         "test_result": ""
     },
@@ -619,7 +619,7 @@
         "plscode": 62,
         "modcod": "FE_SAT_8PSK_56",
         "pilots": false,
-        "initial_noise": 114946,
+        "initial_noise": 0,
         "exp_esno": 2.3351,
         "test_result": ""
     },
@@ -631,7 +631,7 @@
         "plscode": 66,
         "modcod": "FE_SAT_8PSK_89",
         "pilots": false,
-        "initial_noise": 114966,
+        "initial_noise": 0,
         "exp_esno": 2.528,
         "test_result": ""
     },
@@ -643,7 +643,7 @@
         "pilots": true,
         "plscode": 49,
         "modcod": "FE_SAT_8PSK_35",
-        "initial_noise": 114892,
+        "initial_noise": 0,
         "exp_esno": 5.5,
         "test_result": ""
     },
@@ -655,7 +655,7 @@
         "pilots": true,
         "plscode": 53,
         "modcod": "FE_SAT_8PSK_23",
-        "initial_noise": 114862,
+        "initial_noise": 0,
         "exp_esno": 6.62,
         "test_result": ""
     },
@@ -667,7 +667,7 @@
         "pilots": true,
         "plscode": 57,
         "modcod": "FE_SAT_8PSK_34",
-        "initial_noise": 114846,
+        "initial_noise": 0,
         "exp_esno": 7.91,
         "test_result": ""
     },
@@ -679,7 +679,7 @@
         "pilots": true,
         "plscode": 61,
         "modcod": "FE_SAT_8PSK_56",
-        "initial_noise": 114819,
+        "initial_noise": 0,
         "exp_esno": 9.35,
         "test_result": ""
     },
@@ -691,7 +691,7 @@
         "pilots": true,
         "plscode": 65,
         "modcod": "FE_SAT_8PSK_89",
-        "initial_noise": 114799,
+        "initial_noise": 0,
         "exp_esno": 10.69,
         "test_result": ""
     },
@@ -703,7 +703,7 @@
         "pilots": true,
         "plscode": 69,
         "modcod": "FE_SAT_8PSK_910",
-        "initial_noise": 114794,
+        "initial_noise": 0,
         "exp_esno": 10.98,
         "test_result": ""
     },
@@ -715,7 +715,7 @@
         "pilots": true,
         "plscode": 51,
         "modcod": "FE_SAT_8PSK_35",
-        "initial_noise": 114980,
+        "initial_noise": 0,
         "exp_esno": 1.692,
         "test_result": ""
     },
@@ -727,7 +727,7 @@
         "pilots": true,
         "plscode": 55,
         "modcod": "FE_SAT_8PSK_23",
-        "initial_noise": 114989,
+        "initial_noise": 0,
         "exp_esno": 1.885,
         "test_result": ""
     },
@@ -739,7 +739,7 @@
         "pilots": true,
         "plscode": 59,
         "modcod": "FE_SAT_8PSK_34",
-        "initial_noise": 114983,
+        "initial_noise": 0,
         "exp_esno": 2.0779,
         "test_result": ""
     },
@@ -751,7 +751,7 @@
         "pilots": true,
         "plscode": 63,
         "modcod": "FE_SAT_8PSK_56",
-        "initial_noise": 114969,
+        "initial_noise": 0,
         "exp_esno": 2.3351,
         "test_result": ""
     },
@@ -763,7 +763,7 @@
         "pilots": true,
         "plscode": 67,
         "modcod": "FE_SAT_8PSK_89",
-        "initial_noise": 114966,
+        "initial_noise": 0,
         "exp_esno": 2.528,
         "test_result": ""
     },
@@ -775,7 +775,7 @@
         "plscode": 72,
         "modcod": "FE_SAT_16APSK_23",
         "pilots": false,
-        "initial_noise": 114834,
+        "initial_noise": 0,
         "exp_esno": 8.97,
         "test_result": ""
     },
@@ -787,7 +787,7 @@
         "plscode": 76,
         "modcod": "FE_SAT_16APSK_34",
         "pilots": false,
-        "initial_noise": 114827,
+        "initial_noise": 0,
         "exp_esno": 10.21,
         "test_result": ""
     },
@@ -799,7 +799,7 @@
         "plscode": 80,
         "modcod": "FE_SAT_16APSK_45",
         "pilots": false,
-        "initial_noise": 114797,
+        "initial_noise": 0,
         "exp_esno": 11.03,
         "test_result": ""
     },
@@ -811,7 +811,7 @@
         "plscode": 84,
         "modcod": "FE_SAT_16APSK_56",
         "pilots": false,
-        "initial_noise": 114793,
+        "initial_noise": 0,
         "exp_esno": 11.61,
         "test_result": ""
     },
@@ -823,7 +823,7 @@
         "plscode": 88,
         "modcod": "FE_SAT_16APSK_89",
         "pilots": false,
-        "initial_noise": 114764,
+        "initial_noise": 0,
         "exp_esno": 12.89,
         "test_result": ""
     },
@@ -835,7 +835,7 @@
         "plscode": 92,
         "modcod": "FE_SAT_16APSK_910",
         "pilots": false,
-        "initial_noise": 114770,
+        "initial_noise": 0,
         "exp_esno": 13.13,
         "test_result": ""
     },
@@ -847,7 +847,7 @@
         "plscode": 74,
         "modcod": "FE_SAT_16APSK_23",
         "pilots": false,
-        "initial_noise": 114953,
+        "initial_noise": 0,
         "exp_esno": 2.5052,
         "test_result": ""
     },
@@ -859,7 +859,7 @@
         "plscode": 78,
         "modcod": "FE_SAT_16APSK_34",
         "pilots": false,
-        "initial_noise": 114952,
+        "initial_noise": 0,
         "exp_esno": 2.7616,
         "test_result": ""
     },
@@ -871,7 +871,7 @@
         "plscode": 82,
         "modcod": "FE_SAT_16APSK_45",
         "pilots": false,
-        "initial_noise": 114940,
+        "initial_noise": 0,
         "exp_esno": 2.9326,
         "test_result": ""
     },
@@ -883,7 +883,7 @@
         "plscode": 86,
         "modcod": "FE_SAT_16APSK_56",
         "pilots": false,
-        "initial_noise": 114945,
+        "initial_noise": 0,
         "exp_esno": 3.1035,
         "test_result": ""
     },
@@ -895,7 +895,7 @@
         "plscode": 90,
         "modcod": "FE_SAT_16APSK_89",
         "pilots": false,
-        "initial_noise": 114920,
+        "initial_noise": 0,
         "exp_esno": 3.3599,
         "test_result": ""
     },
@@ -907,7 +907,7 @@
         "pilots": true,
         "plscode": 73,
         "modcod": "FE_SAT_16APSK_23",
-        "initial_noise": 114827,
+        "initial_noise": 0,
         "exp_esno": 8.97,
         "test_result": ""
     },
@@ -919,7 +919,7 @@
         "pilots": true,
         "plscode": 77,
         "modcod": "FE_SAT_16APSK_34",
-        "initial_noise": 114805,
+        "initial_noise": 0,
         "exp_esno": 10.21,
         "test_result": ""
     },
@@ -931,7 +931,7 @@
         "pilots": true,
         "plscode": 81,
         "modcod": "FE_SAT_16APSK_45",
-        "initial_noise": 114797,
+        "initial_noise": 0,
         "exp_esno": 11.03,
         "test_result": ""
     },
@@ -943,7 +943,7 @@
         "pilots": true,
         "plscode": 85,
         "modcod": "FE_SAT_16APSK_56",
-        "initial_noise": 114783,
+        "initial_noise": 0,
         "exp_esno": 11.61,
         "test_result": ""
     },
@@ -955,7 +955,7 @@
         "pilots": true,
         "plscode": 89,
         "modcod": "FE_SAT_16APSK_89",
-        "initial_noise": 114774,
+        "initial_noise": 0,
         "exp_esno": 12.89,
         "test_result": ""
     },
@@ -967,7 +967,7 @@
         "pilots": true,
         "plscode": 93,
         "modcod": "FE_SAT_16APSK_910",
-        "initial_noise": 114770,
+        "initial_noise": 0,
         "exp_esno": 13.13,
         "test_result": ""
     },
@@ -979,7 +979,7 @@
         "pilots": true,
         "plscode": 75,
         "modcod": "FE_SAT_16APSK_23",
-        "initial_noise": 114944,
+        "initial_noise": 0,
         "exp_esno": 2.5052,
         "test_result": ""
     },
@@ -991,7 +991,7 @@
         "pilots": true,
         "plscode": 79,
         "modcod": "FE_SAT_16APSK_34",
-        "initial_noise": 114943,
+        "initial_noise": 0,
         "exp_esno": 2.7616,
         "test_result": ""
     },
@@ -1003,7 +1003,7 @@
         "pilots": true,
         "plscode": 83,
         "modcod": "FE_SAT_16APSK_45",
-        "initial_noise": 114935,
+        "initial_noise": 0,
         "exp_esno": 2.9326,
         "test_result": ""
     },
@@ -1015,7 +1015,7 @@
         "pilots": true,
         "plscode": 87,
         "modcod": "FE_SAT_16APSK_56",
-        "initial_noise": 114939,
+        "initial_noise": 0,
         "exp_esno": 3.1035,
         "test_result": ""
     },
@@ -1027,7 +1027,7 @@
         "pilots": true,
         "plscode": 91,
         "modcod": "FE_SAT_16APSK_89",
-        "initial_noise": 114915,
+        "initial_noise": 0,
         "exp_esno": 3.3599,
         "test_result": ""
     },
@@ -1039,7 +1039,7 @@
         "plscode": 96,
         "modcod": "FE_SAT_32APSK_34",
         "pilots": false,
-        "initial_noise": 114775,
+        "initial_noise": 0,
         "exp_esno": 12.73,
         "test_result": ""
     },
@@ -1051,7 +1051,7 @@
         "plscode": 100,
         "modcod": "FE_SAT_32APSK_45",
         "pilots": false,
-        "initial_noise": 114759,
+        "initial_noise": 0,
         "exp_esno": 13.64,
         "test_result": ""
     },
@@ -1063,7 +1063,7 @@
         "plscode": 104,
         "modcod": "FE_SAT_32APSK_56",
         "pilots": false,
-        "initial_noise": 114743,
+        "initial_noise": 0,
         "exp_esno": 14.28,
         "test_result": ""
     },
@@ -1075,7 +1075,7 @@
         "plscode": 108,
         "modcod": "FE_SAT_32APSK_89",
         "pilots": false,
-        "initial_noise": 114722,
+        "initial_noise": 0,
         "exp_esno": 15.69,
         "test_result": ""
     },
@@ -1087,7 +1087,7 @@
         "plscode": 112,
         "modcod": "FE_SAT_32APSK_910",
         "pilots": false,
-        "initial_noise": 114779,
+        "initial_noise": 0,
         "exp_esno": 16.05,
         "test_result": ""
     },
@@ -1099,7 +1099,7 @@
         "plscode": 98,
         "modcod": "FE_SAT_32APSK_34",
         "pilots": false,
-        "initial_noise": 114930,
+        "initial_noise": 0,
         "exp_esno": 3.4192,
         "test_result": ""
     },
@@ -1111,7 +1111,7 @@
         "plscode": 102,
         "modcod": "FE_SAT_32APSK_45",
         "pilots": false,
-        "initial_noise": 114925,
+        "initial_noise": 0,
         "exp_esno": 3.6308,
         "test_result": ""
     },
@@ -1123,7 +1123,7 @@
         "plscode": 106,
         "modcod": "FE_SAT_32APSK_56",
         "pilots": false,
-        "initial_noise": 114918,
+        "initial_noise": 0,
         "exp_esno": 3.8424,
         "test_result": ""
     },
@@ -1135,7 +1135,7 @@
         "plscode": 110,
         "modcod": "FE_SAT_32APSK_89",
         "pilots": false,
-        "initial_noise": 114911,
+        "initial_noise": 0,
         "exp_esno": 4.1599,
         "test_result": ""
     },
@@ -1147,7 +1147,7 @@
         "pilots": true,
         "plscode": 97,
         "modcod": "FE_SAT_32APSK_34",
-        "initial_noise": 114775,
+        "initial_noise": 0,
         "exp_esno": 12.73,
         "test_result": ""
     },
@@ -1159,7 +1159,7 @@
         "pilots": true,
         "plscode": 101,
         "modcod": "FE_SAT_32APSK_45",
-        "initial_noise": 114769,
+        "initial_noise": 0,
         "exp_esno": 13.64,
         "test_result": ""
     },
@@ -1171,7 +1171,7 @@
         "pilots": true,
         "plscode": 105,
         "modcod": "FE_SAT_32APSK_56",
-        "initial_noise": 114760,
+        "initial_noise": 0,
         "exp_esno": 14.28,
         "test_result": ""
     },
@@ -1183,7 +1183,7 @@
         "pilots": true,
         "plscode": 109,
         "modcod": "FE_SAT_32APSK_89",
-        "initial_noise": 114739,
+        "initial_noise": 0,
         "exp_esno": 15.69,
         "test_result": ""
     },
@@ -1195,7 +1195,7 @@
         "pilots": true,
         "plscode": 113,
         "modcod": "FE_SAT_32APSK_910",
-        "initial_noise": 114736,
+        "initial_noise": 0,
         "exp_esno": 16.05,
         "test_result": ""
     },
@@ -1207,7 +1207,7 @@
         "pilots": true,
         "plscode": 99,
         "modcod": "FE_SAT_32APSK_34",
-        "initial_noise": 114909,
+        "initial_noise": 0,
         "exp_esno": 3.4192,
         "test_result": ""
     },
@@ -1219,7 +1219,7 @@
         "pilots": true,
         "plscode": 103,
         "modcod": "FE_SAT_32APSK_45",
-        "initial_noise": 114901,
+        "initial_noise": 0,
         "exp_esno": 3.6308,
         "test_result": ""
     },
@@ -1231,7 +1231,7 @@
         "pilots": true,
         "plscode": 107,
         "modcod": "FE_SAT_32APSK_56",
-        "initial_noise": 114902,
+        "initial_noise": 0,
         "exp_esno": 3.8424,
         "test_result": ""
     },
@@ -1243,7 +1243,7 @@
         "pilots": true,
         "plscode": 111,
         "modcod": "FE_SAT_32APSK_89",
-        "initial_noise": 114891,
+        "initial_noise": 0,
         "exp_esno": 4.1599,
         "test_result": ""
     },
@@ -1255,7 +1255,7 @@
         "plscode": 132,
         "modcod": "FE_SATX_QPSK_13_45",
         "pilots": false,
-        "initial_noise": 115114,
+        "initial_noise": 0,
         "exp_esno": -2.03,
         "test_result": ""
     },
@@ -1267,7 +1267,7 @@
         "plscode": 134,
         "modcod": "FE_SATX_QPSK_9_20",
         "pilots": false,
-        "initial_noise": 114994,
+        "initial_noise": 0,
         "exp_esno": 0.22,
         "test_result": ""
     },
@@ -1279,7 +1279,7 @@
         "plscode": 136,
         "modcod": "FE_SATX_QPSK_11_20",
         "pilots": false,
-        "initial_noise": 114979,
+        "initial_noise": 0,
         "exp_esno": 1.45,
         "test_result": ""
     },
@@ -1291,7 +1291,7 @@
         "plscode": 216,
         "modcod": "FE_SATX_QPSK_11_45",
         "pilots": false,
-        "initial_noise": 115158,
+        "initial_noise": 0,
         "exp_esno": -2.5,
         "test_result": ""
     },
@@ -1303,7 +1303,7 @@
         "plscode": 218,
         "modcod": "FE_SATX_QPSK_4_15",
         "pilots": false,
-        "initial_noise": 115158,
+        "initial_noise": 0,
         "exp_esno": -2.24,
         "test_result": ""
     },
@@ -1315,7 +1315,7 @@
         "plscode": 220,
         "modcod": "FE_SATX_QPSK_14_45",
         "pilots": false,
-        "initial_noise": 115106,
+        "initial_noise": 0,
         "exp_esno": -1.46,
         "test_result": ""
     },
@@ -1327,7 +1327,7 @@
         "plscode": 222,
         "modcod": "FE_SATX_QPSK_7_15",
         "pilots": false,
-        "initial_noise": 115046,
+        "initial_noise": 0,
         "exp_esno": 0.6,
         "test_result": ""
     },
@@ -1339,7 +1339,7 @@
         "plscode": 224,
         "modcod": "FE_SATX_QPSK_8_15",
         "pilots": false,
-        "initial_noise": 114980,
+        "initial_noise": 0,
         "exp_esno": 1.45,
         "test_result": ""
     },
@@ -1351,7 +1351,7 @@
         "plscode": 226,
         "modcod": "FE_SATX_QPSK_32_45",
         "pilots": false,
-        "initial_noise": 114933,
+        "initial_noise": 0,
         "exp_esno": 3.66,
         "test_result": ""
     },
@@ -1363,7 +1363,7 @@
         "pilots": true,
         "plscode": 133,
         "modcod": "FE_SATX_QPSK_13_45",
-        "initial_noise": 115138,
+        "initial_noise": 0,
         "exp_esno": -2.03,
         "test_result": ""
     },
@@ -1375,7 +1375,7 @@
         "pilots": true,
         "plscode": 135,
         "modcod": "FE_SATX_QPSK_9_20",
-        "initial_noise": 115043,
+        "initial_noise": 0,
         "exp_esno": 0.22,
         "test_result": ""
     },
@@ -1387,7 +1387,7 @@
         "pilots": true,
         "plscode": 137,
         "modcod": "FE_SATX_QPSK_11_20",
-        "initial_noise": 115011,
+        "initial_noise": 0,
         "exp_esno": 1.45,
         "test_result": ""
     },
@@ -1399,7 +1399,7 @@
         "pilots": true,
         "plscode": 217,
         "modcod": "FE_SATX_QPSK_11_45",
-        "initial_noise": 115158,
+        "initial_noise": 0,
         "exp_esno": -2.5,
         "test_result": ""
     },
@@ -1411,7 +1411,7 @@
         "pilots": true,
         "plscode": 219,
         "modcod": "FE_SATX_QPSK_4_15",
-        "initial_noise": 115158,
+        "initial_noise": 0,
         "exp_esno": -2.24,
         "test_result": ""
     },
@@ -1423,7 +1423,7 @@
         "pilots": true,
         "plscode": 221,
         "modcod": "FE_SATX_QPSK_14_45",
-        "initial_noise": 115106,
+        "initial_noise": 0,
         "exp_esno": -1.46,
         "test_result": ""
     },
@@ -1435,7 +1435,7 @@
         "pilots": true,
         "plscode": 223,
         "modcod": "FE_SATX_QPSK_7_15",
-        "initial_noise": 115034,
+        "initial_noise": 0,
         "exp_esno": 0.6,
         "test_result": ""
     },
@@ -1447,7 +1447,7 @@
         "pilots": true,
         "plscode": 225,
         "modcod": "FE_SATX_QPSK_8_15",
-        "initial_noise": 115000,
+        "initial_noise": 0,
         "exp_esno": 1.45,
         "test_result": ""
     },
@@ -1459,7 +1459,7 @@
         "pilots": true,
         "plscode": 227,
         "modcod": "FE_SATX_QPSK_32_45",
-        "initial_noise": 114933,
+        "initial_noise": 0,
         "exp_esno": 3.66,
         "test_result": ""
     },
@@ -1471,7 +1471,7 @@
         "plscode": 138,
         "modcod": "FE_SATX_8APSK_5_9_L",
         "pilots": false,
-        "initial_noise": 114903,
+        "initial_noise": 0,
         "exp_esno": 4.73,
         "test_result": ""
     },
@@ -1483,7 +1483,7 @@
         "plscode": 140,
         "modcod": "FE_SATX_8APSK_26_45_L",
         "pilots": false,
-        "initial_noise": 114903,
+        "initial_noise": 0,
         "exp_esno": 5.13,
         "test_result": ""
     },
@@ -1495,7 +1495,7 @@
         "pilots": true,
         "plscode": 139,
         "modcod": "FE_SATX_8APSK_5_9_L",
-        "initial_noise": 114903,
+        "initial_noise": 0,
         "exp_esno": 4.73,
         "test_result": ""
     },
@@ -1507,7 +1507,7 @@
         "pilots": true,
         "plscode": 141,
         "modcod": "FE_SATX_8APSK_26_45_L",
-        "initial_noise": 114903,
+        "initial_noise": 0,
         "exp_esno": 5.13,
         "test_result": ""
     },
@@ -1519,7 +1519,7 @@
         "plscode": 142,
         "modcod": "FE_SATX_8PSK_23_36",
         "pilots": false,
-        "initial_noise": 114864,
+        "initial_noise": 0,
         "exp_esno": 6.12,
         "test_result": ""
     },
@@ -1531,7 +1531,7 @@
         "plscode": 144,
         "modcod": "FE_SATX_8PSK_25_36",
         "pilots": false,
-        "initial_noise": 114850,
+        "initial_noise": 0,
         "exp_esno": 7.02,
         "test_result": ""
     },
@@ -1543,7 +1543,7 @@
         "plscode": 146,
         "modcod": "FE_SATX_8PSK_13_18",
         "pilots": false,
-        "initial_noise": 114852,
+        "initial_noise": 0,
         "exp_esno": 7.49,
         "test_result": ""
     },
@@ -1555,7 +1555,7 @@
         "plscode": 228,
         "modcod": "FE_SATX_8PSK_7_15",
         "pilots": false,
-        "initial_noise": 114931,
+        "initial_noise": 0,
         "exp_esno": 3.83,
         "test_result": ""
     },
@@ -1567,7 +1567,7 @@
         "plscode": 230,
         "modcod": "FE_SATX_8PSK_8_15",
         "pilots": false,
-        "initial_noise": 114911,
+        "initial_noise": 0,
         "exp_esno": 4.71,
         "test_result": ""
     },
@@ -1579,7 +1579,7 @@
         "plscode": 232,
         "modcod": "FE_SATX_8PSK_26_45",
         "pilots": false,
-        "initial_noise": 114891,
+        "initial_noise": 0,
         "exp_esno": 5.52,
         "test_result": ""
     },
@@ -1591,7 +1591,7 @@
         "plscode": 234,
         "modcod": "FE_SATX_8PSK_32_45",
         "pilots": false,
-        "initial_noise": 114848,
+        "initial_noise": 0,
         "exp_esno": 7.54,
         "test_result": ""
     },
@@ -1603,7 +1603,7 @@
         "pilots": true,
         "plscode": 143,
         "modcod": "FE_SATX_8PSK_23_36",
-        "initial_noise": 114877,
+        "initial_noise": 0,
         "exp_esno": 6.12,
         "test_result": ""
     },
@@ -1615,7 +1615,7 @@
         "pilots": true,
         "plscode": 145,
         "modcod": "FE_SATX_8PSK_25_36",
-        "initial_noise": 114856,
+        "initial_noise": 0,
         "exp_esno": 7.02,
         "test_result": ""
     },
@@ -1627,7 +1627,7 @@
         "pilots": true,
         "plscode": 147,
         "modcod": "FE_SATX_8PSK_13_18",
-        "initial_noise": 114852,
+        "initial_noise": 0,
         "exp_esno": 7.49,
         "test_result": ""
     },
@@ -1639,7 +1639,7 @@
         "pilots": true,
         "plscode": 229,
         "modcod": "FE_SATX_8PSK_7_15",
-        "initial_noise": 114931,
+        "initial_noise": 0,
         "exp_esno": 3.83,
         "test_result": ""
     },
@@ -1651,7 +1651,7 @@
         "pilots": true,
         "plscode": 231,
         "modcod": "FE_SATX_8PSK_8_15",
-        "initial_noise": 114911,
+        "initial_noise": 0,
         "exp_esno": 4.71,
         "test_result": ""
     },
@@ -1663,7 +1663,7 @@
         "pilots": true,
         "plscode": 233,
         "modcod": "FE_SATX_8PSK_26_45",
-        "initial_noise": 114891,
+        "initial_noise": 0,
         "exp_esno": 5.52,
         "test_result": ""
     },
@@ -1675,7 +1675,7 @@
         "pilots": true,
         "plscode": 235,
         "modcod": "FE_SATX_8PSK_32_45",
-        "initial_noise": 114848,
+        "initial_noise": 0,
         "exp_esno": 7.54,
         "test_result": ""
     },
@@ -1687,7 +1687,7 @@
         "plscode": 148,
         "modcod": "FE_SATX_16APSK_1_2_L",
         "pilots": false,
-        "initial_noise": 114882,
+        "initial_noise": 0,
         "exp_esno": 5.97,
         "test_result": ""
     },
@@ -1699,7 +1699,7 @@
         "plscode": 150,
         "modcod": "FE_SATX_16APSK_8_15_L",
         "pilots": false,
-        "initial_noise": 114868,
+        "initial_noise": 0,
         "exp_esno": 6.55,
         "test_result": ""
     },
@@ -1711,7 +1711,7 @@
         "plscode": 152,
         "modcod": "FE_SATX_16APSK_5_9_L",
         "pilots": false,
-        "initial_noise": 114864,
+        "initial_noise": 0,
         "exp_esno": 6.84,
         "test_result": ""
     },
@@ -1723,7 +1723,7 @@
         "plscode": 154,
         "modcod": "FE_SATX_16APSK_26_45",
         "pilots": false,
-        "initial_noise": 114846,
+        "initial_noise": 0,
         "exp_esno": 7.51,
         "test_result": ""
     },
@@ -1735,7 +1735,7 @@
         "plscode": 156,
         "modcod": "FE_SATX_16APSK_3_5",
         "pilots": false,
-        "initial_noise": 114846,
+        "initial_noise": 0,
         "exp_esno": 7.8,
         "test_result": ""
     },
@@ -1747,7 +1747,7 @@
         "plscode": 158,
         "modcod": "FE_SATX_16APSK_3_5_L",
         "pilots": false,
-        "initial_noise": 114846,
+        "initial_noise": 0,
         "exp_esno": 7.41,
         "test_result": ""
     },
@@ -1759,7 +1759,7 @@
         "plscode": 160,
         "modcod": "FE_SATX_16APSK_28_45",
         "pilots": false,
-        "initial_noise": 114836,
+        "initial_noise": 0,
         "exp_esno": 8.1,
         "test_result": ""
     },
@@ -1771,7 +1771,7 @@
         "plscode": 162,
         "modcod": "FE_SATX_16APSK_23_36",
         "pilots": false,
-        "initial_noise": 114836,
+        "initial_noise": 0,
         "exp_esno": 8.38,
         "test_result": ""
     },
@@ -1783,7 +1783,7 @@
         "plscode": 164,
         "modcod": "FE_SATX_16APSK_2_3_L",
         "pilots": false,
-        "initial_noise": 114836,
+        "initial_noise": 0,
         "exp_esno": 8.43,
         "test_result": ""
     },
@@ -1795,7 +1795,7 @@
         "plscode": 166,
         "modcod": "FE_SATX_16APSK_25_36",
         "pilots": false,
-        "initial_noise": 114817,
+        "initial_noise": 0,
         "exp_esno": 9.27,
         "test_result": ""
     },
@@ -1807,7 +1807,7 @@
         "plscode": 168,
         "modcod": "FE_SATX_16APSK_13_18",
         "pilots": false,
-        "initial_noise": 114813,
+        "initial_noise": 0,
         "exp_esno": 9.71,
         "test_result": ""
     },
@@ -1819,7 +1819,7 @@
         "plscode": 170,
         "modcod": "FE_SATX_16APSK_7_9",
         "pilots": false,
-        "initial_noise": 114792,
+        "initial_noise": 0,
         "exp_esno": 10.65,
         "test_result": ""
     },
@@ -1831,7 +1831,7 @@
         "plscode": 172,
         "modcod": "FE_SATX_16APSK_77_90",
         "pilots": false,
-        "initial_noise": 114778,
+        "initial_noise": 0,
         "exp_esno": 11.99,
         "test_result": ""
     },
@@ -1843,7 +1843,7 @@
         "plscode": 236,
         "modcod": "FE_SATX_16APSK_7_15",
         "pilots": false,
-        "initial_noise": 114879,
+        "initial_noise": 0,
         "exp_esno": 5.99,
         "test_result": ""
     },
@@ -1855,7 +1855,7 @@
         "plscode": 238,
         "modcod": "FE_SATX_16APSK_8_15",
         "pilots": false,
-        "initial_noise": 114862,
+        "initial_noise": 0,
         "exp_esno": 6.93,
         "test_result": ""
     },
@@ -1867,7 +1867,7 @@
         "plscode": 240,
         "modcod": "FE_SATX_16APSK_26_45_S",
         "pilots": false,
-        "initial_noise": 114844,
+        "initial_noise": 0,
         "exp_esno": 7.66,
         "test_result": ""
     },
@@ -1879,7 +1879,7 @@
         "plscode": 242,
         "modcod": "FE_SATX_16APSK_3_5_S",
         "pilots": false,
-        "initial_noise": 114836,
+        "initial_noise": 0,
         "exp_esno": 8.1,
         "test_result": ""
     },
@@ -1891,7 +1891,7 @@
         "plscode": 244,
         "modcod": "FE_SATX_16APSK_32_45",
         "pilots": false,
-        "initial_noise": 114807,
+        "initial_noise": 0,
         "exp_esno": 9.81,
         "test_result": ""
     },
@@ -1903,7 +1903,7 @@
         "pilots": true,
         "plscode": 149,
         "modcod": "FE_SATX_16APSK_1_2_L",
-        "initial_noise": 114882,
+        "initial_noise": 0,
         "exp_esno": 5.97,
         "test_result": ""
     },
@@ -1915,7 +1915,7 @@
         "pilots": true,
         "plscode": 151,
         "modcod": "FE_SATX_16APSK_8_15_L",
-        "initial_noise": 114868,
+        "initial_noise": 0,
         "exp_esno": 6.55,
         "test_result": ""
     },
@@ -1927,7 +1927,7 @@
         "pilots": true,
         "plscode": 153,
         "modcod": "FE_SATX_16APSK_5_9_L",
-        "initial_noise": 114864,
+        "initial_noise": 0,
         "exp_esno": 6.84,
         "test_result": ""
     },
@@ -1939,7 +1939,7 @@
         "pilots": true,
         "plscode": 155,
         "modcod": "FE_SATX_16APSK_26_45",
-        "initial_noise": 114846,
+        "initial_noise": 0,
         "exp_esno": 7.51,
         "test_result": ""
     },
@@ -1951,7 +1951,7 @@
         "pilots": true,
         "plscode": 157,
         "modcod": "FE_SATX_16APSK_3_5",
-        "initial_noise": 114846,
+        "initial_noise": 0,
         "exp_esno": 7.8,
         "test_result": ""
     },
@@ -1963,7 +1963,7 @@
         "pilots": true,
         "plscode": 159,
         "modcod": "FE_SATX_16APSK_3_5_L",
-        "initial_noise": 114846,
+        "initial_noise": 0,
         "exp_esno": 7.41,
         "test_result": ""
     },
@@ -1975,7 +1975,7 @@
         "pilots": true,
         "plscode": 161,
         "modcod": "FE_SATX_16APSK_28_45",
-        "initial_noise": 114836,
+        "initial_noise": 0,
         "exp_esno": 8.1,
         "test_result": ""
     },
@@ -1987,7 +1987,7 @@
         "pilots": true,
         "plscode": 163,
         "modcod": "FE_SATX_16APSK_23_36",
-        "initial_noise": 114836,
+        "initial_noise": 0,
         "exp_esno": 8.38,
         "test_result": ""
     },
@@ -1999,7 +1999,7 @@
         "pilots": true,
         "plscode": 165,
         "modcod": "FE_SATX_16APSK_2_3_L",
-        "initial_noise": 114832,
+        "initial_noise": 0,
         "exp_esno": 8.43,
         "test_result": ""
     },
@@ -2011,7 +2011,7 @@
         "pilots": true,
         "plscode": 167,
         "modcod": "FE_SATX_16APSK_25_36",
-        "initial_noise": 114817,
+        "initial_noise": 0,
         "exp_esno": 9.27,
         "test_result": ""
     },
@@ -2023,7 +2023,7 @@
         "pilots": true,
         "plscode": 169,
         "modcod": "FE_SATX_16APSK_13_18",
-        "initial_noise": 114813,
+        "initial_noise": 0,
         "exp_esno": 9.71,
         "test_result": ""
     },
@@ -2035,7 +2035,7 @@
         "pilots": true,
         "plscode": 171,
         "modcod": "FE_SATX_16APSK_7_9",
-        "initial_noise": 114797,
+        "initial_noise": 0,
         "exp_esno": 10.65,
         "test_result": ""
     },
@@ -2047,7 +2047,7 @@
         "pilots": true,
         "plscode": 173,
         "modcod": "FE_SATX_16APSK_77_90",
-        "initial_noise": 114784,
+        "initial_noise": 0,
         "exp_esno": 11.99,
         "test_result": ""
     },
@@ -2059,7 +2059,7 @@
         "pilots": true,
         "plscode": 237,
         "modcod": "FE_SATX_16APSK_7_15",
-        "initial_noise": 114879,
+        "initial_noise": 0,
         "exp_esno": 5.99,
         "test_result": ""
     },
@@ -2071,7 +2071,7 @@
         "pilots": true,
         "plscode": 239,
         "modcod": "FE_SATX_16APSK_8_15",
-        "initial_noise": 114862,
+        "initial_noise": 0,
         "exp_esno": 6.93,
         "test_result": ""
     },
@@ -2083,7 +2083,7 @@
         "pilots": true,
         "plscode": 241,
         "modcod": "FE_SATX_16APSK_26_45_S",
-        "initial_noise": 114844,
+        "initial_noise": 0,
         "exp_esno": 7.66,
         "test_result": ""
     },
@@ -2095,7 +2095,7 @@
         "pilots": true,
         "plscode": 243,
         "modcod": "FE_SATX_16APSK_3_5_S",
-        "initial_noise": 114836,
+        "initial_noise": 0,
         "exp_esno": 8.1,
         "test_result": ""
     },
@@ -2107,7 +2107,7 @@
         "pilots": true,
         "plscode": 245,
         "modcod": "FE_SATX_16APSK_32_45",
-        "initial_noise": 114807,
+        "initial_noise": 0,
         "exp_esno": 9.81,
         "test_result": ""
     },
@@ -2119,7 +2119,7 @@
         "plscode": 174,
         "modcod": "FE_SATX_32APSK_2_3_L",
         "pilots": false,
-        "initial_noise": 114799,
+        "initial_noise": 0,
         "exp_esno": 11.1,
         "test_result": ""
     },
@@ -2131,7 +2131,7 @@
         "plscode": 178,
         "modcod": "FE_SATX_32APSK_32_45",
         "pilots": false,
-        "initial_noise": 114789,
+        "initial_noise": 0,
         "exp_esno": 11.75,
         "test_result": ""
     },
@@ -2143,7 +2143,7 @@
         "plscode": 180,
         "modcod": "FE_SATX_32APSK_11_15",
         "pilots": false,
-        "initial_noise": 114781,
+        "initial_noise": 0,
         "exp_esno": 12.17,
         "test_result": ""
     },
@@ -2155,7 +2155,7 @@
         "plscode": 182,
         "modcod": "FE_SATX_32APSK_7_9",
         "pilots": false,
-        "initial_noise": 114767,
+        "initial_noise": 0,
         "exp_esno": 13.05,
         "test_result": ""
     },
@@ -2167,7 +2167,7 @@
         "plscode": 246,
         "modcod": "FE_SATX_32APSK_2_3",
         "pilots": false,
-        "initial_noise": 114789,
+        "initial_noise": 0,
         "exp_esno": 11.41,
         "test_result": ""
     },
@@ -2179,7 +2179,7 @@
         "plscode": 248,
         "modcod": "FE_SATX_32APSK_32_45_S",
         "pilots": false,
-        "initial_noise": 114783,
+        "initial_noise": 0,
         "exp_esno": 12.18,
         "test_result": ""
     },
@@ -2191,7 +2191,7 @@
         "pilots": true,
         "plscode": 175,
         "modcod": "FE_SATX_32APSK_2_3_L",
-        "initial_noise": 114794,
+        "initial_noise": 0,
         "exp_esno": 11.1,
         "test_result": ""
     },
@@ -2203,7 +2203,7 @@
         "pilots": true,
         "plscode": 179,
         "modcod": "FE_SATX_32APSK_32_45",
-        "initial_noise": 114785,
+        "initial_noise": 0,
         "exp_esno": 11.75,
         "test_result": ""
     },
@@ -2215,7 +2215,7 @@
         "pilots": true,
         "plscode": 181,
         "modcod": "FE_SATX_32APSK_11_15",
-        "initial_noise": 114781,
+        "initial_noise": 0,
         "exp_esno": 12.17,
         "test_result": ""
     },
@@ -2227,7 +2227,7 @@
         "pilots": true,
         "plscode": 183,
         "modcod": "FE_SATX_32APSK_7_9",
-        "initial_noise": 114771,
+        "initial_noise": 0,
         "exp_esno": 13.05,
         "test_result": ""
     },
@@ -2239,7 +2239,7 @@
         "pilots": true,
         "plscode": 247,
         "modcod": "FE_SATX_32APSK_2_3",
-        "initial_noise": 114789,
+        "initial_noise": 0,
         "exp_esno": 11.41,
         "test_result": ""
     },
@@ -2251,7 +2251,7 @@
         "pilots": true,
         "plscode": 249,
         "modcod": "FE_SATX_32APSK_32_45_S",
-        "initial_noise": 114783,
+        "initial_noise": 0,
         "exp_esno": 12.18,
         "test_result": ""
     },
@@ -2263,7 +2263,7 @@
         "plscode": 184,
         "modcod": "FE_SATX_64APSK_32_45_L",
         "pilots": false,
-        "initial_noise": 114757,
+        "initial_noise": 0,
         "exp_esno": 13.98,
         "test_result": ""
     },
@@ -2275,7 +2275,7 @@
         "plscode": 186,
         "modcod": "FE_SATX_64APSK_11_15",
         "pilots": false,
-        "initial_noise": 114747,
+        "initial_noise": 0,
         "exp_esno": 14.81,
         "test_result": ""
     },
@@ -2287,7 +2287,7 @@
         "plscode": 190,
         "modcod": "FE_SATX_64APSK_7_9",
         "pilots": false,
-        "initial_noise": 114744,
+        "initial_noise": 0,
         "exp_esno": 15.47,
         "test_result": ""
     },
@@ -2299,7 +2299,7 @@
         "plscode": 194,
         "modcod": "FE_SATX_64APSK_4_5",
         "pilots": false,
-        "initial_noise": 114751,
+        "initial_noise": 0,
         "exp_esno": 15.87,
         "test_result": ""
     },
@@ -2311,7 +2311,7 @@
         "plscode": 198,
         "modcod": "FE_SATX_64APSK_5_6",
         "pilots": false,
-        "initial_noise": 114741,
+        "initial_noise": 0,
         "exp_esno": 16.55,
         "test_result": ""
     },
@@ -2323,7 +2323,7 @@
         "pilots": true,
         "plscode": 185,
         "modcod": "FE_SATX_64APSK_32_45_L",
-        "initial_noise": 114763,
+        "initial_noise": 0,
         "exp_esno": 13.98,
         "test_result": ""
     },
@@ -2335,7 +2335,7 @@
         "pilots": true,
         "plscode": 187,
         "modcod": "FE_SATX_64APSK_11_15",
-        "initial_noise": 114756,
+        "initial_noise": 0,
         "exp_esno": 14.81,
         "test_result": ""
     },
@@ -2347,7 +2347,7 @@
         "pilots": true,
         "plscode": 191,
         "modcod": "FE_SATX_64APSK_7_9",
-        "initial_noise": 114753,
+        "initial_noise": 0,
         "exp_esno": 15.47,
         "test_result": ""
     },
@@ -2359,7 +2359,7 @@
         "pilots": true,
         "plscode": 195,
         "modcod": "FE_SATX_64APSK_4_5",
-        "initial_noise": 114747,
+        "initial_noise": 0,
         "exp_esno": 15.87,
         "test_result": ""
     },
@@ -2371,7 +2371,7 @@
         "pilots": true,
         "plscode": 199,
         "modcod": "FE_SATX_64APSK_5_6",
-        "initial_noise": 114741,
+        "initial_noise": 0,
         "exp_esno": 16.55,
         "test_result": ""
     },
@@ -2383,7 +2383,7 @@
         "plscode": 200,
         "modcod": "FE_SATX_128APSK_3_4",
         "pilots": false,
-        "initial_noise": 114732,
+        "initial_noise": 0,
         "exp_esno": 17.73,
         "test_result": ""
     },
@@ -2395,7 +2395,7 @@
         "plscode": 202,
         "modcod": "FE_SATX_128APSK_7_9",
         "pilots": false,
-        "initial_noise": 114735,
+        "initial_noise": 0,
         "exp_esno": 18.53,
         "test_result": ""
     },
@@ -2407,7 +2407,7 @@
         "pilots": true,
         "plscode": 201,
         "modcod": "FE_SATX_128APSK_3_4",
-        "initial_noise": 114728,
+        "initial_noise": 0,
         "exp_esno": 17.73,
         "test_result": ""
     },
@@ -2419,7 +2419,7 @@
         "pilots": true,
         "plscode": 203,
         "modcod": "FE_SATX_128APSK_7_9",
-        "initial_noise": 114730,
+        "initial_noise": 0,
         "exp_esno": 18.53,
         "test_result": ""
     },
@@ -2431,7 +2431,7 @@
         "plscode": 204,
         "modcod": "FE_SATX_256APSK_29_45_L",
         "pilots": false,
-        "initial_noise": 114783,
+        "initial_noise": 0,
         "exp_esno": 16.98,
         "test_result": ""
     },
@@ -2443,7 +2443,7 @@
         "plscode": 206,
         "modcod": "FE_SATX_256APSK_2_3_L",
         "pilots": false,
-        "initial_noise": 114702,
+        "initial_noise": 0,
         "exp_esno": 17.24,
         "test_result": ""
     },
@@ -2455,7 +2455,7 @@
         "plscode": 208,
         "modcod": "FE_SATX_256APSK_31_45_L",
         "pilots": false,
-        "initial_noise": 114728,
+        "initial_noise": 0,
         "exp_esno": 18.1,
         "test_result": ""
     },
@@ -2467,7 +2467,7 @@
         "plscode": 210,
         "modcod": "FE_SATX_256APSK_32_45",
         "pilots": false,
-        "initial_noise": 114734,
+        "initial_noise": 0,
         "exp_esno": 18.59,
         "test_result": ""
     },
@@ -2479,7 +2479,7 @@
         "plscode": 212,
         "modcod": "FE_SATX_256APSK_11_15_L",
         "pilots": false,
-        "initial_noise": 114716,
+        "initial_noise": 0,
         "exp_esno": 18.84,
         "test_result": ""
     },
@@ -2491,7 +2491,7 @@
         "plscode": 214,
         "modcod": "FE_SATX_256APSK_3_4",
         "pilots": false,
-        "initial_noise": 114726,
+        "initial_noise": 0,
         "exp_esno": 19.57,
         "test_result": ""
     },
@@ -2503,7 +2503,7 @@
         "pilots": true,
         "plscode": 205,
         "modcod": "FE_SATX_256APSK_29_45_L",
-        "initial_noise": 114955,
+        "initial_noise": 0,
         "exp_esno": 16.98,
         "test_result": ""
     },
@@ -2515,7 +2515,7 @@
         "pilots": true,
         "plscode": 207,
         "modcod": "FE_SATX_256APSK_2_3_L",
-        "initial_noise": 114726,
+        "initial_noise": 0,
         "exp_esno": 17.24,
         "test_result": ""
     },
@@ -2527,7 +2527,7 @@
         "pilots": true,
         "plscode": 209,
         "modcod": "FE_SATX_256APSK_31_45_L",
-        "initial_noise": 114720,
+        "initial_noise": 0,
         "exp_esno": 18.1,
         "test_result": ""
     },
@@ -2539,7 +2539,7 @@
         "pilots": true,
         "plscode": 211,
         "modcod": "FE_SATX_256APSK_32_45",
-        "initial_noise": 114732,
+        "initial_noise": 0,
         "exp_esno": 18.59,
         "test_result": ""
     },
@@ -2551,7 +2551,7 @@
         "pilots": true,
         "plscode": 213,
         "modcod": "FE_SATX_256APSK_11_15_L",
-        "initial_noise": 114726,
+        "initial_noise": 0,
         "exp_esno": 18.84,
         "test_result": ""
     },
@@ -2563,7 +2563,7 @@
         "pilots": true,
         "plscode": 215,
         "modcod": "FE_SATX_256APSK_3_4",
-        "initial_noise": 114726,
+        "initial_noise": 0,
         "exp_esno": 19.57,
         "test_result": ""
     }

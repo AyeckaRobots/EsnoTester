@@ -1,4 +1,4 @@
-from StaticVars import s2x_starting_index, all_pls_simplified
+from SystemUtils.StaticVars import s2x_starting_index, all_pls_simplified
 import time
 
 

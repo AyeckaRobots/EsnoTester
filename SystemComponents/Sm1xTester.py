@@ -1,7 +1,7 @@
-from AllModCodNoiseFinder import start_noise_finder, set_pls_list
+from SystemComponents.AllModCodNoiseFinder import start_noise_finder, set_pls_list
 from SystemUtils.Utils import update_pls_list
 from ApiRequest import get_serial_number, update_noise
-from status_requester import start_logging
+from SystemComponents.status_requester import start_logging
 
 import os
 from SystemUtils import StaticVars
@@ -13,7 +13,6 @@ def set_standard(modulator_token, modulator_ip, receiver_token, receiver_ip, sta
 
 
 def start_sm1x_tester(modulator_token, modulator_ip, receiver_token, receiver_ip, pls_list, adjust_noise=False):
-    time_per_modcod = StaticVars.time_per_modcod  # 60 seconds
     pls_list = set_pls_list(pls_list)
 
     if not adjust_noise:
@@ -23,7 +22,7 @@ def start_sm1x_tester(modulator_token, modulator_ip, receiver_token, receiver_ip
         if adjust_noise:
             start_noise_finder(modulator_token, modulator_ip, [pls])
 
-        start_logging(receiver_token, receiver_ip, pls, time_per_modcod)
+        start_logging(receiver_token, receiver_ip, pls, StaticVars.time_per_modcod)
 
         print(f"\npls {pls} done!")
 

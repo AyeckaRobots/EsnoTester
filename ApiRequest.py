@@ -5,6 +5,9 @@ these functions are used throughout the codebase.
 """
 import requests
 
+from JsonHandler import get_token_json
+from SystemUtils import StaticVars
+
 
 def get_auth(username, password, ip):
     """A function to get an auth token for the api server
@@ -167,5 +170,17 @@ def set_freq(modulator_token, modulator_ip, receiver_token, receiver_ip, freq):
             "power": -30, "roll_off": "Alpha_020", "spectral_inversion": False,
             "gold_code": 0, "carrier_mode": "CM_MODULATED", "power_up_state": "On",
             "acm_mode": "AcmModeOff", "buc_power": False, "buc_10MHz_output": False}
+    data2 = {"frequency":freq*1000,"acquisition_range":2000,"symbol_rate":12000,"force_relock":True,
+             "acm_manager":"127.0.0.1","lnb_settings":
+             [{"lnb_1v_compensation":False,"lnb_reference":"R_OFF", "lnb_tone":"T_OFF", "lnb_voltage":"V_OFF","rf_source":2},
+             {"lnb_1v_compensation":False,"lnb_tone":"T_OFF","lnb_voltage":"V_OFF","rf_source":1,"lnb_reference":"R_OFF"}]
+             ,"rf_source":1,"roll_off":"RT_AUTO","acm_mode":"AcmModeFollowTx","acm_frame_length":"AcmNormalFrame","gold_code":0}
     response_modulator = requests.post(f"http://{modulator_ip}/api/modulator", headers={'Authorization': modulator_token}, json=data)
-    response_reciever = requests.post(f"http://{receiver_ip}/api/modulator", headers={'Authorization': receiver_token},json=data)
+    response_reciever = requests.post(f"http://{receiver_ip}/api/demodulator", headers={'Authorization': receiver_token},json=data2)
+
+
+def read_esno_api():
+    reciever_ip = StaticVars.device_ip
+    reciever_token = get_token_json('receiver')
+    data = requests.get(f"http://{reciever_ip}/api/advanced_status", headers={'Authorization': reciever_token})
+    return data.json()["agg_slices"][0]['esno']

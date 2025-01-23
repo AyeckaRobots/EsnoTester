@@ -1,3 +1,6 @@
+import json
+
+from JsonHandler import set_token_json
 from SystemUtils import StaticVars
 from ApiRequest import get_serial_number, set_freq
 from SystemComponents.status_requester import init_logger
@@ -40,7 +43,7 @@ def main():
     standard = input("write standard to go through, s2 or s2x. (press enter for both)")
 
     check_esno = check_esno_input()
-
+    set_token_json(receiver_token,modulator_token)
     clear_logfile(receiver_token, receiver_ip)
     init_logger(receiver_token, receiver_ip)
 

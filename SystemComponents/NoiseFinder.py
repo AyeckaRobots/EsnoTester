@@ -14,10 +14,10 @@ def print_noise_dict(distances):
         
 
 def get_esno_pls(token, ip):
-    esno = int(read_current_esno().split('(')[1][0:-1]) / 100
+    esno = read_current_esno()
     
     pls = get_modcod(token, ip)
-    return (esno, pls)
+    return esno, pls
 
 
 def evaluate_esno(token, ip):
@@ -59,11 +59,6 @@ def adjustNoise(token, ip):
     distances = {distance: get_current_noise(token, ip)}
     while abs(distance) > allowed_esno_error:
         print_noise_dict(distances)
-        if  current_esno <= -10.00 or current_esno >= 40:  # if esno is outside of acceptable range. probobly didnt get measured correctly
-            distance, current_esno, *_ = evaluate_esno(token, ip)
-            print('bad esno: ', current_esno)
-            continue
-        # print(datetime.datetime())
             
         new_noise = int(max(min_noise, min(max_noise, distances[distance] + distance*error_multiplier*esno_multiplier_rate)))
 
