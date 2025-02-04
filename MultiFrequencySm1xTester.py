@@ -37,12 +37,12 @@ def main():
     update_target_ip('receiver', receiver_ip)
 
     try:
-        freq = input("write a frequency between 950 and 2150. (press enter for all)")
+        freq = input("write a frequency between 950 and 2150. (press enter for all) ")
     except:
         freq = 1200
         print("Invalid frequency, set to 1200")
 
-    standard = input("write standard to go through, s2 or s2x. (press enter for both)")
+    standard = input("write standard to go through, s2 or s2x. (press enter for both) ")
 
     check_esno = check_esno_input()
     set_token_json(receiver_token,modulator_token)

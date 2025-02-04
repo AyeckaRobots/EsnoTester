@@ -1,6 +1,6 @@
 {
-    "modulator_ip": "192.168.15.47",
-    "receiver_ip": "192.168.15.110",
-    "receiver_token": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mzc1NTEyNjAsIm5iZiI6MTczNzU1MTI2MCwianRpIjoiYTI1NDFkNjMtZjE5MS00Zjk3LTk4NjctMTcwMzg2N2QyY2RhIiwiZXhwIjoxNzM3NTgwMDYwLCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.BhBD9xlA7jng2NQpXSm9PBnh2xKvnns-Vtx4VlbTGEU",
-    "modulator_token": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mzc1NTEyNTksIm5iZiI6MTczNzU1MTI1OSwianRpIjoiMTJlNzk2YmEtM2FhZS00ZjdjLTk2N2ItNmRmNjVkYjliY2Y1IiwiZXhwIjoxNzM3NTgwMDU5LCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.Ry7YV-FxaP5IoqXK5Rv-XRk2x_Rlwrw_GGluJE-4dbE"
+    "modulator_ip": "192.168.15.40",
+    "receiver_ip": "192.168.10.200",
+    "receiver_token": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MjA5NDEyODEsIm5iZiI6MTUyMDk0MTI4MSwianRpIjoiOTgzY2MxOTAtMjJmNi00NTdiLWJkNzItYWRlYjkyODA4MTE4IiwiZXhwIjoxNTIwOTcwMDgxLCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.si091VlfPSsy_AmxgXzF-H1E2Kw66okWh8aBXosJ46w",
+    "modulator_token": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mzg0ODkzODAsIm5iZiI6MTczODQ4OTM4MCwianRpIjoiYjgzZDg5MjktNWRiZi00MzRiLThhNGMtNzFiYTRjM2VmZjc5IiwiZXhwIjoxNzM4NTE4MTgwLCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.8pBFFMiUDlfrPpIx8wusX7iMAGWtm_6GPbnhAyDAq90"
 }

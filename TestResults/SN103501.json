@@ -7,9 +7,9 @@
         "plscode": 4,
         "modcod": "FE_SAT_QPSK_14",
         "pilots": false,
-        "initial_noise": 115176,
+        "initial_noise": 115204,
         "exp_esno": -2.35,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "8": {
         "standard": "S2",
@@ -21,7 +21,7 @@
         "pilots": false,
         "initial_noise": 115159,
         "exp_esno": -1.24,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "12": {
         "standard": "S2",
@@ -33,7 +33,7 @@
         "pilots": false,
         "initial_noise": 115090,
         "exp_esno": -0.3,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "16": {
         "standard": "S2",
@@ -45,7 +45,7 @@
         "pilots": false,
         "initial_noise": 115031,
         "exp_esno": 1.0,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "20": {
         "standard": "S2",
@@ -55,9 +55,9 @@
         "plscode": 20,
         "modcod": "FE_SAT_QPSK_35",
         "pilots": false,
-        "initial_noise": 114979,
+        "initial_noise": 114988,
         "exp_esno": 2.23,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "24": {
         "standard": "S2",
@@ -69,7 +69,7 @@
         "pilots": false,
         "initial_noise": 114934,
         "exp_esno": 3.1,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "28": {
         "standard": "S2",
@@ -81,7 +81,7 @@
         "pilots": false,
         "initial_noise": 114923,
         "exp_esno": 4.03,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "32": {
         "standard": "S2",
@@ -91,9 +91,9 @@
         "plscode": 32,
         "modcod": "FE_SAT_QPSK_45",
         "pilots": false,
-        "initial_noise": 114904,
+        "initial_noise": 114893,
         "exp_esno": 4.68,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "36": {
         "standard": "S2",
@@ -103,9 +103,9 @@
         "plscode": 36,
         "modcod": "FE_SAT_QPSK_56",
         "pilots": false,
-        "initial_noise": 114893,
+        "initial_noise": 114874,
         "exp_esno": 5.18,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "40": {
         "standard": "S2",
@@ -115,9 +115,9 @@
         "plscode": 40,
         "modcod": "FE_SAT_QPSK_89",
         "pilots": false,
-        "initial_noise": 114873,
+        "initial_noise": 114884,
         "exp_esno": 6.2,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "44": {
         "standard": "S2",
@@ -127,9 +127,9 @@
         "plscode": 44,
         "modcod": "FE_SAT_QPSK_910",
         "pilots": false,
-        "initial_noise": 114868,
+        "initial_noise": 114879,
         "exp_esno": 6.42,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "6": {
         "standard": "S2",
@@ -139,9 +139,9 @@
         "plscode": 6,
         "modcod": "FE_SAT_QPSK_14",
         "pilots": false,
-        "initial_noise": 115050,
+        "initial_noise": 115073,
         "exp_esno": 0.3575,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "10": {
         "standard": "S2",
@@ -153,7 +153,7 @@
         "pilots": false,
         "initial_noise": 115042,
         "exp_esno": 0.6155,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "14": {
         "standard": "S2",
@@ -165,7 +165,7 @@
         "pilots": false,
         "initial_noise": 115031,
         "exp_esno": 0.7446,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "18": {
         "standard": "S2",
@@ -177,7 +177,7 @@
         "pilots": false,
         "initial_noise": 115031,
         "exp_esno": 0.8306,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "22": {
         "standard": "S2",
@@ -187,9 +187,9 @@
         "plscode": 22,
         "modcod": "FE_SAT_QPSK_35",
         "pilots": false,
-        "initial_noise": 115017,
+        "initial_noise": 115008,
         "exp_esno": 1.1317,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "26": {
         "standard": "S2",
@@ -199,9 +199,9 @@
         "plscode": 26,
         "modcod": "FE_SAT_QPSK_23",
         "pilots": false,
-        "initial_noise": 115019,
+        "initial_noise": 115041,
         "exp_esno": 1.2607,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "30": {
         "standard": "S2",
@@ -211,9 +211,9 @@
         "plscode": 30,
         "modcod": "FE_SAT_QPSK_34",
         "pilots": false,
-        "initial_noise": 115007,
+        "initial_noise": 114982,
         "exp_esno": 1.3897,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "34": {
         "standard": "S2",
@@ -223,9 +223,9 @@
         "plscode": 34,
         "modcod": "FE_SAT_QPSK_45",
         "pilots": false,
-        "initial_noise": 115016,
+        "initial_noise": 115046,
         "exp_esno": 1.4757,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "38": {
         "standard": "S2",
@@ -235,9 +235,9 @@
         "plscode": 38,
         "modcod": "FE_SAT_QPSK_56",
         "pilots": false,
-        "initial_noise": 115000,
+        "initial_noise": 114992,
         "exp_esno": 1.5618,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "42": {
         "standard": "S2",
@@ -247,9 +247,9 @@
         "plscode": 42,
         "modcod": "FE_SAT_QPSK_89",
         "pilots": false,
-        "initial_noise": 115003,
+        "initial_noise": 115011,
         "exp_esno": 1.6908,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "5": {
         "standard": "S2",
@@ -261,7 +261,7 @@
         "modcod": "FE_SAT_QPSK_14",
         "initial_noise": 115164,
         "exp_esno": -2.35,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "9": {
         "standard": "S2",
@@ -273,7 +273,7 @@
         "modcod": "FE_SAT_QPSK_13",
         "initial_noise": 115104,
         "exp_esno": -1.24,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "13": {
         "standard": "S2",
@@ -285,7 +285,7 @@
         "modcod": "FE_SAT_QPSK_25",
         "initial_noise": 115075,
         "exp_esno": -0.3,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "17": {
         "standard": "S2",
@@ -297,7 +297,7 @@
         "modcod": "FE_SAT_QPSK_12",
         "initial_noise": 115031,
         "exp_esno": 1.0,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "21": {
         "standard": "S2",
@@ -309,7 +309,7 @@
         "modcod": "FE_SAT_QPSK_35",
         "initial_noise": 114988,
         "exp_esno": 2.23,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "25": {
         "standard": "S2",
@@ -321,7 +321,7 @@
         "modcod": "FE_SAT_QPSK_23",
         "initial_noise": 114952,
         "exp_esno": 3.1,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "29": {
         "standard": "S2",
@@ -333,7 +333,7 @@
         "modcod": "FE_SAT_QPSK_34",
         "initial_noise": 114923,
         "exp_esno": 4.03,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "33": {
         "standard": "S2",
@@ -345,7 +345,7 @@
         "modcod": "FE_SAT_QPSK_45",
         "initial_noise": 114910,
         "exp_esno": 4.68,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "37": {
         "standard": "S2",
@@ -357,7 +357,7 @@
         "modcod": "FE_SAT_QPSK_56",
         "initial_noise": 114897,
         "exp_esno": 5.18,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "41": {
         "standard": "S2",
@@ -367,9 +367,9 @@
         "pilots": true,
         "plscode": 41,
         "modcod": "FE_SAT_QPSK_89",
-        "initial_noise": 114880,
+        "initial_noise": 114884,
         "exp_esno": 6.2,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "45": {
         "standard": "S2",
@@ -381,7 +381,7 @@
         "modcod": "FE_SAT_QPSK_910",
         "initial_noise": 114870,
         "exp_esno": 6.42,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "7": {
         "standard": "S2",
@@ -391,9 +391,9 @@
         "pilots": true,
         "plscode": 7,
         "modcod": "FE_SAT_QPSK_14",
-        "initial_noise": 115045,
+        "initial_noise": 115036,
         "exp_esno": 0.3575,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "11": {
         "standard": "S2",
@@ -405,7 +405,7 @@
         "modcod": "FE_SAT_QPSK_13",
         "initial_noise": 115042,
         "exp_esno": 0.6155,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "15": {
         "standard": "S2",
@@ -417,7 +417,7 @@
         "modcod": "FE_SAT_QPSK_25",
         "initial_noise": 115031,
         "exp_esno": 0.7446,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "19": {
         "standard": "S2",
@@ -429,7 +429,7 @@
         "modcod": "FE_SAT_QPSK_12",
         "initial_noise": 115031,
         "exp_esno": 0.8306,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "23": {
         "standard": "S2",
@@ -439,9 +439,9 @@
         "pilots": true,
         "plscode": 23,
         "modcod": "FE_SAT_QPSK_35",
-        "initial_noise": 115017,
+        "initial_noise": 115008,
         "exp_esno": 1.1317,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "27": {
         "standard": "S2",
@@ -453,7 +453,7 @@
         "modcod": "FE_SAT_QPSK_23",
         "initial_noise": 115015,
         "exp_esno": 1.2607,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "31": {
         "standard": "S2",
@@ -465,7 +465,7 @@
         "modcod": "FE_SAT_QPSK_34",
         "initial_noise": 115002,
         "exp_esno": 1.3897,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "35": {
         "standard": "S2",
@@ -477,7 +477,7 @@
         "modcod": "FE_SAT_QPSK_45",
         "initial_noise": 115003,
         "exp_esno": 1.4757,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "39": {
         "standard": "S2",
@@ -487,9 +487,9 @@
         "pilots": true,
         "plscode": 39,
         "modcod": "FE_SAT_QPSK_56",
-        "initial_noise": 115000,
+        "initial_noise": 114992,
         "exp_esno": 1.5618,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "43": {
         "standard": "S2",
@@ -499,9 +499,9 @@
         "pilots": true,
         "plscode": 43,
         "modcod": "FE_SAT_QPSK_89",
-        "initial_noise": 114996,
+        "initial_noise": 114989,
         "exp_esno": 1.6908,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "48": {
         "standard": "S2",
@@ -511,9 +511,9 @@
         "plscode": 48,
         "modcod": "FE_SAT_8PSK_35",
         "pilots": false,
-        "initial_noise": 114887,
+        "initial_noise": 114892,
         "exp_esno": 5.5,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "52": {
         "standard": "S2",
@@ -525,7 +525,7 @@
         "pilots": false,
         "initial_noise": 114859,
         "exp_esno": 6.62,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "56": {
         "standard": "S2",
@@ -535,9 +535,9 @@
         "plscode": 56,
         "modcod": "FE_SAT_8PSK_34",
         "pilots": false,
-        "initial_noise": 114837,
+        "initial_noise": 114846,
         "exp_esno": 7.91,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "60": {
         "standard": "S2",
@@ -547,9 +547,9 @@
         "plscode": 60,
         "modcod": "FE_SAT_8PSK_56",
         "pilots": false,
-        "initial_noise": 114812,
+        "initial_noise": 114819,
         "exp_esno": 9.35,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "64": {
         "standard": "S2",
@@ -559,9 +559,9 @@
         "plscode": 64,
         "modcod": "FE_SAT_8PSK_89",
         "pilots": false,
-        "initial_noise": 114797,
+        "initial_noise": 114784,
         "exp_esno": 10.69,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "68": {
         "standard": "S2",
@@ -571,9 +571,9 @@
         "plscode": 68,
         "modcod": "FE_SAT_8PSK_910",
         "pilots": false,
-        "initial_noise": 114797,
+        "initial_noise": 114844,
         "exp_esno": 10.98,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "50": {
         "standard": "S2",
@@ -585,7 +585,7 @@
         "pilots": false,
         "initial_noise": 114990,
         "exp_esno": 1.692,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "54": {
         "standard": "S2",
@@ -597,7 +597,7 @@
         "pilots": false,
         "initial_noise": 114989,
         "exp_esno": 1.885,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "58": {
         "standard": "S2",
@@ -607,9 +607,9 @@
         "plscode": 58,
         "modcod": "FE_SAT_8PSK_34",
         "pilots": false,
-        "initial_noise": 114979,
+        "initial_noise": 114944,
         "exp_esno": 2.0779,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "62": {
         "standard": "S2",
@@ -619,9 +619,9 @@
         "plscode": 62,
         "modcod": "FE_SAT_8PSK_56",
         "pilots": false,
-        "initial_noise": 114970,
+        "initial_noise": 114946,
         "exp_esno": 2.3351,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "66": {
         "standard": "S2",
@@ -633,7 +633,7 @@
         "pilots": false,
         "initial_noise": 114966,
         "exp_esno": 2.528,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "49": {
         "standard": "S2",
@@ -645,7 +645,7 @@
         "modcod": "FE_SAT_8PSK_35",
         "initial_noise": 114892,
         "exp_esno": 5.5,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "53": {
         "standard": "S2",
@@ -657,7 +657,7 @@
         "modcod": "FE_SAT_8PSK_23",
         "initial_noise": 114862,
         "exp_esno": 6.62,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "57": {
         "standard": "S2",
@@ -669,7 +669,7 @@
         "modcod": "FE_SAT_8PSK_34",
         "initial_noise": 114846,
         "exp_esno": 7.91,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "61": {
         "standard": "S2",
@@ -681,7 +681,7 @@
         "modcod": "FE_SAT_8PSK_56",
         "initial_noise": 114819,
         "exp_esno": 9.35,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "65": {
         "standard": "S2",
@@ -693,7 +693,7 @@
         "modcod": "FE_SAT_8PSK_89",
         "initial_noise": 114799,
         "exp_esno": 10.69,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "69": {
         "standard": "S2",
@@ -705,7 +705,7 @@
         "modcod": "FE_SAT_8PSK_910",
         "initial_noise": 114794,
         "exp_esno": 10.98,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "51": {
         "standard": "S2",
@@ -715,9 +715,9 @@
         "pilots": true,
         "plscode": 51,
         "modcod": "FE_SAT_8PSK_35",
-        "initial_noise": 114993,
+        "initial_noise": 114980,
         "exp_esno": 1.692,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "55": {
         "standard": "S2",
@@ -729,7 +729,7 @@
         "modcod": "FE_SAT_8PSK_23",
         "initial_noise": 114989,
         "exp_esno": 1.885,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "59": {
         "standard": "S2",
@@ -741,7 +741,7 @@
         "modcod": "FE_SAT_8PSK_34",
         "initial_noise": 114983,
         "exp_esno": 2.0779,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "63": {
         "standard": "S2",
@@ -751,9 +751,9 @@
         "pilots": true,
         "plscode": 63,
         "modcod": "FE_SAT_8PSK_56",
-        "initial_noise": 114974,
+        "initial_noise": 114969,
         "exp_esno": 2.3351,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "67": {
         "standard": "S2",
@@ -765,7 +765,7 @@
         "modcod": "FE_SAT_8PSK_89",
         "initial_noise": 114966,
         "exp_esno": 2.528,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "72": {
         "standard": "S2",
@@ -775,9 +775,9 @@
         "plscode": 72,
         "modcod": "FE_SAT_16APSK_23",
         "pilots": false,
-        "initial_noise": 114825,
+        "initial_noise": 114834,
         "exp_esno": 8.97,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "76": {
         "standard": "S2",
@@ -787,9 +787,9 @@
         "plscode": 76,
         "modcod": "FE_SAT_16APSK_34",
         "pilots": false,
-        "initial_noise": 114806,
+        "initial_noise": 114827,
         "exp_esno": 10.21,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "80": {
         "standard": "S2",
@@ -799,9 +799,9 @@
         "plscode": 80,
         "modcod": "FE_SAT_16APSK_45",
         "pilots": false,
-        "initial_noise": 114791,
+        "initial_noise": 114797,
         "exp_esno": 11.03,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "84": {
         "standard": "S2",
@@ -811,9 +811,9 @@
         "plscode": 84,
         "modcod": "FE_SAT_16APSK_56",
         "pilots": false,
-        "initial_noise": 114786,
+        "initial_noise": 114793,
         "exp_esno": 11.61,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "88": {
         "standard": "S2",
@@ -823,9 +823,9 @@
         "plscode": 88,
         "modcod": "FE_SAT_16APSK_89",
         "pilots": false,
-        "initial_noise": 114772,
+        "initial_noise": 114764,
         "exp_esno": 12.89,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "92": {
         "standard": "S2",
@@ -837,7 +837,7 @@
         "pilots": false,
         "initial_noise": 114770,
         "exp_esno": 13.13,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "74": {
         "standard": "S2",
@@ -847,9 +847,9 @@
         "plscode": 74,
         "modcod": "FE_SAT_16APSK_23",
         "pilots": false,
-        "initial_noise": 114966,
+        "initial_noise": 114953,
         "exp_esno": 2.5052,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "78": {
         "standard": "S2",
@@ -859,9 +859,9 @@
         "plscode": 78,
         "modcod": "FE_SAT_16APSK_34",
         "pilots": false,
-        "initial_noise": 114957,
+        "initial_noise": 114952,
         "exp_esno": 2.7616,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "82": {
         "standard": "S2",
@@ -871,9 +871,9 @@
         "plscode": 82,
         "modcod": "FE_SAT_16APSK_45",
         "pilots": false,
-        "initial_noise": 114949,
+        "initial_noise": 114940,
         "exp_esno": 2.9326,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "86": {
         "standard": "S2",
@@ -885,7 +885,7 @@
         "pilots": false,
         "initial_noise": 114945,
         "exp_esno": 3.1035,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "90": {
         "standard": "S2",
@@ -895,9 +895,9 @@
         "plscode": 90,
         "modcod": "FE_SAT_16APSK_89",
         "pilots": false,
-        "initial_noise": 114940,
+        "initial_noise": 114920,
         "exp_esno": 3.3599,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "73": {
         "standard": "S2",
@@ -909,7 +909,7 @@
         "modcod": "FE_SAT_16APSK_23",
         "initial_noise": 114827,
         "exp_esno": 8.97,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "77": {
         "standard": "S2",
@@ -921,7 +921,7 @@
         "modcod": "FE_SAT_16APSK_34",
         "initial_noise": 114805,
         "exp_esno": 10.21,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "81": {
         "standard": "S2",
@@ -933,7 +933,7 @@
         "modcod": "FE_SAT_16APSK_45",
         "initial_noise": 114797,
         "exp_esno": 11.03,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "85": {
         "standard": "S2",
@@ -943,9 +943,9 @@
         "pilots": true,
         "plscode": 85,
         "modcod": "FE_SAT_16APSK_56",
-        "initial_noise": 114787,
+        "initial_noise": 114783,
         "exp_esno": 11.61,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "89": {
         "standard": "S2",
@@ -957,7 +957,7 @@
         "modcod": "FE_SAT_16APSK_89",
         "initial_noise": 114774,
         "exp_esno": 12.89,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "93": {
         "standard": "S2",
@@ -969,7 +969,7 @@
         "modcod": "FE_SAT_16APSK_910",
         "initial_noise": 114770,
         "exp_esno": 13.13,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "75": {
         "standard": "S2",
@@ -979,9 +979,9 @@
         "pilots": true,
         "plscode": 75,
         "modcod": "FE_SAT_16APSK_23",
-        "initial_noise": 114965,
+        "initial_noise": 114944,
         "exp_esno": 2.5052,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "79": {
         "standard": "S2",
@@ -991,9 +991,9 @@
         "pilots": true,
         "plscode": 79,
         "modcod": "FE_SAT_16APSK_34",
-        "initial_noise": 114958,
+        "initial_noise": 114943,
         "exp_esno": 2.7616,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "83": {
         "standard": "S2",
@@ -1003,9 +1003,9 @@
         "pilots": true,
         "plscode": 83,
         "modcod": "FE_SAT_16APSK_45",
-        "initial_noise": 114952,
+        "initial_noise": 114935,
         "exp_esno": 2.9326,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "87": {
         "standard": "S2",
@@ -1015,9 +1015,9 @@
         "pilots": true,
         "plscode": 87,
         "modcod": "FE_SAT_16APSK_56",
-        "initial_noise": 114948,
+        "initial_noise": 114939,
         "exp_esno": 3.1035,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "91": {
         "standard": "S2",
@@ -1027,9 +1027,9 @@
         "pilots": true,
         "plscode": 91,
         "modcod": "FE_SAT_16APSK_89",
-        "initial_noise": 114939,
+        "initial_noise": 114915,
         "exp_esno": 3.3599,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "96": {
         "standard": "S2",
@@ -1041,7 +1041,7 @@
         "pilots": false,
         "initial_noise": 114775,
         "exp_esno": 12.73,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "100": {
         "standard": "S2",
@@ -1051,9 +1051,9 @@
         "plscode": 100,
         "modcod": "FE_SAT_32APSK_45",
         "pilots": false,
-        "initial_noise": 114766,
+        "initial_noise": 114759,
         "exp_esno": 13.64,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "104": {
         "standard": "S2",
@@ -1063,9 +1063,9 @@
         "plscode": 104,
         "modcod": "FE_SAT_32APSK_56",
         "pilots": false,
-        "initial_noise": 114760,
+        "initial_noise": 114743,
         "exp_esno": 14.28,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "108": {
         "standard": "S2",
@@ -1075,9 +1075,9 @@
         "plscode": 108,
         "modcod": "FE_SAT_32APSK_89",
         "pilots": false,
-        "initial_noise": 114751,
+        "initial_noise": 114722,
         "exp_esno": 15.69,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "112": {
         "standard": "S2",
@@ -1087,9 +1087,9 @@
         "plscode": 112,
         "modcod": "FE_SAT_32APSK_910",
         "pilots": false,
-        "initial_noise": 114749,
+        "initial_noise": 114779,
         "exp_esno": 16.05,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "98": {
         "standard": "S2",
@@ -1099,9 +1099,9 @@
         "plscode": 98,
         "modcod": "FE_SAT_32APSK_34",
         "pilots": false,
-        "initial_noise": 114935,
+        "initial_noise": 114930,
         "exp_esno": 3.4192,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "102": {
         "standard": "S2",
@@ -1111,9 +1111,9 @@
         "plscode": 102,
         "modcod": "FE_SAT_32APSK_45",
         "pilots": false,
-        "initial_noise": 114929,
+        "initial_noise": 114925,
         "exp_esno": 3.6308,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "106": {
         "standard": "S2",
@@ -1123,9 +1123,9 @@
         "plscode": 106,
         "modcod": "FE_SAT_32APSK_56",
         "pilots": false,
-        "initial_noise": 114926,
+        "initial_noise": 114918,
         "exp_esno": 3.8424,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "110": {
         "standard": "S2",
@@ -1135,9 +1135,9 @@
         "plscode": 110,
         "modcod": "FE_SAT_32APSK_89",
         "pilots": false,
-        "initial_noise": 114918,
+        "initial_noise": 114911,
         "exp_esno": 4.1599,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "97": {
         "standard": "S2",
@@ -1149,7 +1149,7 @@
         "modcod": "FE_SAT_32APSK_34",
         "initial_noise": 114775,
         "exp_esno": 12.73,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "101": {
         "standard": "S2",
@@ -1161,7 +1161,7 @@
         "modcod": "FE_SAT_32APSK_45",
         "initial_noise": 114769,
         "exp_esno": 13.64,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "105": {
         "standard": "S2",
@@ -1173,7 +1173,7 @@
         "modcod": "FE_SAT_32APSK_56",
         "initial_noise": 114760,
         "exp_esno": 14.28,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "109": {
         "standard": "S2",
@@ -1183,9 +1183,9 @@
         "pilots": true,
         "plscode": 109,
         "modcod": "FE_SAT_32APSK_89",
-        "initial_noise": 114748,
+        "initial_noise": 114739,
         "exp_esno": 15.69,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "113": {
         "standard": "S2",
@@ -1195,9 +1195,9 @@
         "pilots": true,
         "plscode": 113,
         "modcod": "FE_SAT_32APSK_910",
-        "initial_noise": 114748,
+        "initial_noise": 114736,
         "exp_esno": 16.05,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "99": {
         "standard": "S2",
@@ -1207,9 +1207,9 @@
         "pilots": true,
         "plscode": 99,
         "modcod": "FE_SAT_32APSK_34",
-        "initial_noise": 114937,
+        "initial_noise": 114909,
         "exp_esno": 3.4192,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "103": {
         "standard": "S2",
@@ -1219,9 +1219,9 @@
         "pilots": true,
         "plscode": 103,
         "modcod": "FE_SAT_32APSK_45",
-        "initial_noise": 114933,
+        "initial_noise": 114901,
         "exp_esno": 3.6308,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "107": {
         "standard": "S2",
@@ -1231,9 +1231,9 @@
         "pilots": true,
         "plscode": 107,
         "modcod": "FE_SAT_32APSK_56",
-        "initial_noise": 114928,
+        "initial_noise": 114902,
         "exp_esno": 3.8424,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "111": {
         "standard": "S2",
@@ -1243,9 +1243,9 @@
         "pilots": true,
         "plscode": 111,
         "modcod": "FE_SAT_32APSK_89",
-        "initial_noise": 114919,
+        "initial_noise": 114891,
         "exp_esno": 4.1599,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "132": {
         "standard": "S2x",
@@ -1255,9 +1255,9 @@
         "plscode": 132,
         "modcod": "FE_SATX_QPSK_13_45",
         "pilots": false,
-        "initial_noise": 115168,
+        "initial_noise": 115114,
         "exp_esno": -2.03,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "134": {
         "standard": "S2x",
@@ -1267,9 +1267,9 @@
         "plscode": 134,
         "modcod": "FE_SATX_QPSK_9_20",
         "pilots": false,
-        "initial_noise": 115053,
+        "initial_noise": 114994,
         "exp_esno": 0.22,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "136": {
         "standard": "S2x",
@@ -1279,9 +1279,9 @@
         "plscode": 136,
         "modcod": "FE_SATX_QPSK_11_20",
         "pilots": false,
-        "initial_noise": 115002,
+        "initial_noise": 114979,
         "exp_esno": 1.45,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "216": {
         "standard": "S2x",
@@ -1291,9 +1291,9 @@
         "plscode": 216,
         "modcod": "FE_SATX_QPSK_11_45",
         "pilots": false,
-        "initial_noise": 115163,
+        "initial_noise": 115158,
         "exp_esno": -2.5,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "218": {
         "standard": "S2x",
@@ -1305,7 +1305,7 @@
         "pilots": false,
         "initial_noise": 115158,
         "exp_esno": -2.24,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "220": {
         "standard": "S2x",
@@ -1315,9 +1315,9 @@
         "plscode": 220,
         "modcod": "FE_SATX_QPSK_14_45",
         "pilots": false,
-        "initial_noise": 115116,
+        "initial_noise": 115106,
         "exp_esno": -1.46,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "222": {
         "standard": "S2x",
@@ -1329,7 +1329,7 @@
         "pilots": false,
         "initial_noise": 115046,
         "exp_esno": 0.6,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "224": {
         "standard": "S2x",
@@ -1339,9 +1339,9 @@
         "plscode": 224,
         "modcod": "FE_SATX_QPSK_8_15",
         "pilots": false,
-        "initial_noise": 115001,
+        "initial_noise": 114980,
         "exp_esno": 1.45,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "226": {
         "standard": "S2x",
@@ -1353,7 +1353,7 @@
         "pilots": false,
         "initial_noise": 114933,
         "exp_esno": 3.66,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "133": {
         "standard": "S2x",
@@ -1363,9 +1363,9 @@
         "pilots": true,
         "plscode": 133,
         "modcod": "FE_SATX_QPSK_13_45",
-        "initial_noise": 115144,
+        "initial_noise": 115138,
         "exp_esno": -2.03,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "135": {
         "standard": "S2x",
@@ -1377,7 +1377,7 @@
         "modcod": "FE_SATX_QPSK_9_20",
         "initial_noise": 115043,
         "exp_esno": 0.22,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "137": {
         "standard": "S2x",
@@ -1389,7 +1389,7 @@
         "modcod": "FE_SATX_QPSK_11_20",
         "initial_noise": 115011,
         "exp_esno": 1.45,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "217": {
         "standard": "S2x",
@@ -1399,9 +1399,9 @@
         "pilots": true,
         "plscode": 217,
         "modcod": "FE_SATX_QPSK_11_45",
-        "initial_noise": 115164,
+        "initial_noise": 115158,
         "exp_esno": -2.5,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "219": {
         "standard": "S2x",
@@ -1413,7 +1413,7 @@
         "modcod": "FE_SATX_QPSK_4_15",
         "initial_noise": 115158,
         "exp_esno": -2.24,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "221": {
         "standard": "S2x",
@@ -1423,9 +1423,9 @@
         "pilots": true,
         "plscode": 221,
         "modcod": "FE_SATX_QPSK_14_45",
-        "initial_noise": 115119,
+        "initial_noise": 115106,
         "exp_esno": -1.46,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "223": {
         "standard": "S2x",
@@ -1437,7 +1437,7 @@
         "modcod": "FE_SATX_QPSK_7_15",
         "initial_noise": 115034,
         "exp_esno": 0.6,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "225": {
         "standard": "S2x",
@@ -1449,7 +1449,7 @@
         "modcod": "FE_SATX_QPSK_8_15",
         "initial_noise": 115000,
         "exp_esno": 1.45,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "227": {
         "standard": "S2x",
@@ -1461,7 +1461,7 @@
         "modcod": "FE_SATX_QPSK_32_45",
         "initial_noise": 114933,
         "exp_esno": 3.66,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "138": {
         "standard": "S2x",
@@ -1473,7 +1473,7 @@
         "pilots": false,
         "initial_noise": 114903,
         "exp_esno": 4.73,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "140": {
         "standard": "S2x",
@@ -1485,7 +1485,7 @@
         "pilots": false,
         "initial_noise": 114903,
         "exp_esno": 5.13,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "139": {
         "standard": "S2x",
@@ -1497,7 +1497,7 @@
         "modcod": "FE_SATX_8APSK_5_9_L",
         "initial_noise": 114903,
         "exp_esno": 4.73,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "141": {
         "standard": "S2x",
@@ -1509,7 +1509,7 @@
         "modcod": "FE_SATX_8APSK_26_45_L",
         "initial_noise": 114903,
         "exp_esno": 5.13,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "142": {
         "standard": "S2x",
@@ -1519,9 +1519,9 @@
         "plscode": 142,
         "modcod": "FE_SATX_8PSK_23_36",
         "pilots": false,
-        "initial_noise": 114872,
+        "initial_noise": 114864,
         "exp_esno": 6.12,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "144": {
         "standard": "S2x",
@@ -1531,9 +1531,9 @@
         "plscode": 144,
         "modcod": "FE_SATX_8PSK_25_36",
         "pilots": false,
-        "initial_noise": 114853,
+        "initial_noise": 114850,
         "exp_esno": 7.02,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "146": {
         "standard": "S2x",
@@ -1545,7 +1545,7 @@
         "pilots": false,
         "initial_noise": 114852,
         "exp_esno": 7.49,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "228": {
         "standard": "S2x",
@@ -1557,7 +1557,7 @@
         "pilots": false,
         "initial_noise": 114931,
         "exp_esno": 3.83,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "230": {
         "standard": "S2x",
@@ -1569,7 +1569,7 @@
         "pilots": false,
         "initial_noise": 114911,
         "exp_esno": 4.71,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "232": {
         "standard": "S2x",
@@ -1581,7 +1581,7 @@
         "pilots": false,
         "initial_noise": 114891,
         "exp_esno": 5.52,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "234": {
         "standard": "S2x",
@@ -1593,7 +1593,7 @@
         "pilots": false,
         "initial_noise": 114848,
         "exp_esno": 7.54,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "143": {
         "standard": "S2x",
@@ -1605,7 +1605,7 @@
         "modcod": "FE_SATX_8PSK_23_36",
         "initial_noise": 114877,
         "exp_esno": 6.12,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "145": {
         "standard": "S2x",
@@ -1617,7 +1617,7 @@
         "modcod": "FE_SATX_8PSK_25_36",
         "initial_noise": 114856,
         "exp_esno": 7.02,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "147": {
         "standard": "S2x",
@@ -1629,7 +1629,7 @@
         "modcod": "FE_SATX_8PSK_13_18",
         "initial_noise": 114852,
         "exp_esno": 7.49,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "229": {
         "standard": "S2x",
@@ -1641,7 +1641,7 @@
         "modcod": "FE_SATX_8PSK_7_15",
         "initial_noise": 114931,
         "exp_esno": 3.83,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "231": {
         "standard": "S2x",
@@ -1653,7 +1653,7 @@
         "modcod": "FE_SATX_8PSK_8_15",
         "initial_noise": 114911,
         "exp_esno": 4.71,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "233": {
         "standard": "S2x",
@@ -1665,7 +1665,7 @@
         "modcod": "FE_SATX_8PSK_26_45",
         "initial_noise": 114891,
         "exp_esno": 5.52,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "235": {
         "standard": "S2x",
@@ -1677,7 +1677,7 @@
         "modcod": "FE_SATX_8PSK_32_45",
         "initial_noise": 114848,
         "exp_esno": 7.54,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "148": {
         "standard": "S2x",
@@ -1689,7 +1689,7 @@
         "pilots": false,
         "initial_noise": 114882,
         "exp_esno": 5.97,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "150": {
         "standard": "S2x",
@@ -1701,7 +1701,7 @@
         "pilots": false,
         "initial_noise": 114868,
         "exp_esno": 6.55,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "152": {
         "standard": "S2x",
@@ -1713,7 +1713,7 @@
         "pilots": false,
         "initial_noise": 114864,
         "exp_esno": 6.84,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "154": {
         "standard": "S2x",
@@ -1725,7 +1725,7 @@
         "pilots": false,
         "initial_noise": 114846,
         "exp_esno": 7.51,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "156": {
         "standard": "S2x",
@@ -1737,7 +1737,7 @@
         "pilots": false,
         "initial_noise": 114846,
         "exp_esno": 7.8,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "158": {
         "standard": "S2x",
@@ -1749,7 +1749,7 @@
         "pilots": false,
         "initial_noise": 114846,
         "exp_esno": 7.41,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "160": {
         "standard": "S2x",
@@ -1761,7 +1761,7 @@
         "pilots": false,
         "initial_noise": 114836,
         "exp_esno": 8.1,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "162": {
         "standard": "S2x",
@@ -1773,7 +1773,7 @@
         "pilots": false,
         "initial_noise": 114836,
         "exp_esno": 8.38,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "164": {
         "standard": "S2x",
@@ -1785,7 +1785,7 @@
         "pilots": false,
         "initial_noise": 114836,
         "exp_esno": 8.43,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "166": {
         "standard": "S2x",
@@ -1797,7 +1797,7 @@
         "pilots": false,
         "initial_noise": 114817,
         "exp_esno": 9.27,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "168": {
         "standard": "S2x",
@@ -1809,7 +1809,7 @@
         "pilots": false,
         "initial_noise": 114813,
         "exp_esno": 9.71,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "170": {
         "standard": "S2x",
@@ -1819,9 +1819,9 @@
         "plscode": 170,
         "modcod": "FE_SATX_16APSK_7_9",
         "pilots": false,
-        "initial_noise": 114797,
+        "initial_noise": 114792,
         "exp_esno": 10.65,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "172": {
         "standard": "S2x",
@@ -1831,9 +1831,9 @@
         "plscode": 172,
         "modcod": "FE_SATX_16APSK_77_90",
         "pilots": false,
-        "initial_noise": 114782,
+        "initial_noise": 114778,
         "exp_esno": 11.99,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "236": {
         "standard": "S2x",
@@ -1845,7 +1845,7 @@
         "pilots": false,
         "initial_noise": 114879,
         "exp_esno": 5.99,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "238": {
         "standard": "S2x",
@@ -1857,7 +1857,7 @@
         "pilots": false,
         "initial_noise": 114862,
         "exp_esno": 6.93,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "240": {
         "standard": "S2x",
@@ -1869,7 +1869,7 @@
         "pilots": false,
         "initial_noise": 114844,
         "exp_esno": 7.66,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "242": {
         "standard": "S2x",
@@ -1881,7 +1881,7 @@
         "pilots": false,
         "initial_noise": 114836,
         "exp_esno": 8.1,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "244": {
         "standard": "S2x",
@@ -1893,7 +1893,7 @@
         "pilots": false,
         "initial_noise": 114807,
         "exp_esno": 9.81,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "149": {
         "standard": "S2x",
@@ -1905,7 +1905,7 @@
         "modcod": "FE_SATX_16APSK_1_2_L",
         "initial_noise": 114882,
         "exp_esno": 5.97,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "151": {
         "standard": "S2x",
@@ -1917,7 +1917,7 @@
         "modcod": "FE_SATX_16APSK_8_15_L",
         "initial_noise": 114868,
         "exp_esno": 6.55,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "153": {
         "standard": "S2x",
@@ -1929,7 +1929,7 @@
         "modcod": "FE_SATX_16APSK_5_9_L",
         "initial_noise": 114864,
         "exp_esno": 6.84,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "155": {
         "standard": "S2x",
@@ -1941,7 +1941,7 @@
         "modcod": "FE_SATX_16APSK_26_45",
         "initial_noise": 114846,
         "exp_esno": 7.51,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "157": {
         "standard": "S2x",
@@ -1953,7 +1953,7 @@
         "modcod": "FE_SATX_16APSK_3_5",
         "initial_noise": 114846,
         "exp_esno": 7.8,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "159": {
         "standard": "S2x",
@@ -1965,7 +1965,7 @@
         "modcod": "FE_SATX_16APSK_3_5_L",
         "initial_noise": 114846,
         "exp_esno": 7.41,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "161": {
         "standard": "S2x",
@@ -1977,7 +1977,7 @@
         "modcod": "FE_SATX_16APSK_28_45",
         "initial_noise": 114836,
         "exp_esno": 8.1,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "163": {
         "standard": "S2x",
@@ -1989,7 +1989,7 @@
         "modcod": "FE_SATX_16APSK_23_36",
         "initial_noise": 114836,
         "exp_esno": 8.38,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "165": {
         "standard": "S2x",
@@ -2001,7 +2001,7 @@
         "modcod": "FE_SATX_16APSK_2_3_L",
         "initial_noise": 114832,
         "exp_esno": 8.43,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "167": {
         "standard": "S2x",
@@ -2013,7 +2013,7 @@
         "modcod": "FE_SATX_16APSK_25_36",
         "initial_noise": 114817,
         "exp_esno": 9.27,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "169": {
         "standard": "S2x",
@@ -2025,7 +2025,7 @@
         "modcod": "FE_SATX_16APSK_13_18",
         "initial_noise": 114813,
         "exp_esno": 9.71,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "171": {
         "standard": "S2x",
@@ -2037,7 +2037,7 @@
         "modcod": "FE_SATX_16APSK_7_9",
         "initial_noise": 114797,
         "exp_esno": 10.65,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "173": {
         "standard": "S2x",
@@ -2049,7 +2049,7 @@
         "modcod": "FE_SATX_16APSK_77_90",
         "initial_noise": 114784,
         "exp_esno": 11.99,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "237": {
         "standard": "S2x",
@@ -2061,7 +2061,7 @@
         "modcod": "FE_SATX_16APSK_7_15",
         "initial_noise": 114879,
         "exp_esno": 5.99,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "239": {
         "standard": "S2x",
@@ -2073,7 +2073,7 @@
         "modcod": "FE_SATX_16APSK_8_15",
         "initial_noise": 114862,
         "exp_esno": 6.93,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "241": {
         "standard": "S2x",
@@ -2085,7 +2085,7 @@
         "modcod": "FE_SATX_16APSK_26_45_S",
         "initial_noise": 114844,
         "exp_esno": 7.66,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "243": {
         "standard": "S2x",
@@ -2097,7 +2097,7 @@
         "modcod": "FE_SATX_16APSK_3_5_S",
         "initial_noise": 114836,
         "exp_esno": 8.1,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "245": {
         "standard": "S2x",
@@ -2109,7 +2109,7 @@
         "modcod": "FE_SATX_16APSK_32_45",
         "initial_noise": 114807,
         "exp_esno": 9.81,
-        "test_result": ""
+        "test_result": "Passed"
     },
     "174": {
         "standard": "S2x",
@@ -2119,9 +2119,9 @@
         "plscode": 174,
         "modcod": "FE_SATX_32APSK_2_3_L",
         "pilots": false,
-        "initial_noise": 114795,
+        "initial_noise": 114799,
         "exp_esno": 11.1,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "178": {
         "standard": "S2x",
@@ -2133,7 +2133,7 @@
         "pilots": false,
         "initial_noise": 114789,
         "exp_esno": 11.75,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "180": {
         "standard": "S2x",
@@ -2145,7 +2145,7 @@
         "pilots": false,
         "initial_noise": 114781,
         "exp_esno": 12.17,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "182": {
         "standard": "S2x",
@@ -2155,9 +2155,9 @@
         "plscode": 182,
         "modcod": "FE_SATX_32APSK_7_9",
         "pilots": false,
-        "initial_noise": 114772,
+        "initial_noise": 114767,
         "exp_esno": 13.05,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "246": {
         "standard": "S2x",
@@ -2169,7 +2169,7 @@
         "pilots": false,
         "initial_noise": 114789,
         "exp_esno": 11.41,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "248": {
         "standard": "S2x",
@@ -2181,7 +2181,7 @@
         "pilots": false,
         "initial_noise": 114783,
         "exp_esno": 12.18,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "175": {
         "standard": "S2x",
@@ -2193,7 +2193,7 @@
         "modcod": "FE_SATX_32APSK_2_3_L",
         "initial_noise": 114794,
         "exp_esno": 11.1,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "179": {
         "standard": "S2x",
@@ -2205,7 +2205,7 @@
         "modcod": "FE_SATX_32APSK_32_45",
         "initial_noise": 114785,
         "exp_esno": 11.75,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "181": {
         "standard": "S2x",
@@ -2217,7 +2217,7 @@
         "modcod": "FE_SATX_32APSK_11_15",
         "initial_noise": 114781,
         "exp_esno": 12.17,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "183": {
         "standard": "S2x",
@@ -2229,7 +2229,7 @@
         "modcod": "FE_SATX_32APSK_7_9",
         "initial_noise": 114771,
         "exp_esno": 13.05,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "247": {
         "standard": "S2x",
@@ -2241,7 +2241,7 @@
         "modcod": "FE_SATX_32APSK_2_3",
         "initial_noise": 114789,
         "exp_esno": 11.41,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "249": {
         "standard": "S2x",
@@ -2253,7 +2253,7 @@
         "modcod": "FE_SATX_32APSK_32_45_S",
         "initial_noise": 114783,
         "exp_esno": 12.18,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "184": {
         "standard": "S2x",
@@ -2263,9 +2263,9 @@
         "plscode": 184,
         "modcod": "FE_SATX_64APSK_32_45_L",
         "pilots": false,
-        "initial_noise": 114764,
+        "initial_noise": 114757,
         "exp_esno": 13.98,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "186": {
         "standard": "S2x",
@@ -2275,9 +2275,9 @@
         "plscode": 186,
         "modcod": "FE_SATX_64APSK_11_15",
         "pilots": false,
-        "initial_noise": 114755,
+        "initial_noise": 114747,
         "exp_esno": 14.81,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "190": {
         "standard": "S2x",
@@ -2287,9 +2287,9 @@
         "plscode": 190,
         "modcod": "FE_SATX_64APSK_7_9",
         "pilots": false,
-        "initial_noise": 114750,
+        "initial_noise": 114744,
         "exp_esno": 15.47,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "194": {
         "standard": "S2x",
@@ -2299,9 +2299,9 @@
         "plscode": 194,
         "modcod": "FE_SATX_64APSK_4_5",
         "pilots": false,
-        "initial_noise": 114747,
+        "initial_noise": 114751,
         "exp_esno": 15.87,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "198": {
         "standard": "S2x",
@@ -2311,9 +2311,9 @@
         "plscode": 198,
         "modcod": "FE_SATX_64APSK_5_6",
         "pilots": false,
-        "initial_noise": 114745,
+        "initial_noise": 114741,
         "exp_esno": 16.55,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "185": {
         "standard": "S2x",
@@ -2325,7 +2325,7 @@
         "modcod": "FE_SATX_64APSK_32_45_L",
         "initial_noise": 114763,
         "exp_esno": 13.98,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "187": {
         "standard": "S2x",
@@ -2337,7 +2337,7 @@
         "modcod": "FE_SATX_64APSK_11_15",
         "initial_noise": 114756,
         "exp_esno": 14.81,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "191": {
         "standard": "S2x",
@@ -2349,7 +2349,7 @@
         "modcod": "FE_SATX_64APSK_7_9",
         "initial_noise": 114753,
         "exp_esno": 15.47,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "195": {
         "standard": "S2x",
@@ -2361,7 +2361,7 @@
         "modcod": "FE_SATX_64APSK_4_5",
         "initial_noise": 114747,
         "exp_esno": 15.87,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "199": {
         "standard": "S2x",
@@ -2371,9 +2371,9 @@
         "pilots": true,
         "plscode": 199,
         "modcod": "FE_SATX_64APSK_5_6",
-        "initial_noise": 114745,
+        "initial_noise": 114741,
         "exp_esno": 16.55,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "200": {
         "standard": "S2x",
@@ -2383,9 +2383,9 @@
         "plscode": 200,
         "modcod": "FE_SATX_128APSK_3_4",
         "pilots": false,
-        "initial_noise": 114737,
+        "initial_noise": 114732,
         "exp_esno": 17.73,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "202": {
         "standard": "S2x",
@@ -2395,9 +2395,9 @@
         "plscode": 202,
         "modcod": "FE_SATX_128APSK_7_9",
         "pilots": false,
-        "initial_noise": 114733,
+        "initial_noise": 114735,
         "exp_esno": 18.53,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "201": {
         "standard": "S2x",
@@ -2407,9 +2407,9 @@
         "pilots": true,
         "plscode": 201,
         "modcod": "FE_SATX_128APSK_3_4",
-        "initial_noise": 114735,
+        "initial_noise": 114728,
         "exp_esno": 17.73,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "203": {
         "standard": "S2x",
@@ -2419,9 +2419,9 @@
         "pilots": true,
         "plscode": 203,
         "modcod": "FE_SATX_128APSK_7_9",
-        "initial_noise": 114733,
+        "initial_noise": 114730,
         "exp_esno": 18.53,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "204": {
         "standard": "S2x",
@@ -2431,9 +2431,9 @@
         "plscode": 204,
         "modcod": "FE_SATX_256APSK_29_45_L",
         "pilots": false,
-        "initial_noise": 114743,
+        "initial_noise": 114783,
         "exp_esno": 16.98,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "206": {
         "standard": "S2x",
@@ -2443,9 +2443,9 @@
         "plscode": 206,
         "modcod": "FE_SATX_256APSK_2_3_L",
         "pilots": false,
-        "initial_noise": 114741,
+        "initial_noise": 114702,
         "exp_esno": 17.24,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "208": {
         "standard": "S2x",
@@ -2455,9 +2455,9 @@
         "plscode": 208,
         "modcod": "FE_SATX_256APSK_31_45_L",
         "pilots": false,
-        "initial_noise": 114736,
+        "initial_noise": 114728,
         "exp_esno": 18.1,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "210": {
         "standard": "S2x",
@@ -2467,9 +2467,9 @@
         "plscode": 210,
         "modcod": "FE_SATX_256APSK_32_45",
         "pilots": false,
-        "initial_noise": 114733,
+        "initial_noise": 114734,
         "exp_esno": 18.59,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "212": {
         "standard": "S2x",
@@ -2479,9 +2479,9 @@
         "plscode": 212,
         "modcod": "FE_SATX_256APSK_11_15_L",
         "pilots": false,
-        "initial_noise": 114731,
+        "initial_noise": 114716,
         "exp_esno": 18.84,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "214": {
         "standard": "S2x",
@@ -2493,7 +2493,7 @@
         "pilots": false,
         "initial_noise": 114726,
         "exp_esno": 19.57,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "205": {
         "standard": "S2x",
@@ -2503,9 +2503,9 @@
         "pilots": true,
         "plscode": 205,
         "modcod": "FE_SATX_256APSK_29_45_L",
-        "initial_noise": 114740,
+        "initial_noise": 114955,
         "exp_esno": 16.98,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "207": {
         "standard": "S2x",
@@ -2515,9 +2515,9 @@
         "pilots": true,
         "plscode": 207,
         "modcod": "FE_SATX_256APSK_2_3_L",
-        "initial_noise": 114738,
+        "initial_noise": 114726,
         "exp_esno": 17.24,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "209": {
         "standard": "S2x",
@@ -2527,9 +2527,9 @@
         "pilots": true,
         "plscode": 209,
         "modcod": "FE_SATX_256APSK_31_45_L",
-        "initial_noise": 114736,
+        "initial_noise": 114720,
         "exp_esno": 18.1,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "211": {
         "standard": "S2x",
@@ -2541,7 +2541,7 @@
         "modcod": "FE_SATX_256APSK_32_45",
         "initial_noise": 114732,
         "exp_esno": 18.59,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "213": {
         "standard": "S2x",
@@ -2551,9 +2551,9 @@
         "pilots": true,
         "plscode": 213,
         "modcod": "FE_SATX_256APSK_11_15_L",
-        "initial_noise": 114732,
+        "initial_noise": 114726,
         "exp_esno": 18.84,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "215": {
         "standard": "S2x",
@@ -2565,6 +2565,6 @@
         "modcod": "FE_SATX_256APSK_3_4",
         "initial_noise": 114726,
         "exp_esno": 19.57,
-        "test_result": ""
+        "test_result": "Failed"
     }
 }

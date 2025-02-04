@@ -61,6 +61,7 @@ def start_logging(token, ip, pls=None, t=-999):
     """
     global current_missed_counter
     
+    load(2)
     reset_advanced_stats(token, ip)
     load(5)
 
@@ -86,6 +87,8 @@ def start_logging(token, ip, pls=None, t=-999):
         except KeyError as e:
             print(e)
             load(2)
+            info['missed_counter'] += 1
+            t -= 5
             continue
         
         try:
@@ -107,7 +110,7 @@ def start_logging(token, ip, pls=None, t=-999):
     info['done'] = True
     
     if info["missed_counter"] > 0:
-        print(f"⚠︎⚠︎⚠︎ {info["missed_counter"]} frames have been missed! ⚠︎⚠︎⚠︎")
+        print(f"⚠︎⚠︎⚠︎ {info['missed_counter']} frames have been missed! ⚠︎⚠︎⚠︎")
     
     sn = get_serial_number(token, ip)
     insert_result_dict(pls, info["missed_counter"], sn)

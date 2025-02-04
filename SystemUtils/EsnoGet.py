@@ -1,15 +1,21 @@
 import time
 
-from snmp import Engine, SNMPv1
-
+# from snmp import Engine, SNMPv1
+from SystemUtils.NovelsatCommunication import get_esno
 from ApiRequest import read_esno_api
 from SystemUtils.Utils import load
 
 
 def read_current_esno():
-    load(4)
-    esno = read_esno_api() / 10
-    return esno
+    load(2)
+    esno = get_esno()
+    return int(esno.split(' ')[-1]) / 100
+
+
+# def read_current_esno():
+#     load(4)
+#     esno = read_esno_api() / 10
+#     return esno
 
 # def read_current_esno():
 #     """A function to get the current esno read by the novelsat
@@ -33,6 +39,6 @@ def read_current_esno():
 #         current_esno = host.get(".1.3.6.1.4.1.37576.4.2.1.3.0")
 #         return int(current_esno.toString().split('(')[1][0:-1]) / 100
 
-#snmpget -v1 -c public 172.19.200.199 .1.3.6.1.4.1.37576.4.2.1.3.0
+
 if __name__ == "__main__":
     print(read_current_esno())  # test
