@@ -1,0 +1,704 @@
+// BCA API
+
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+package bca.board;
+
+message Result {
+    int32 status = 1;
+}
+
+enum DVBStandard {
+    DVB_STD_NONE = 0;
+    DVB_STD_DVB_S1 = 1;
+    DVB_STD_DVB_S2 = 2;
+    DVB_STD_DSS = 3;
+    DVB_STD_TURBO = 4;
+    DVB_STD_DVB_S2X = 5;
+    DVB_STD_UNKNOWN = 6;
+}
+
+// carrier type
+enum RollOffType {
+    RT_ERROR = 0;
+    RT_35 = 1;
+    RT_25 = 2;
+    RT_20 = 3;
+    RT_15 = 4;
+    RT_10 = 5;
+    RT_05 = 6;
+    RT_AUTO = 9;
+}
+
+//! NSPE2 status
+message Nspe2Report {
+    bool enabled = 1;
+    uint32 frame_count = 2;             //!< Number of NSPE2 frames
+    uint32 byte_count = 3;              //!< Number of NSPE2 decapsulation errors type A
+    uint32 crc_error_count = 4;         //!< Number of NSPE2 decapsulation errors type B
+    uint32 sync_loss_count = 5;         //!< Number of NSPE2 decapsulation errors type C
+    uint32 data_rate = 6;               //!< Data rate (bps)
+};
+
+
+message Noise {
+    uint32 linear_struct = 1;           //!< Linear noise normalized on the structures – e.g. NNOSPLHTx ?
+    uint32 quadratic_struct = 2;        //!< Quadratic noise normalized on the structures – e.g. NNOSPLHx
+    uint32 linear_data = 3;             //!< Linear noise normalized on the data – e.g. NNOSDATATx
+    uint32 quadratic_data = 4;          //!< Quadratic noise normalized on the data – e.g. NNOSDATA
+    uint32 absolute_linear_data = 5;    //!< Absolute linear noise on the data – e.g. NOSDATATx
+    uint32 quadratic_data_frame = 6;    //!< Quadratic noise normalized on the data and by Frame – e.g.NNOSFRAMEx
+    uint32 quadratic_radial = 7;        //!< Quadratic noise normalized radial – e.g. NNOSRAD1/0
+}
+
+// According to ETSI EN 302 307 V1.3.1 (2013-03), see 5.5.2.3
+enum Pilot {
+    PT_ERROR = 0;
+    PT_OFF = 1;
+    PT_ON = 2;
+}
+
+enum SpectralInversion {
+    SI_NONE = 0;
+    SI_ON = 1;
+    SI_OFF = 2;
+    SI_AUTO = 3;
+}
+
+// Channel
+message Channel {
+    enum LockStatus {
+        DL_NONE = 0;
+        DL_AUTO = 1;
+        DL_DVBS = 2;
+        DL_DVBS2 = 3;
+        DL_DVBS2X = 4;
+        DL_UNLOCKED = 5;
+    }
+
+    uint32 channel_index = 1;
+    bool enabled = 2;
+    int32 rf_source = 3;
+
+    LockStatus lock_status = 4;
+    uint32 lock_frequency = 5;
+    uint32 acquisition_range = 6;
+    uint32 symbol_rate = 7;
+    DVBStandard dvb_standard = 8;
+    RollOffType roll_off = 9;
+    Pilot pilot = 10;
+    SpectralInversion spectral_inversion = 11;
+    uint32 plh_modcod = 12;             //!< Current PLH_MODCOD, not stable
+    uint32 plh_type = 13;               //!< Current PLH_TYPE, not stable
+    Noise noise = 14;
+    uint32 agc1_accumulator = 15;       //!< AGC1 accumulator – e.g. AGCIQINx or other
+    uint32 agc2_accumulator = 16;       //!< AGC2 accumulator – e.g. AGC2Ix or other
+    uint32 ldpc_iteration_number = 17;  //!< LDPC iteration number performed – e.g. STATUSITER or other
+    uint32 ldpc_max_iterations = 18;    //!< LDPC maximum iteration number performed – e.g. STATUSMAXITER or other
+    uint32 bbf_frames = 19;             //!< Number of BBF frames since last read
+    uint32 bbf_errored_frames = 20;     //!< Number of errored BBF frames since last read - based on Oxford BB frame counter
+    float fer = 21;
+    float cnr = 22;
+    Nspe2Report nspe2 = 23;
+    uint32 channel_power = 24;
+}
+enum BoardStatus {
+    BOARD_OK = 0;
+    BOARD_ERROR = 1;
+}
+
+enum BitStatus
+{
+    BS_PERFECT = 0x00;
+    BS_E_COMM = 0x01;
+    BS_E_OXFORD = 0x02;
+    BS_E_TEMPSENSOR = 0x04;
+    BS_E_FPGA = 0x08;
+
+    BS_E_ERROR = 0x40000000;                //!< last one, do not go into sign bit
+};
+
+enum CommunicationStatus {
+    CS_NONE = 0;
+    CS_CONNECTED = 1;
+    CS_NOT_FOUND = 2;
+    CS_ERROR = 3;
+}
+
+
+message DataPort {
+    bytes mac_address = 1;
+    string ip_address = 2;
+    string ip_netmask = 3;
+    string ip_def_gateway = 40;
+    bytes mac_def_gateway = 50;
+    uint32 vlan = 60;
+}
+
+message BoardInfo{
+    uint32 board_index = 1;
+    BoardStatus status = 2;
+    string demodulator_chip_version = 3;
+    DataPort data_port = 4;
+    float temperature = 5;
+    uint32 bit_status = 6;
+    CommunicationStatus communication_status = 7;
+    string bca_version = 8;
+}
+
+// Channel configuration
+message ChannelConfiguration {
+    enum SearchMode {
+        SAT_AUTO = 0;
+        SAT_COLD = 1;     /* the SR is known */
+    }
+
+    //! encapsulation method
+    enum EncapMethod
+    {
+        EM_NSPE2 = 0;	//! default, as it is derived from NVS
+        EM_TC1X = 1;
+		EM_TC1X_SLICES = 2;
+		EM_TC1X_TV = 3;
+        EM_SRX_GSE = 4;
+    }
+
+    //! ACM messages generator 8X4 (periodic and Fast)
+    message ACMGenerator {
+        enum Source {
+            AMS_INVALID = 0;
+            AMS_FPGA = 1;
+            AMS_CPU = 2;
+        }
+
+        message Destination {
+            bytes mac_address = 1;      //!< MAC address
+            bytes ip_address = 2;       //!< IP address
+            uint32 port = 3;            //!< UDP port
+        }
+
+        bool enabled = 1;
+        uint32 t_interval = 2;          //!< T_interval, msec (not less than 4000 msec)
+        int32 drop_limit = 3;           //!< Drop limit
+
+        Source source = 4;              //!< Fast messages Generator Source - FPGA or SW (per board max 2 FPGA, if violated, SNMP NACK)
+        Destination destination = 5;    //!< Destination
+
+        uint32 sample_interval = 6;     //!< Pilot SNR sampling interval by the FPGA, in units of msec
+        uint32 hold_off = 7;            //!<  Urgent carrier status report FPGA holdoff timer, in units of msec
+        int32 err_collect_speed = 8;    //!< NOSPLH_BETA
+    }
+
+    message NSPE2 {
+        message Destination {
+            bytes mac_address = 1;      //!< MAC address
+        }
+
+        bool enabled = 1;
+        Destination destination = 2;
+    }
+
+    message SrxGse {
+        enum GseLabelType
+        {
+            GSE_LABEL_6BYTE = 0;
+            GSE_LABEL_3BYTE = 1;
+            GSE_LABEL_NO_LABEL = 2;
+        };
+
+        message Destination {
+            bytes mac_address = 1;              //!< MAC address
+            GseLabelType label_type = 10;       //!< Label Type
+        };
+
+        enum BbfSource
+        {
+            SOURCE_NOT_VALID = 0;
+            SOURCE_TS1 = 1;
+            SOURCE_TS2 = 2;
+            SOURCE_TS3 = 3;
+            SOURCE_TS4 = 4;
+            SOURCE_TS5 = 5;
+            SOURCE_TS6 = 6;
+            SOURCE_TS7 = 7;
+            SOURCE_TS8 = 8;            
+        };
+
+        bool enabled = 1;
+        Destination destination = 2;
+        uint32 isi = 10;                        //!< valid range is 0-255 
+        BbfSource ts_source = 20;
+
+        // bool source_enabled = 30;            //!< internal FPGA thing, same value as <enabled>
+    }    
+
+    message Tc1ProEgress
+    {
+        message NetworkInterface
+        {
+            bytes mac_address = 1;      //!< MAC address
+            string ip_address = 2;      //!< IP address
+            uint32 port = 3;       	    //!< UDP port
+        }
+
+        message VLAN
+        {
+            bool    enabled = 1;
+            uint32  tag = 2;
+        }
+
+        bool enabled = 1;
+        NetworkInterface    destination = 2;
+        NetworkInterface    source = 3;
+
+        VLAN    vlan = 4;
+        uint32  dscp = 5;
+
+        bool    force_bbf = 6;
+    }
+
+	message LnbConfig
+	{
+		enum LnbVoltage 
+		{
+			V_OFF = 0;
+			V_13V = 1;		//<! vertical
+			V_18V = 2;		//<! horizontal
+		}
+
+		enum Lnb22KHz
+		{
+			T_OFF = 0;		//<! low
+			T_ON = 1;		//<! high
+		}
+
+        enum Lnb10MHz
+        {
+            R_OFF = 0;      //<! pin high
+            R_ON = 1;       //<! pin low
+        }
+
+		LnbVoltage  lnb_voltage = 1;
+		Lnb22KHz    lnb_tone = 2;	
+		bool        lnb_1v_compensation = 3;
+        Lnb10MHz    lnb_reference = 10;
+	}
+
+    uint32 channel_index = 1;
+
+    bool enabled = 2;
+    int32 rf_source = 3;
+
+    uint32 frequency = 4;
+    uint32 acquisition_range = 5;
+    uint32 symbol_rate = 6;
+    RollOffType roll_off = 7;
+    uint32 golden_sequence = 8;                //!< Golden sequence (PLSCRAMB_ROOT)
+
+    SearchMode search_mode = 9;
+    bool search_enabled = 10;
+    bool force_relock = 11;
+
+    ACMGenerator acm = 12;
+    NSPE2 nspe2 = 13;
+
+    EncapMethod encap_method = 14;				//!< encapsulation demuxing flag
+    Tc1ProEgress egress = 15;
+
+	repeated uint32 annex_m_slices = 16;
+
+	LnbConfig lnb = 17;
+
+    SrxGse srx_gse = 30;
+}
+
+message Cnr{
+    uint32 channel_index = 1;
+    float  cnr = 2;
+    float  channel_power = 10;           
+    float  band_power = 20;
+    int32  rf_source = 30;
+}
+
+message MultiCnr{
+    repeated Cnr cnr = 1;
+}
+
+enum LockStatus
+{
+    ZERO_PLACEHOLDER = 0x00;
+    LOCK_DEFINITIF =  0x01;
+    TUN_LOCKED = 0x02;
+    PKTDELIN_LOCK = 0x04;
+    LOCKEDVIT = 0x08;
+    AGCRF_LOCKED = 0x10;
+    PLL_LOCK = 0x20;
+    CAR_LOCK = 0x40;
+    TIMING_IS_LOCKED = 0x80;
+}
+
+enum Modcod{
+    /* Copy pasted from Oxford driver */
+
+    /*
+     0x00..1F: Legacy list; DVBS2
+     0x20..3F: DVBS1
+     0x40..7F: DVBS2-X With:  _S: Short frame (only here to make it work compile; otherwise there will be a redefinition of enumerator)
+        _L: Linear constellation;
+    _R_xx: reserved + Modcode number hex   Pon; Poff Pilots configuration
+    */
+    FE_SAT_DUMMY_PLF  = 0x00;  FE_SAT_QPSK_14   = 0x01;  FE_SAT_QPSK_13   = 0x02;  FE_SAT_QPSK_25    = 0x03;
+    FE_SAT_QPSK_12    = 0x04;  FE_SAT_QPSK_35   = 0x05;  FE_SAT_QPSK_23   = 0x06;  FE_SAT_QPSK_34    = 0x07;
+    FE_SAT_QPSK_45    = 0x08;  FE_SAT_QPSK_56   = 0x09;  FE_SAT_QPSK_89   = 0x0A;  FE_SAT_QPSK_910   = 0x0B;
+    FE_SAT_8PSK_35    = 0x0C;  FE_SAT_8PSK_23   = 0x0D;  FE_SAT_8PSK_34   = 0x0E;  FE_SAT_8PSK_56    = 0x0F;
+    FE_SAT_8PSK_89    = 0x10;  FE_SAT_8PSK_910  = 0x11;  FE_SAT_16APSK_23 = 0x12;  FE_SAT_16APSK_34  = 0x13;
+    FE_SAT_16APSK_45  = 0x14;  FE_SAT_16APSK_56 = 0x15;  FE_SAT_16APSK_89 = 0x16;  FE_SAT_16APSK_910 = 0x17;
+    FE_SAT_32APSK_34  = 0x18;  FE_SAT_32APSK_45 = 0x19;  FE_SAT_32APSK_56 = 0x1A;  FE_SAT_32APSK_89  = 0x1B;
+    FE_SAT_32APSK_910 = 0x1C;  FE_SAT_MODCODE_UNKNOWN = 0x1D;              FE_SAT_MODCODE_UNKNOWN_1E = 0x1E;
+    FE_SAT_MODCODE_UNKNOWN_1F  = 0x1F;
+/* ---------------------------------------- */
+    FE_SAT_DVBS1_QPSK_12 = 0x20;         FE_SAT_DVBS1_QPSK_23 = 0x21;         FE_SAT_DVBS1_QPSK_34 = 0x22;
+    FE_SAT_DVBS1_QPSK_56 = 0x23;         FE_SAT_DVBS1_QPSK_67 = 0x24;         FE_SAT_DVBS1_QPSK_78 = 0x25;
+    FE_SAT_MODCODE_UNKNOWN_26 = 0x26;    FE_SAT_MODCODE_UNKNOWN_27 = 0x27;    FE_SAT_MODCODE_UNKNOWN_28 = 0x28;
+    FE_SAT_MODCODE_UNKNOWN_29 = 0x29;    FE_SAT_MODCODE_UNKNOWN_2A = 0x2A;    FE_SAT_MODCODE_UNKNOWN_2B = 0x2B;
+    FE_SAT_MODCODE_UNKNOWN_2C = 0x2C;    FE_SAT_MODCODE_UNKNOWN_2D = 0x2D;
+    FE_SAT_MODCODE_UNKNOWN_2E = 0x2E;    FE_SAT_MODCODE_UNKNOWN_2F = 0x2F;
+
+    FE_SAT_MODCODE_UNKNOWN_30 = 0x30;     FE_SAT_MODCODE_UNKNOWN_31 = 0x31;     FE_SAT_MODCODE_UNKNOWN_32 = 0x32;
+    FE_SAT_MODCODE_UNKNOWN_33 = 0x33;     FE_SAT_MODCODE_UNKNOWN_34 = 0x34;     FE_SAT_MODCODE_UNKNOWN_35 = 0x35;
+    FE_SAT_MODCODE_UNKNOWN_36 = 0x36;    FE_SAT_MODCODE_UNKNOWN_37 = 0x37;    FE_SAT_MODCODE_UNKNOWN_38 = 0x38;
+    FE_SAT_MODCODE_UNKNOWN_39 = 0x39;    FE_SAT_MODCODE_UNKNOWN_3A = 0x3A;    FE_SAT_MODCODE_UNKNOWN_3B = 0x3B;
+    FE_SAT_MODCODE_UNKNOWN_3C = 0x3C;    FE_SAT_MODCODE_UNKNOWN_3D = 0x3D;    FE_SAT_MODCODE_UNKNOWN_3E = 0x3E;
+    FE_SAT_MODCODE_UNKNOWN_3F = 0x3F;
+/* ---------------------------------------- */
+    FE_SATX_VLSNR1          = 0x40;  FE_SATX_VLSNR2        = 0x41;  FE_SATX_QPSK_13_45      = 0x42;  FE_SATX_QPSK_9_20     = 0x43;
+    FE_SATX_QPSK_11_20      = 0x44;  FE_SATX_8APSK_5_9_L   = 0x45;  FE_SATX_8APSK_26_45_L   = 0x46;  FE_SATX_8PSK_23_36    = 0x47;
+    FE_SATX_8PSK_25_36      = 0x48;  FE_SATX_8PSK_13_18    = 0x49;  FE_SATX_16APSK_1_2_L    = 0x4A;  FE_SATX_16APSK_8_15_L = 0x4B;
+    FE_SATX_16APSK_5_9_L    = 0x4C;  FE_SATX_16APSK_26_45  = 0x4D;  FE_SATX_16APSK_3_5      = 0x4E;  FE_SATX_16APSK_3_5_L  = 0x4F;
+    FE_SATX_16APSK_28_45    = 0x50;  FE_SATX_16APSK_23_36  = 0x51;  FE_SATX_16APSK_2_3_L    = 0x52;  FE_SATX_16APSK_25_36  = 0x53;
+    FE_SATX_16APSK_13_18    = 0x54;  FE_SATX_16APSK_7_9    = 0x55;  FE_SATX_16APSK_77_90    = 0x56;  FE_SATX_32APSK_2_3_L  = 0x57;
+    FE_SATX_32APSK_R_58     = 0x58;  FE_SATX_32APSK_32_45  = 0x59;  FE_SATX_32APSK_11_15    = 0x5A;  FE_SATX_32APSK_7_9    = 0x5B;
+    FE_SATX_64APSK_32_45_L  = 0x5C;  FE_SATX_64APSK_11_15  = 0x5D;  FE_SATX_64APSK_R_5E     = 0x5E;  FE_SATX_64APSK_7_9    = 0x5F;
+    FE_SATX_64APSK_R_60     = 0x60;  FE_SATX_64APSK_4_5    = 0x61;  FE_SATX_64APSK_R_62     = 0x62;  FE_SATX_64APSK_5_6    = 0x63;
+    FE_SATX_128APSK_3_4     = 0x64;  FE_SATX_128APSK_7_9   = 0x65;  FE_SATX_256APSK_29_45_L = 0x66;  FE_SATX_256APSK_2_3_L = 0x67;
+    FE_SATX_256APSK_31_45_L = 0x68;  FE_SATX_256APSK_32_45 = 0x69;  FE_SATX_256APSK_11_15_L = 0x6A;  FE_SATX_256APSK_3_4   = 0x6B;
+    FE_SATX_QPSK_11_45      = 0x6C;  FE_SATX_QPSK_4_15     = 0x6D;  FE_SATX_QPSK_14_45      = 0x6E;  FE_SATX_QPSK_7_15     = 0x6F;
+    FE_SATX_QPSK_8_15       = 0x70;  FE_SATX_QPSK_32_45    = 0x71;  FE_SATX_8PSK_7_15       = 0x72;  FE_SATX_8PSK_8_15     = 0x73;
+    FE_SATX_8PSK_26_45      = 0x74;  FE_SATX_8PSK_32_45    = 0x75;  FE_SATX_16APSK_7_15     = 0x76;  FE_SATX_16APSK_8_15   = 0x77;
+    FE_SATX_16APSK_26_45_S  = 0x78;  FE_SATX_16APSK_3_5_S  = 0x79;  FE_SATX_16APSK_32_45    = 0x7A;  FE_SATX_32APSK_2_3    = 0x7B;
+    FE_SATX_32APSK_32_45_S  = 0x7C;
+/* ---------------------------------------- */
+    FE_SATX_8PSK            = 0x7D;  FE_SATX_32APSK    = 0x7E;  FE_SATX_256APSK      = 0x7F;  /* POFF Modes */
+    FE_SATX_16APSK           = 0x80;     FE_SATX_64APSK    = 0x81;  FE_SATX_1024APSK      = 0x82;  /* PON Modes  */
+    FE_SATX_8PSK_2          = 0x83;  FE_SATX_16APSK_2     = 0x84;                                 /* Modcods sharing PLS value with VLSNR modcods */
+
+    FE_SAT_MODCODE_UNDETECTED = 0x85;                                                         /* Used to report an unknown/undetected modcod */
+    FE_SAT_MODCODE_MAX        = 0x86;                                                             /* Only used for range checking */
+};
+
+message PeriodicReport{
+
+    uint32 channel_index = 1;
+    uint32 rf_path = 2;
+    bool locked = 3;                     //!< yes/no
+
+    uint32 plh_modcod = 4;               //!< Current PLH_MODCOD, not stable
+    uint32 plh_type = 5;                 //!< Current PLH_TYPE, not stable
+    Noise noise = 6;
+    uint32 agc1_accumulator = 7;         //!< AGC1 accumulator – e.g. AGCIQINx or other
+    uint32 agc2_accumulator = 8;         //!< AGC2 accumulator – e.g. AGC2Ix or other
+    uint32 ldpc_iteration_number = 9;    //!< LDPC iteration number performed – e.g. STATUSITER or other
+    uint32 ldpc_max_iterations = 10;     //!< LDPC maximum iteration number performed – e.g. STATUSMAXITER or other
+    uint32 bbf_frames = 11;              //!< Number of BBF frames since last read
+    uint32 bbf_errored_frames = 12;      //!< Number of errored BBF frames since last read - based on Oxford BB frame counter
+    uint32 raw_cnr = 13;                 //!< raw CNR register value
+    float  translated_cnr = 14;          //!< translated CNR value
+    float  channel_power = 15;           //!< in 0.1 dBm - demod power
+    float  band_power = 16;              //!< in 0.1 dBm - entire band measurement
+    uint32 lock_flags = 17;              //!< LOCK_DEFINITIF|TUN_LOCKED|PKTDELIN_LOCK|LOCKEDVIT|AGCRF_LOCKED|PLL_LOCK|CAR_LOCK|TIMING_IS_LOCKED
+	Modcod modcod = 18;					 //!< translated modcod,as in the LockReport
+}
+
+message FullPeriodicReport {
+    uint32 channel_index = 1;
+    PeriodicReport periodic_report = 2;
+    Nspe2Report nspe2 = 3;
+}
+
+
+message LockReport
+{
+    uint32 channel_index = 1;
+    int32 rf_source = 2;
+    bool locked = 3;
+    uint32 lock_flags = 4;              //!< LOCK_DEFINITIF|TUN_LOCKED|PKTDELIN_LOCK|LOCKEDVIT|AGCRF_LOCKED|PLL_LOCK|CAR_LOCK|TIMING_IS_LOCKED
+    uint32 lock_frequency = 5;
+    uint32 symbol_rate = 6;
+    DVBStandard dvb_standard = 7;
+    RollOffType roll_off = 8;
+    Pilot pilot = 9;
+    SpectralInversion spectral_inversion = 10;
+    Modcod modcod = 11;
+};
+
+message DataInterface
+{
+    message Detailed
+    {
+        enum Type
+        {
+            Type_Undefined = 0;
+            Type_Parallel = 1;
+            Type_Serial = 2;
+			Type_Muxed = 3;		//!< TS12_MUXED and TS34_MUXED
+        };
+
+        enum Width
+        {
+            Width_Undefined = 0;
+            Width_Wide = 1;
+            Width_Narrow = 2;
+        };
+
+        enum Crc
+        {
+            Crc_Undefined = 0;
+            Crc_0x47 = 1;
+            Crc_Crc8 = 2;
+        };
+
+        enum Content
+        {
+            Content_Undefined = 0;
+            Content_Packet = 1;
+            Content_Frame = 2;
+            Content_Continous = 3;
+        };
+
+        enum Packetization
+        {
+            Packetization_Undefined = 0;
+            Packetization_BBF = 1;
+            Packetization_Packet = 2;
+        };
+
+        enum FooterHeader
+        {
+            FooterHeader_Undefined = 0;
+            FooterHeader_Footer = 1;
+            FooterHeader_Header = 2;
+            FooterHeader_FooterHeader = 3;
+            FooterHeader_None = 4;
+        };
+
+        Type type = 1;
+        Width width = 2;
+        Crc   crc = 3;
+        Content content = 4;
+        Packetization packetization = 5;
+        FooterHeader footer_header = 6;
+        bool constellation = 7;
+    };
+
+    message Preset
+    {
+        enum Type
+        {
+            Type_Undefined = 0;
+            Type_NVS = 1;
+            Type_Tc1ProX = 2;
+            Type_Tc8X = 3;
+			Type_TcAnnexM = 4;
+            Type_SrxGse = 5;
+        };
+
+        Type type = 1;
+    };
+
+    enum ApplicationType
+    {
+        AppType_Transcoder = 0; //! the device dumps BBF in UDP packets - TC1x
+        AppType_Demodulator = 1; //! the device has an encapsulator and decaps BBf/GSE and outputs IP packets - VHS500
+    };
+
+    oneof Configuration
+    {
+        Detailed detailed_definition = 1;
+        Preset preset = 2;
+    };
+
+    string reg_file = 3;            //!< empty string means no file provided
+    ApplicationType app_type = 4;
+};
+
+message Event
+{
+    enum EventType
+    {
+        ET_Unknown = 0;
+        ET_Unlocked = 1;
+        ET_Locked = 2;
+    };
+
+    EventType event = 1;
+    uint32 channel_index = 2;
+};
+
+message PlatformConfig
+{
+    string fpga_ctrl_ip_address = 1;
+    string fpga_data_ip_address = 2;
+};
+
+message DataInterfaceIpConfiguration
+{
+    string fpga_data_ip_address = 10;
+    string fpga_data_ip_mask = 20;
+    string fpga_data_ip_def_gw = 30;
+    bytes fpga_data_mac_def_gw = 40;
+    uint32 fpga_data_vlan = 50;
+}
+
+message FpgaDebug
+{
+	uint32 address = 1;
+	uint32 data = 2;
+};
+
+message OxfordDebug
+{
+    uint32 address = 1;
+    uint32 data = 2;
+    int32  rv = 3; 
+};
+
+
+message BeamHoppingEvent
+{
+    uint32 channel_index = 1;
+    uint32 event_duration_ms = 10;
+}
+
+message ChannelInputPair
+{
+    uint32 channel_index = 1;
+    int32 rf_source = 10;
+}
+
+message InputPowerLevel
+{
+    uint32 channel_index = 1;
+    int32 rf_source = 10;
+    float  band_power = 30;
+}
+
+message TodDistribution
+{
+	bool enable = 1;
+	string source_mac = 10;
+	string source_ip = 11;
+	uint32 source_udp_port = 12;
+	//string destination_mac = 20;
+	//string destination_ip = 21;
+	//uint32 destination_udp_port = 22;
+}
+
+message RangingConfiguration
+{
+	string mac_address = 1;
+	string ip_address = 2;
+	uint32 udp_port = 3;
+}
+
+message Led
+{
+    enum LedColor
+    {
+        Off = 0;
+        Green = 1;
+        Red = 2;
+    }
+
+    LedColor color = 1;
+}
+
+service BoardService {
+    // gets CNR value for the channel
+    rpc GetChannelCnr(google.protobuf.Int32Value) returns (Cnr);
+    // get lock info, should be called on locked->unlocked and unlocked/locked transitions
+    rpc GetChannelLockInfo(google.protobuf.Int32Value) returns (LockReport);
+    // gets periodic report content for the channel
+    rpc GetChannelInfo(google.protobuf.Int32Value) returns (PeriodicReport);
+    // gets periodic report content for the channel
+    rpc GetChannelInfoNspe2(google.protobuf.Int32Value) returns (Nspe2Report);
+    // gets general board info only
+    rpc GetBoardInfo(google.protobuf.Empty) returns (BoardInfo);
+
+    // board control and configuration
+    rpc InitiateBit(google.protobuf.Empty) returns(Result);
+
+    // channel configuration
+    rpc GetChannelConfiguration(google.protobuf.Int32Value) returns(ChannelConfiguration);
+    rpc ConfigureChannel(ChannelConfiguration) returns(Result);
+
+    // get CNR value for multiple channels
+    rpc GetMultiChannelCnr(google.protobuf.Int32Value) returns (MultiCnr);
+    // get periodic report together with NSPE2 report
+    rpc GetPeriodicReport(google.protobuf.Int32Value) returns (FullPeriodicReport);
+
+    //! TC1ProX stuff
+    rpc ConfigureDataInterface(DataInterface) returns(Result);
+    rpc NotifyEvent(Event) returns(Result);
+    rpc InitPlatform(PlatformConfig) returns (Result);
+
+    rpc UpdateFpgaDataInterfaceIp(DataInterfaceIpConfiguration) returns (Result);
+
+    rpc FpgaDebugRead(FpgaDebug) returns(FpgaDebug);
+    rpc FpgaDebugWrite(FpgaDebug) returns(FpgaDebug);
+
+    rpc OxfordDebugRead(OxfordDebug) returns(OxfordDebug);
+    rpc OxfordDebugWrite(OxfordDebug) returns(OxfordDebug);
+
+	rpc SetTodDistribution(TodDistribution) returns (Result);
+	rpc GetTodDistribution(google.protobuf.Empty) returns (TodDistribution);
+
+	rpc SetRangingConfiguration(RangingConfiguration) returns (Result);
+	rpc GetRangingConfiguration(google.protobuf.Empty) returns (RangingConfiguration);
+
+    rpc SetLed(Led) returns (Result);
+    rpc GetLed(google.protobuf.Empty) returns (Led);
+
+    rpc ConfigureBeamHopping(BeamHoppingEvent) returns (Result);
+    rpc UndoBeamHoppingConfig(BeamHoppingEvent) returns (Result);
+
+    // gets Input Power Level value for the given input
+    rpc GetInputPowerLevelDestructive(ChannelInputPair) returns (InputPowerLevel);    
+}
+
+
+//! Constrains:
+//! In the current implementation the order of calls is:
+//! BCA starts, and gets to operational state, waiting for channel configuraiton
+//! The first Client should call:
+//! InitPlatform	    - sets some platform configuration, optional.
+//!			      If not called, the defaults are used
+//! ConfigureDataInterface  - Configures Oxford->FPGA Data interface
+//! ConfigureChannel() * N  - Configure individual channels
+//!
+//! Monitor performance by calling GetCnr etc
+//!
+//! NOTE: InitPlatform should be called first, otherwise it does not affect anything
+//! NOTE: ConfigureDataInterface should be called before any ConfigureChannel calls,
+//! and should be called once
+//!
+
+// TODO:
+// 1. Data Interface definition:
+// 	1.1. SDD bus pinout
+// 	1.2. data bus pinout
+
+
+// vi: ts=4:sw=4:et:

@@ -1,0 +1,87 @@
+// MDC API
+
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+import "board.proto";
+
+package mdc.board;
+
+message BoardChannel
+{
+    uint32 board_index = 1;
+    uint32 channel_index = 2;
+}
+
+message BoardChannelConfiguration
+{
+    uint32 board_index = 1;
+    bca.board.ChannelConfiguration configuration = 2;
+    int32 unlock_reconfig_attempts = 3;
+    int32 unlock_reconfig_timeout = 4;
+}
+
+message Networking
+{
+    string management_ip_address = 1;
+	string management_ip_subnet_mask = 2;
+	string management_ip_default_gateway = 3;
+}
+
+message ResetMessage {
+    // 0 - warm, 1- cold
+	enum Kind {
+		Warm = 0;
+		Cold = 1;
+	};
+    Kind kind = 1;
+    uint32 board_index = 2;
+}
+
+// General board information
+message Board {
+    uint32 board_index = 1;
+    bca.board.BoardStatus status = 2;
+    string demodulator_chip_version = 3;
+    bca.board.DataPort data_port = 4;
+
+    float temperature = 5;
+
+    bca.board.BitStatus bit_status = 6;
+    bca.board.CommunicationStatus communication_status = 7;
+
+    // Channels
+    repeated bca.board.Channel channel = 8;
+    string bca_version = 80;
+}
+
+service MDCService 
+{
+	// reset device
+	rpc ResetDevice(google.protobuf.Empty) returns (bca.board.Result);
+	
+	// reset board
+	rpc ResetBoard(ResetMessage) returns (bca.board.Result);
+	
+	// Board info
+	rpc GetBoardInfo(google.protobuf.Int32Value) returns (Board);
+	
+    // configuration of one channel
+    rpc ConfigureBoardChannel(BoardChannelConfiguration) returns (bca.board.Result);
+    
+    // networking configuration (device's public IP, etc.)
+    rpc ConfigureNetworking(Networking) returns (bca.board.Result);
+    
+    // get specific board channel lock info
+    rpc GetLockInfo(BoardChannel) returns (bca.board.LockReport);
+    
+    // get specific board channel periodic report
+    rpc GetPeriodicReport(BoardChannel) returns (bca.board.PeriodicReport);
+    
+    // get specific board channel periodic report
+    rpc GetBoardChannelCnr(BoardChannel) returns (bca.board.Cnr);
+    
+    // get specific channel configuration
+    rpc GetChannelConfiguration(BoardChannel) returns (BoardChannelConfiguration);
+}

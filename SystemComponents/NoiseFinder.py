@@ -33,7 +33,7 @@ def evaluate_esno(token, ip):
 
 
 def get_modcod(token, ip):
-    signal_pls_code = get_rx_status(token, ip)['test_pattern_pls_code']
+    signal_pls_code = "gRPC" # get_rx_status(token, ip)['test_pattern_pls_code']
     # psk, code = get_modcod_from_pls(signal_pls_code)
     return signal_pls_code
 

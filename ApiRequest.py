@@ -131,7 +131,7 @@ def set_modulator_freq_1200M(token, ip):
             "gold_code":0,"carrier_mode":"CM_MODULATED","power_up_state":"On",
             "acm_mode":"AcmModeOff","buc_power":False,"buc_10MHz_output":False}
     response = requests.post(f"http://{ip}/api/modulator", headers={'Authorization': token}, json=data)
-    
+
 
 def change_modcod(token, ip, pls):
     """A function that sets the modcod of the device to the given pls
