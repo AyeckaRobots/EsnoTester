@@ -1,6 +1,6 @@
 from JsonHandler import update_target_ip, read_target_ip
 from SystemUtils import StaticVars
-from ApiRequest import change_modcod
+from Requests import change_modcod
 from SystemComponents.NoiseFinder import adjustNoise, get_token
 
 def set_pls_list(pls_list):

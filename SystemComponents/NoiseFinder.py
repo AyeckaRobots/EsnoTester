@@ -1,6 +1,5 @@
 from SystemUtils import StaticVars
-from SystemUtils.EsnoGet import read_current_esno
-from ApiRequest import *
+from Requests import *
 from JsonHandler import *
 
 max_noise = 115232  # 1c220
@@ -14,7 +13,7 @@ def print_noise_dict(distances):
         
 
 def get_esno_pls(token, ip):
-    esno = read_current_esno()
+    esno = get_esno()
     
     pls = get_modcod(token, ip)
     return esno, pls

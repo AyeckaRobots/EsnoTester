@@ -1,13 +1,12 @@
 import time
 import threading
 
-from SystemUtils import StaticVars
-from SystemComponents.NoiseFinder import get_token
-from ApiRequest import get_advanced_stats, get_serial_number, reset_advanced_stats, set_modulator_freq_1200M
-from JsonHandler import insert_result_dict, update_target_ip, read_target_ip
+from SystemUtils.StaticVars import *
+from Requests import get_advanced_stats
+from JsonHandler import insert_result_dict
 from SystemUtils.Utils import load
 import logging
-import keyboard
+# import keyboard
 from datetime import datetime
 
 logger = logging.getLogger()
@@ -15,16 +14,15 @@ logger = logging.getLogger()
 logger.setLevel(logging.WARNING)  # change to warning to ignore frame and bit-rate changes and vice versa.
 current_missed_counter = 0
 
-def init_logger(token, ip):
+def init_logger():
     """Configuration for the logger
 
     Args:
         token (str): string for the authorization header
         ip (str): the ip of the tested device
     """
-    sn = get_serial_number(token, ip)
     
-    logging.basicConfig(filename=f"TestResults/SN{sn}.log",
+    logging.basicConfig(filename=f"TestResults/Report.log",
                         format='%(asctime)s %(message)s',
                         filemode='a')
 
@@ -49,7 +47,7 @@ def log_stats(info, current_bit_rate, current_esno, current_frame_counter):
         logging.warning(f"Missed frames! amount: {current_missed_counter - info['missed_counter'] - info['offset']}, esno: {current_esno}")
 
 
-def start_logging(token, ip, pls=None, t=-999):
+def start_logging(pls=None, t=-999):
     """A function that checks for missed frames and updates in bitrate and esno
     operating for @t time or endlessly if t=-999. 
 
@@ -62,8 +60,8 @@ def start_logging(token, ip, pls=None, t=-999):
     global current_missed_counter
     
     load(2)
-    reset_advanced_stats(token, ip)
-    load(5)
+    # reset_advanced_stats() # TODO implement
+    # load(5)
 
     info = {"frame_counter":0 , "missed_counter":0 , "bit_rate":0 , "esno":0, "offset":0, 'done': False}
     if pls:
@@ -74,8 +72,8 @@ def start_logging(token, ip, pls=None, t=-999):
     
 
     while t > 0 or t <= -999:
-        print("sending req (press 'i' for info, 'r' to reset missed)")
-        agg = get_advanced_stats(token, ip)
+        print("sending req")
+        agg = get_advanced_stats()
 
         try:
             if agg == -1:
@@ -112,8 +110,8 @@ def start_logging(token, ip, pls=None, t=-999):
     if info["missed_counter"] > 0:
         print(f"⚠︎⚠︎⚠︎ {info['missed_counter']} frames have been missed! ⚠︎⚠︎⚠︎")
     
-    sn = get_serial_number(token, ip)
-    insert_result_dict(pls, info["missed_counter"], sn)
+    
+    insert_result_dict(pls, info["missed_counter"])
     
 
             
@@ -128,18 +126,18 @@ def inputs(info: dict, pls):
         code (str, optional): the code
     """
     
-    while not info['done']:
-        if keyboard.is_pressed('i'):
-            print(f"-----------------------------------------------\nCard Activity Report {datetime.today().strftime('%H:%M:%S')}")
-            print(f"Status:\nCurrent frame: {info['frame_counter']}\nAmount missed: {info['missed_counter']}\nCurrent esno {info['esno']}")
+    # while not info['done']:
+    #     if keyboard.is_pressed('i'):
+    #         print(f"-----------------------------------------------\nCard Activity Report {datetime.today().strftime('%H:%M:%S')}")
+    #         print(f"Status:\nCurrent frame: {info['frame_counter']}\nAmount missed: {info['missed_counter']}\nCurrent esno {info['esno']}")
 
-            print(f"pls: {pls}")
+    #         print(f"pls: {pls}")
 
-            print("-----------------------------------------------")
-            time.sleep(1)
-        if keyboard.is_pressed('r'):
-            reset_missed(info)
-            time.sleep(1)
+    #         print("-----------------------------------------------")
+    #         time.sleep(1)
+    #     if keyboard.is_pressed('r'):
+    #         reset_missed(info)
+    #         time.sleep(1)
 
 
 def reset_missed(info):
@@ -158,23 +156,9 @@ def main():
     device receives new frames and that there are none missing. 
     (ofc if there are it logs the stats to the .log file)
     """
-
-    receiver_ip = input(f"Enter the ip of the tested device. (press enter for {read_target_ip('receiver')}) ")
-    if receiver_ip == '':
-        receiver_ip = read_target_ip("receiver")
-
-    receiver_token = get_token(receiver_ip)
-
-    if not receiver_token:
-        return
-
-    update_target_ip('receiver', receiver_ip)
-
-    set_modulator_freq_1200M(receiver_token, receiver_ip)
-    init_logger(receiver_token, receiver_ip)
+    init_logger()
     
-    start_logging(receiver_token, receiver_ip)
-
+    start_logging()
 
 if __name__ == "__main__":
     main()

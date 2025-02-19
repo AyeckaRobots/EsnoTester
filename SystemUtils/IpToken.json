@@ -1,6 +1,4 @@
 {
     "modulator_ip": "192.168.15.40",
-    "receiver_ip": "192.168.13.125",
-    "receiver_token": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MjA5NDEyODEsIm5iZiI6MTUyMDk0MTI4MSwianRpIjoiOTgzY2MxOTAtMjJmNi00NTdiLWJkNzItYWRlYjkyODA4MTE4IiwiZXhwIjoxNTIwOTcwMDgxLCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.si091VlfPSsy_AmxgXzF-H1E2Kw66okWh8aBXosJ46w",
-    "modulator_token": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mzg0ODkzODAsIm5iZiI6MTczODQ4OTM4MCwianRpIjoiYjgzZDg5MjktNWRiZi00MzRiLThhNGMtNzFiYTRjM2VmZjc5IiwiZXhwIjoxNzM4NTE4MTgwLCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.8pBFFMiUDlfrPpIx8wusX7iMAGWtm_6GPbnhAyDAq90"
+    "receiver_ip": "192.168.13.125"
 }

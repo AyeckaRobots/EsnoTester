@@ -49,11 +49,11 @@ def read_initial_noise(pls):
         pls_dict = json.load(file)
         return pls_dict[f"{pls}"]['initial_noise']
 
-def initialize_result_dict(sn):
+def initialize_result_dict():
     import shutil
-    shutil.copyfile("SystemUtils/PlsDict.json", f"TestResults/SN{sn}.json")
+    shutil.copyfile("SystemUtils/PlsDict.json", f"TestResults/Report.json")
         
-def insert_result_dict(pls, missed_counter, sn):
+def insert_result_dict(pls, missed_counter):
     """Adds a result (passed/failed for specific modcod) to the json file with corresponding name to
     the device's SN.
 
@@ -64,10 +64,10 @@ def insert_result_dict(pls, missed_counter, sn):
         sn (int): the serial number of the device
     """
 
-    if not os.path.exists(f"TestResults/SN{sn}.json"):
-        initialize_result_dict(sn)
+    if not os.path.exists(f"TestResults/Report.json"):
+        initialize_result_dict()
 
-    with open(f"TestResults/SN{sn}.json", "r+") as jsonFile:
+    with open(f"TestResults/Report.json", "r+") as jsonFile:
         data = json.load(jsonFile)
 
         if missed_counter > 0:
