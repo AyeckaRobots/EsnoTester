@@ -57,7 +57,7 @@
         "pilots": false,
         "initial_noise": 114979,
         "exp_esno": 2.23,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "24": {
         "standard": "S2",
@@ -69,7 +69,7 @@
         "pilots": false,
         "initial_noise": 114934,
         "exp_esno": 3.1,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "28": {
         "standard": "S2",
@@ -81,7 +81,7 @@
         "pilots": false,
         "initial_noise": 114923,
         "exp_esno": 4.03,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "32": {
         "standard": "S2",
@@ -93,7 +93,7 @@
         "pilots": false,
         "initial_noise": 114904,
         "exp_esno": 4.68,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "36": {
         "standard": "S2",
@@ -105,7 +105,7 @@
         "pilots": false,
         "initial_noise": 114893,
         "exp_esno": 5.18,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "40": {
         "standard": "S2",
@@ -117,7 +117,7 @@
         "pilots": false,
         "initial_noise": 114873,
         "exp_esno": 6.2,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "44": {
         "standard": "S2",
@@ -129,7 +129,7 @@
         "pilots": false,
         "initial_noise": 114868,
         "exp_esno": 6.42,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "6": {
         "standard": "S2",
@@ -177,7 +177,7 @@
         "pilots": false,
         "initial_noise": 115031,
         "exp_esno": 0.8306,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "22": {
         "standard": "S2",
@@ -189,7 +189,7 @@
         "pilots": false,
         "initial_noise": 115017,
         "exp_esno": 1.1317,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "26": {
         "standard": "S2",
@@ -201,7 +201,7 @@
         "pilots": false,
         "initial_noise": 115019,
         "exp_esno": 1.2607,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "30": {
         "standard": "S2",
@@ -213,7 +213,7 @@
         "pilots": false,
         "initial_noise": 115007,
         "exp_esno": 1.3897,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "34": {
         "standard": "S2",
@@ -225,7 +225,7 @@
         "pilots": false,
         "initial_noise": 115016,
         "exp_esno": 1.4757,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "38": {
         "standard": "S2",
@@ -237,7 +237,7 @@
         "pilots": false,
         "initial_noise": 115000,
         "exp_esno": 1.5618,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "42": {
         "standard": "S2",
@@ -249,7 +249,7 @@
         "pilots": false,
         "initial_noise": 115003,
         "exp_esno": 1.6908,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "5": {
         "standard": "S2",
@@ -297,7 +297,7 @@
         "modcod": "FE_SAT_QPSK_12",
         "initial_noise": 115031,
         "exp_esno": 1.0,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "21": {
         "standard": "S2",
@@ -309,7 +309,7 @@
         "modcod": "FE_SAT_QPSK_35",
         "initial_noise": 114988,
         "exp_esno": 2.23,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "25": {
         "standard": "S2",
@@ -321,7 +321,7 @@
         "modcod": "FE_SAT_QPSK_23",
         "initial_noise": 114952,
         "exp_esno": 3.1,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "29": {
         "standard": "S2",
@@ -333,7 +333,7 @@
         "modcod": "FE_SAT_QPSK_34",
         "initial_noise": 114923,
         "exp_esno": 4.03,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "33": {
         "standard": "S2",
@@ -345,7 +345,7 @@
         "modcod": "FE_SAT_QPSK_45",
         "initial_noise": 114910,
         "exp_esno": 4.68,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "37": {
         "standard": "S2",
@@ -357,7 +357,7 @@
         "modcod": "FE_SAT_QPSK_56",
         "initial_noise": 114897,
         "exp_esno": 5.18,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "41": {
         "standard": "S2",
@@ -369,7 +369,7 @@
         "modcod": "FE_SAT_QPSK_89",
         "initial_noise": 114880,
         "exp_esno": 6.2,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "45": {
         "standard": "S2",
@@ -381,7 +381,7 @@
         "modcod": "FE_SAT_QPSK_910",
         "initial_noise": 114870,
         "exp_esno": 6.42,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "7": {
         "standard": "S2",
@@ -429,7 +429,7 @@
         "modcod": "FE_SAT_QPSK_12",
         "initial_noise": 115031,
         "exp_esno": 0.8306,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "23": {
         "standard": "S2",
@@ -441,7 +441,7 @@
         "modcod": "FE_SAT_QPSK_35",
         "initial_noise": 115017,
         "exp_esno": 1.1317,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "27": {
         "standard": "S2",
@@ -453,7 +453,7 @@
         "modcod": "FE_SAT_QPSK_23",
         "initial_noise": 115015,
         "exp_esno": 1.2607,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "31": {
         "standard": "S2",
@@ -465,7 +465,7 @@
         "modcod": "FE_SAT_QPSK_34",
         "initial_noise": 115002,
         "exp_esno": 1.3897,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "35": {
         "standard": "S2",
@@ -477,7 +477,7 @@
         "modcod": "FE_SAT_QPSK_45",
         "initial_noise": 115003,
         "exp_esno": 1.4757,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "39": {
         "standard": "S2",
@@ -489,7 +489,7 @@
         "modcod": "FE_SAT_QPSK_56",
         "initial_noise": 115000,
         "exp_esno": 1.5618,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "43": {
         "standard": "S2",
@@ -501,7 +501,7 @@
         "modcod": "FE_SAT_QPSK_89",
         "initial_noise": 114996,
         "exp_esno": 1.6908,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "48": {
         "standard": "S2",
@@ -513,7 +513,7 @@
         "pilots": false,
         "initial_noise": 114887,
         "exp_esno": 5.5,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "52": {
         "standard": "S2",
@@ -525,7 +525,7 @@
         "pilots": false,
         "initial_noise": 114859,
         "exp_esno": 6.62,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "56": {
         "standard": "S2",
@@ -537,7 +537,7 @@
         "pilots": false,
         "initial_noise": 114837,
         "exp_esno": 7.91,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "60": {
         "standard": "S2",
@@ -549,7 +549,7 @@
         "pilots": false,
         "initial_noise": 114812,
         "exp_esno": 9.35,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "64": {
         "standard": "S2",
@@ -561,7 +561,7 @@
         "pilots": false,
         "initial_noise": 114797,
         "exp_esno": 10.69,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "68": {
         "standard": "S2",
@@ -573,7 +573,7 @@
         "pilots": false,
         "initial_noise": 114797,
         "exp_esno": 10.98,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "50": {
         "standard": "S2",
@@ -585,7 +585,7 @@
         "pilots": false,
         "initial_noise": 114990,
         "exp_esno": 1.692,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "54": {
         "standard": "S2",
@@ -597,7 +597,7 @@
         "pilots": false,
         "initial_noise": 114989,
         "exp_esno": 1.885,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "58": {
         "standard": "S2",
@@ -609,7 +609,7 @@
         "pilots": false,
         "initial_noise": 114979,
         "exp_esno": 2.0779,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "62": {
         "standard": "S2",
@@ -621,7 +621,7 @@
         "pilots": false,
         "initial_noise": 114970,
         "exp_esno": 2.3351,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "66": {
         "standard": "S2",
@@ -633,7 +633,7 @@
         "pilots": false,
         "initial_noise": 114966,
         "exp_esno": 2.528,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "49": {
         "standard": "S2",
@@ -645,7 +645,7 @@
         "modcod": "FE_SAT_8PSK_35",
         "initial_noise": 114892,
         "exp_esno": 5.5,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "53": {
         "standard": "S2",
@@ -657,7 +657,7 @@
         "modcod": "FE_SAT_8PSK_23",
         "initial_noise": 114862,
         "exp_esno": 6.62,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "57": {
         "standard": "S2",
@@ -669,7 +669,7 @@
         "modcod": "FE_SAT_8PSK_34",
         "initial_noise": 114846,
         "exp_esno": 7.91,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "61": {
         "standard": "S2",
@@ -681,7 +681,7 @@
         "modcod": "FE_SAT_8PSK_56",
         "initial_noise": 114819,
         "exp_esno": 9.35,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "65": {
         "standard": "S2",
@@ -693,7 +693,7 @@
         "modcod": "FE_SAT_8PSK_89",
         "initial_noise": 114799,
         "exp_esno": 10.69,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "69": {
         "standard": "S2",
@@ -705,7 +705,7 @@
         "modcod": "FE_SAT_8PSK_910",
         "initial_noise": 114794,
         "exp_esno": 10.98,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "51": {
         "standard": "S2",
@@ -717,7 +717,7 @@
         "modcod": "FE_SAT_8PSK_35",
         "initial_noise": 114993,
         "exp_esno": 1.692,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "55": {
         "standard": "S2",
@@ -729,7 +729,7 @@
         "modcod": "FE_SAT_8PSK_23",
         "initial_noise": 114989,
         "exp_esno": 1.885,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "59": {
         "standard": "S2",
@@ -741,7 +741,7 @@
         "modcod": "FE_SAT_8PSK_34",
         "initial_noise": 114983,
         "exp_esno": 2.0779,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "63": {
         "standard": "S2",
@@ -753,7 +753,7 @@
         "modcod": "FE_SAT_8PSK_56",
         "initial_noise": 114974,
         "exp_esno": 2.3351,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "67": {
         "standard": "S2",
@@ -765,7 +765,7 @@
         "modcod": "FE_SAT_8PSK_89",
         "initial_noise": 114966,
         "exp_esno": 2.528,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "72": {
         "standard": "S2",
@@ -777,7 +777,7 @@
         "pilots": false,
         "initial_noise": 114825,
         "exp_esno": 8.97,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "76": {
         "standard": "S2",
@@ -909,7 +909,7 @@
         "modcod": "FE_SAT_16APSK_23",
         "initial_noise": 114827,
         "exp_esno": 8.97,
-        "test_result": ""
+        "test_result": "Failed"
     },
     "77": {
         "standard": "S2",

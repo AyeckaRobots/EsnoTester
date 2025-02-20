@@ -7,13 +7,90 @@ these functions are used throughout the codebase.
 import sys
 sys.path.append('SystemUtils/GRpc')  # nopep8
 
+snmp_requests = {
+    "pilots": ".1.3.6.1.4.1.37576.3.1.2.1.1.7", #0=no 1=yes
+    "frame": ".1.3.6.1.4.1.37576.3.1.2.1.1.4",#0=normal 1=short
+    "mod": ".1.3.6.1.4.1.37576.3.1.2.1.1.5",#modulationBpsk (0),modulationQpsk (1),modulation8Psk (2),modulation16Qam (3),modulation16Apsk (4),
+    #modulation32Apsk (5),modulation64Apsk (6),modulation128Apsk(7),modulation256Apsk(8),modulation8ApskL (9),modulation16ApskL (10),
+    # modulation32ApskL (11),modulation64ApskL (12),modulation256ApskL(13),notApplicable (255)
+
+    "cod": ".1.3.6.1.4.1.37576.3.1.2.1.1.6"#fec1Div4 (1),fec1Div3 (2),fec2Div5 (3),fec13Div30 (4),fec4Div9 (5),fec7Div15 (6),fec22Div45 (7),fec1Div2 (8),fec8Div15 (9)
+    #,fec5Div9 (10),fec17Div30 (11),fec3Div5 (12),fec28Div45 (13),fec19Div30 (14),fec2Div3 (15),fec32Div45 (16),fec11Div15 (17),fec3Div4 (18),fec7Div9 (19),fec4Div5 (20),
+    # fec37Div45 (21),fec5Div6 (22),fec7Div8 (23),fec8Div9 (24),fec9Div10 (25),fec11Div45 (26),fec4Div15 (27),fec13Div45 (28),fec14Div45 (29),fec9Div20 (30),fec11Div20 (31),fec26Div45 (32),fec23Div36 (33),fec29Div45 (34),fec31Div45 (35),fec25Div36 (36),fec13Div18 (37),fec77Div90 (38),notApplicable (255)
+}
+
+str_to_snmp_value = {
+    #PILOTS
+    "true": "1",
+    "True": "1",
+    "false": "0",
+    "False": "0",
+    #"FRAME"
+    "Normal": "0",
+    "Short": "1",
+    #"MODULATION"
+    "QPSK": "1",
+    "8PSK": "2",
+    "16APSK": "4",
+    "32APSK": "5",
+    "64APSK": "6",
+    "128APSK": "7",
+    "256APSK": "8",
+    "8APSKL": "9",
+    "16APSKL": "10",
+    "32APSKL": "11",
+    "64APSKL": "12",
+    "256APSKL": "13",
+    #"CODE"
+    "1/4": "1",
+    "1/3": "2",
+    "2/5": "3",
+    "13/30": "4",
+    "4/9": "5",
+    "7/15": "6",
+    "22/45": "7",
+    "1/2": "8",
+    "8/15": "9",
+    "5/9": "10",
+    "17/30": "11",
+    "3/5": "12",
+    "28/45": "13",
+    "19/30": "14",
+    "2/3": "15",
+    "32/45": "16",
+    "11/15": "17",
+    "3/4": "18",
+    "7/9": "19",
+    "4/5": "20",
+    "37/45": "21",
+    "5/6": "22",
+    "7/8": "23",
+    "8/9": "24",
+    "9/10": "25",
+    "11/45": "26",
+    "4/15": "27",
+    "13/45": "28",
+    "14/45": "29",
+    "9/20": "30", 
+    "11/20": "31",
+    "26/45": "32",
+    "23/36": "33",
+    "29/45": "34",
+    "31/45": "35",
+    "25/36": "36",
+    "13/18": "37",
+    "77/90": "38",
+}
+
 
 # print(sys.path)
 import grpc
 from google.protobuf import wrappers_pb2
 from SystemUtils.GRpc.board_pb2_grpc import *
 from SystemUtils.GRpc.board_pb2 import *
-
+from SystemUtils.Utils import load
+from snmp import Engine, SNMPv1#, ObjectIdentity, ObjectType
+from JsonHandler import read_pls_dict, read_target_ip
 import requests
 
 
@@ -26,10 +103,66 @@ def get_tc_status(id=1):
     response = stub.GetPeriodicReport(request)
     return response
 
+def snmp_get(OID):
+    
+    with Engine(SNMPv1, defaultCommunity=b"public") as engine:
+        host = engine.Manager(read_target_ip("modulator"))
+
+        return host.get(OID)
+
+def snmp_set(OID, data):
+
+    with Engine(SNMPv1, defaultCommunity=b"private") as engine:  # Use private for write access
+        host = engine.Manager(read_target_ip("modulator"))  # Target device IP
+
+        # Define the OID you want to set
+        # oid = ObjectIdentity(OID)
+        
+        # Prepare the OID with the new value
+        # object_type = ObjectType(oid, data)
+
+        # Send SNMP Set request
+        # response = host.set(object_type)
+        try:
+            host.set((OID, data))
+        except Exception as e:
+            print(e)
+            
+
+
+
 def get_esno():
     status = get_tc_status()
     return status.periodic_report.translated_cnr
 
+
+def set_noise(noise):
+    ...
+def get_noise():
+    ...
+
+def change_modcod(pls):
+    """A function to get the current esno read by the novelsat
+    modem using snmp
+
+    Returns:
+        str: the esno read by novelsat modem
+    """
+    pls_dict = read_pls_dict(pls)
+    if "-L" in pls_dict['code']:
+        pls_dict['code'] = pls_dict['code'][:-2]  # removes the -L
+        pls_dict['modulation'] = pls_dict['modulation'] + "L"
+    print(pls_dict) # debug
+    print(snmp_get(".1.3.6.1.4.1.37576.1.0"))
+
+    snmp_set(snmp_requests["mod"], str_to_snmp_value[pls_dict['modulation']])
+    snmp_set(snmp_requests["cod"], str_to_snmp_value[pls_dict['code']])
+    snmp_set(snmp_requests["frame"], str_to_snmp_value[pls_dict['frame']])
+    snmp_set(snmp_requests["pilots"], str_to_snmp_value[f"{pls_dict['pilots']}"])
+    
+    
+
+    print("SET!")
 # def get_auth(username, password, ip):
 #     """A function to get an auth token for the api server
 
@@ -126,57 +259,34 @@ def get_advanced_stats():
 
 
 
-def update_noise(token, ip, value):
-    """A function that sets a fpga parameter according to the @data passed 
-    (currently used to update the noise) 
+# def update_noise(token, ip, value):
+#     """A function that sets a fpga parameter according to the @data passed 
+#     (currently used to update the noise) 
 
-    Args:
-        token (str): string for the authorization header
-        ip (str): the ip of the api server
-        value (int): the new noise value for fpga to set.
-    """
-    data = [{"address":24688, "value": value}]
-    requests.post(f"http://{ip}/api/fpga_write", headers={'Authorization': token}, json=data)
+#     Args:
+#         token (str): string for the authorization header
+#         ip (str): the ip of the api server
+#         value (int): the new noise value for fpga to set.
+#     """
+#     data = [{"address":24688, "value": value}]
+#     requests.post(f"http://{ip}/api/fpga_write", headers={'Authorization': token}, json=data)
     
     
-def set_modulator_freq_1200M(token, ip):
-    """A function that sets the moducaltor (tx) frequency to 1200M 
-    (neccesery for the test) all other variables are changeable
-    but were coppied from the website for the post request to work.
+# def set_modulator_freq_1200M(token, ip):
+#     """A function that sets the moducaltor (tx) frequency to 1200M 
+#     (neccesery for the test) all other variables are changeable
+#     but were coppied from the website for the post request to work.
 
-    Args:
-        token (str): string for the authorization header
-        ip (str): the ip of the api server
-    """
-    data = {"enable":True,"frequency":1200000,"symbol_rate":12000,
-            "power":-30,"roll_off":"Alpha_020","spectral_inversion":False,
-            "gold_code":0,"carrier_mode":"CM_MODULATED","power_up_state":"On",
-            "acm_mode":"AcmModeOff","buc_power":False,"buc_10MHz_output":False}
-    response = requests.post(f"http://{ip}/api/modulator", headers={'Authorization': token}, json=data)
+#     Args:
+#         token (str): string for the authorization header
+#         ip (str): the ip of the api server
+#     """
+#     data = {"enable":True,"frequency":1200000,"symbol_rate":12000,
+#             "power":-30,"roll_off":"Alpha_020","spectral_inversion":False,
+#             "gold_code":0,"carrier_mode":"CM_MODULATED","power_up_state":"On",
+#             "acm_mode":"AcmModeOff","buc_power":False,"buc_10MHz_output":False}
+#     response = requests.post(f"http://{ip}/api/modulator", headers={'Authorization': token}, json=data)
 
-
-def change_modcod(token, ip, pls):
-    """A function that sets the modcod of the device to the given pls
-    (each pls corresponeds to a modcod)
-
-    Args:
-        token (str): string for the authorization header
-        ip (str): the ip of the api server
-        pls (int): the pls to set
-    """
-    data = {"system":{"description":"","device":"SM1X","external_10MHz_clock_source":False,
-                  "minimal_free_disk_space":50,"symbol_rate_ranges":[30000,60000,120000,240000],
-                  "temperature_threshold":60,"tod":{"enable":True,"internal":False},"version_history":4},
-            "rx":{"acm_max_pls":"16APSK","acm_max_pls_options":["N/A","QPSK","8APSK","16APSK","32APSK","64APSK","128APSK","256APSK"],
-                  "annex_m":False,"configuration_delay":0,"egress":{"destination_ip":"225.21.21.21","destination_port":2121,"source_port":1212},
-                  "ldpc_capacity":180,"pls_filter":"OFF","reconfigure_attempts":0,"search_mode":"SAT_COLD","slices":16,
-                  "symbol_rate":{"min":100,"max":460000},"test_pattern_type":"Simple"},
-            "tx":{"acm_link_margin":10,"annex_m":False,"aupc":False,"packetization_delay":1,"sdfec_on":False,"symbol_rate":{"min":100,"max":460000},
-                  "test_pattern_pls_code":pls,"test_pattern_slice":0,"test_pattern_type":"Simple"}}
-
-    response = requests.post(f"http://{ip}/api/settings", headers={'Authorization': token}, json=data)
-    
-    
 # def reset_advanced_stats(token, ip):
 #     """A function that resets the advanced stats back to 0's
 #     when testing and checking for missed frames it is important to reset it.

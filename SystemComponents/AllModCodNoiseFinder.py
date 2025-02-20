@@ -1,7 +1,7 @@
 from JsonHandler import update_target_ip, read_target_ip
 from SystemUtils import StaticVars
 from Requests import change_modcod
-from SystemComponents.NoiseFinder import adjustNoise, get_token
+from SystemComponents.NoiseFinder import adjustNoise #, get_token
 
 def set_pls_list(pls_list):
     """
@@ -34,7 +34,7 @@ def start_noise_finder(token, ipaddr, pls_list):
     """
     for pls in pls_list:
         change_modcod(token, ipaddr, pls)
-        pls = adjustNoise(token, ipaddr)
+        # pls = adjustNoise(token, ipaddr)
         
         print("")
         print(f"Finished for pls: {pls}")

@@ -1,11 +1,11 @@
 
 import sys
 sys.path.append('/home/user/Documents/EsnoTester/SystemUtils/GRpc')  # nopep8
-# from SystemComponents.AllModCodNoiseFinder import set_pls_list, start_noise_finder
+from SystemComponents.AllModCodNoiseFinder import start_noise_finder  #, set_pls_list
 from SystemUtils.Utils import update_pls_list
 # from Requests import update_noise
 from SystemComponents.status_requester import start_logging, init_logger
-
+from Requests import change_modcod
 import os
 from SystemUtils import StaticVars
 
@@ -19,11 +19,13 @@ def start_sm1x_tester(pls_list, adjust_noise=False):
     # pls_list = set_pls_list(pls_list)
 
     # if not adjust_noise:
-    #     update_noise(0)
+        # update_noise(0)
 
     for pls in pls_list:
-        # if adjust_noise:
-            # start_noise_finder([pls])
+        if adjust_noise:
+            start_noise_finder([pls])
+        else:
+            change_modcod(pls)
 
         start_logging(pls, StaticVars.time_per_modcod)
 

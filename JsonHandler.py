@@ -49,6 +49,12 @@ def read_initial_noise(pls):
         pls_dict = json.load(file)
         return pls_dict[f"{pls}"]['initial_noise']
 
+def read_pls_dict(pls):
+
+    with open('SystemUtils/PlsDict.json') as file:
+        pls_dict = json.load(file)
+        return pls_dict[f"{pls}"]
+
 def initialize_result_dict():
     import shutil
     shutil.copyfile("SystemUtils/PlsDict.json", f"TestResults/Report.json")
