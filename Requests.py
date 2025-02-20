@@ -8,13 +8,13 @@ import sys
 sys.path.append('SystemUtils/GRpc')  # nopep8
 
 snmp_requests = {
-    "pilots": ".1.3.6.1.4.1.37576.3.1.2.1.1.7", #0=no 1=yes
-    "frame": ".1.3.6.1.4.1.37576.3.1.2.1.1.4",#0=normal 1=short
-    "mod": ".1.3.6.1.4.1.37576.3.1.2.1.1.5",#modulationBpsk (0),modulationQpsk (1),modulation8Psk (2),modulation16Qam (3),modulation16Apsk (4),
+    "pilots": ".1.3.6.1.4.1.37576.3.1.2.1.1.7.1", #0=no 1=yes
+    "frame": ".1.3.6.1.4.1.37576.3.1.2.1.1.4.1",#0=normal 1=short
+    "mod": ".1.3.6.1.4.1.37576.3.1.2.1.1.5.1",#modulationBpsk (0),modulationQpsk (1),modulation8Psk (2),modulation16Qam (3),modulation16Apsk (4),
     #modulation32Apsk (5),modulation64Apsk (6),modulation128Apsk(7),modulation256Apsk(8),modulation8ApskL (9),modulation16ApskL (10),
     # modulation32ApskL (11),modulation64ApskL (12),modulation256ApskL(13),notApplicable (255)
 
-    "cod": ".1.3.6.1.4.1.37576.3.1.2.1.1.6"#fec1Div4 (1),fec1Div3 (2),fec2Div5 (3),fec13Div30 (4),fec4Div9 (5),fec7Div15 (6),fec22Div45 (7),fec1Div2 (8),fec8Div15 (9)
+    "cod": ".1.3.6.1.4.1.37576.3.1.2.1.1.6.1"#fec1Div4 (1),fec1Div3 (2),fec2Div5 (3),fec13Div30 (4),fec4Div9 (5),fec7Div15 (6),fec22Div45 (7),fec1Div2 (8),fec8Div15 (9)
     #,fec5Div9 (10),fec17Div30 (11),fec3Div5 (12),fec28Div45 (13),fec19Div30 (14),fec2Div3 (15),fec32Div45 (16),fec11Div15 (17),fec3Div4 (18),fec7Div9 (19),fec4Div5 (20),
     # fec37Div45 (21),fec5Div6 (22),fec7Div8 (23),fec8Div9 (24),fec9Div10 (25),fec11Div45 (26),fec4Div15 (27),fec13Div45 (28),fec14Div45 (29),fec9Div20 (30),fec11Div20 (31),fec26Div45 (32),fec23Div36 (33),fec29Div45 (34),fec31Div45 (35),fec25Div36 (36),fec13Div18 (37),fec77Div90 (38),notApplicable (255)
 }
@@ -89,14 +89,14 @@ from google.protobuf import wrappers_pb2
 from SystemUtils.GRpc.board_pb2_grpc import *
 from SystemUtils.GRpc.board_pb2 import *
 from SystemUtils.Utils import load
-from snmp import Engine, SNMPv1#, ObjectIdentity, ObjectType
+from snmp import Engine, SNMPv1, SNMPv2c#, ObjectIdentity, ObjectType
 from JsonHandler import read_pls_dict, read_target_ip
 import requests
-
+from pysnmp.hlapi import *
 
 def get_tc_status(id=1):
 
-    channel = grpc.insecure_channel('192.168.13.125:51001')
+    channel = grpc.insecure_channel(f'{read_target_ip("receiver")}:51001')
     stub = BoardServiceStub(channel)
 
     request = wrappers_pb2.Int32Value(value=id)
@@ -111,10 +111,16 @@ def snmp_get(OID):
         return host.get(OID)
 
 def snmp_set(OID, data):
-
-    with Engine(SNMPv1, defaultCommunity=b"private") as engine:  # Use private for write access
+    setCmd(
+        SnmpEngine(),
+        CommunityData('private', mpModel=1),  # SNMPv2c with community string 'private'
+        UdpTransportTarget(('172.19.200.199', 161)),
+        ContextData(),
+        ObjectType(ObjectIdentity('1.3.6.1.2.1.2.2.1.7.2'), Integer(2))  # Set interface down (2)
+    )
+    with Engine(SNMPv2c, defaultCommunity=b"private") as engine:  # Use private for write access
         host = engine.Manager(read_target_ip("modulator"))  # Target device IP
-
+        
         # Define the OID you want to set
         # oid = ObjectIdentity(OID)
         
@@ -124,10 +130,9 @@ def snmp_set(OID, data):
         # Send SNMP Set request
         # response = host.set(object_type)
         try:
-            host.set((OID, data))
-        except Exception as e:
-            print(e)
-            
+            return host.set((OID, data))
+        except:
+            print("oof")
 
 
 
@@ -153,7 +158,7 @@ def change_modcod(pls):
         pls_dict['code'] = pls_dict['code'][:-2]  # removes the -L
         pls_dict['modulation'] = pls_dict['modulation'] + "L"
     print(pls_dict) # debug
-    print(snmp_get(".1.3.6.1.4.1.37576.1.0"))
+    # print(snmp_get(".1.3.6.1.4.1.37576.1.0"))
 
     snmp_set(snmp_requests["mod"], str_to_snmp_value[pls_dict['modulation']])
     snmp_set(snmp_requests["cod"], str_to_snmp_value[pls_dict['code']])
