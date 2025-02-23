@@ -7,7 +7,7 @@ async def run():
         CommunityData('private'),
         await UdpTransportTarget.create(('172.19.4.196', 161)),
         ContextData(),
-        ObjectType(ObjectIdentity("1.3.6.1.4.1.37576.3.1.2.1.1.5.1"), Integer(2))
+        ObjectType(ObjectIdentity("1.3.6.1.4.1.37576.3.1.2.1.1.5.1"), Integer(4))
     )
     print(errorIndication, errorStatus, errorIndex, varBinds)
 

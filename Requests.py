@@ -3,6 +3,8 @@ This file is a collection of function that use requests to communicate
 with the api server in order to extract and change information
 these functions are used throughout the codebase.
 """
+import asyncio
+from pysnmp.hlapi.v3arch.asyncio import *
 
 import sys
 sys.path.append('SystemUtils/GRpc')  # nopep8
@@ -91,8 +93,6 @@ from SystemUtils.GRpc.board_pb2 import *
 from SystemUtils.Utils import load
 from snmp import Engine, SNMPv1, SNMPv2c#, ObjectIdentity, ObjectType
 from JsonHandler import read_pls_dict, read_target_ip
-import requests
-from pysnmp.hlapi import *
 
 def get_tc_status(id=1):
 
@@ -110,31 +110,14 @@ def snmp_get(OID):
 
         return host.get(OID)
 
-def snmp_set(OID, data):
-    setCmd(
+async def snmp_set(OID, data: int):
+    errorIndication, errorStatus, errorIndex, varBinds = await set_cmd(
         SnmpEngine(),
-        CommunityData('private', mpModel=1),  # SNMPv2c with community string 'private'
-        UdpTransportTarget(('172.19.200.199', 161)),
+        CommunityData('private'),
+        await UdpTransportTarget.create(('172.19.4.196', 161)),
         ContextData(),
-        ObjectType(ObjectIdentity('1.3.6.1.2.1.2.2.1.7.2'), Integer(2))  # Set interface down (2)
+        ObjectType(ObjectIdentity(OID), Integer(data))
     )
-    with Engine(SNMPv2c, defaultCommunity=b"private") as engine:  # Use private for write access
-        host = engine.Manager(read_target_ip("modulator"))  # Target device IP
-        
-        # Define the OID you want to set
-        # oid = ObjectIdentity(OID)
-        
-        # Prepare the OID with the new value
-        # object_type = ObjectType(oid, data)
-
-        # Send SNMP Set request
-        # response = host.set(object_type)
-        try:
-            return host.set((OID, data))
-        except:
-            print("oof")
-
-
 
 def get_esno():
     status = get_tc_status()
@@ -160,13 +143,11 @@ def change_modcod(pls):
     print(pls_dict) # debug
     # print(snmp_get(".1.3.6.1.4.1.37576.1.0"))
 
-    snmp_set(snmp_requests["mod"], str_to_snmp_value[pls_dict['modulation']])
-    snmp_set(snmp_requests["cod"], str_to_snmp_value[pls_dict['code']])
-    snmp_set(snmp_requests["frame"], str_to_snmp_value[pls_dict['frame']])
-    snmp_set(snmp_requests["pilots"], str_to_snmp_value[f"{pls_dict['pilots']}"])
+    asyncio.run(snmp_set(snmp_requests["mod"], str_to_snmp_value[pls_dict['modulation']]))
+    asyncio.run(snmp_set(snmp_requests["cod"], str_to_snmp_value[pls_dict['code']]))
+    asyncio.run(snmp_set(snmp_requests["frame"], str_to_snmp_value[pls_dict['frame']]))
+    asyncio.run(snmp_set(snmp_requests["pilots"], str_to_snmp_value[f"{pls_dict['pilots']}"]))
     
-    
-
     print("SET!")
 # def get_auth(username, password, ip):
 #     """A function to get an auth token for the api server
