@@ -5,7 +5,8 @@ from SystemComponents.AllModCodNoiseFinder import start_noise_finder  #, set_pls
 from SystemUtils.Utils import update_pls_list
 # from Requests import update_noise
 from SystemComponents.status_requester import start_logging, init_logger
-from Requests import change_modcod
+from Requests import change_modcod, get_advanced_stats, get_auth, set_noise
+from JsonHandler import read_sat_ip, set_sat_sim_token
 import os
 from SystemUtils import StaticVars
 
@@ -17,9 +18,12 @@ def set_standard(standard, adjust_noise=False):
 
 def start_sm1x_tester(pls_list, adjust_noise=False):
     # pls_list = set_pls_list(pls_list)
+    set_sat_sim_token(get_auth(read_sat_ip()))
 
-    # if not adjust_noise:
-        # update_noise(0)
+    if not adjust_noise:
+        set_noise(0)
+
+    current_missed_frames = get_advanced_stats()['missed_counter']
 
     for pls in pls_list:
         if adjust_noise:
@@ -27,9 +31,9 @@ def start_sm1x_tester(pls_list, adjust_noise=False):
         else:
             change_modcod(pls)
 
-        start_logging(pls, StaticVars.time_per_modcod)
-
-        print(f"\npls {pls} done!")
+        current_missed_frames = start_logging(current_missed_frames, pls, StaticVars.time_per_modcod)
+ 
+        print(f"              \npls {pls} done!")
 
 
 def clear_logfile():
@@ -84,11 +88,10 @@ def main():
 
     # update_target_ip('receiver', receiver_ip)
 
-    standard = input("write standard to go through, s2 or s2x. (press enter for both) ")
-
+    standard = "none"
+    while standard != 's2x' and standard != 's2' and standard:
+        standard = input("write standard to go through, s2 or s2x. (press enter for both) ")
     check_esno = check_esno_input()
-
-    # set_freq(modulator_token, modulator_ip, receiver_token, receiver_ip, 1200)
 
     clear_logfile()
     init_logger()

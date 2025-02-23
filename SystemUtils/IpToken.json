@@ -1,4 +1,6 @@
 {
     "modulator_ip": "172.19.4.196",
-    "receiver_ip": "192.168.13.125"
+    "receiver_ip": "192.168.13.125",
+    "sat_sim_ip": "192.168.15.133",
+    "sat_sim_token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3NDAzMzA5OTIsImlhdCI6MTc0MDMxNjU5MiwiaXNzIjoiYXV0aDAiLCJ1c2VybmFtZSI6ImFkbWluIn0.F6gvU0kgAClrthTt99u2Dti3JbTYEYWqDuiNsK_QGpI"
 }

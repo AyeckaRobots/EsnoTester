@@ -7,6 +7,8 @@ import asyncio
 from pysnmp.hlapi.v3arch.asyncio import *
 
 import sys
+
+import requests
 sys.path.append('SystemUtils/GRpc')  # nopep8
 
 snmp_requests = {
@@ -92,7 +94,10 @@ from SystemUtils.GRpc.board_pb2_grpc import *
 from SystemUtils.GRpc.board_pb2 import *
 from SystemUtils.Utils import load
 from snmp import Engine, SNMPv1, SNMPv2c#, ObjectIdentity, ObjectType
-from JsonHandler import read_pls_dict, read_target_ip
+from JsonHandler import read_pls_dict, read_sat_token, read_target_ip, read_sat_ip
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def get_tc_status(id=1):
 
@@ -118,16 +123,51 @@ async def snmp_set(OID, data: int):
         ContextData(),
         ObjectType(ObjectIdentity(OID), Integer(data))
     )
+    # print(errorIndication, errorStatus, errorIndex, varBinds)
 
 def get_esno():
     status = get_tc_status()
-    return status.periodic_report.translated_cnr
+    return round(status.periodic_report.translated_cnr, 3)
 
+# web api
+def set_noise(noise: float):
+    try:
+        response = requests.put(f"https://{read_sat_ip()}/api/v1/noise/1", headers={'Authorization': read_sat_token()}, json={"level":noise,"enabled":True}, verify=False)
+    except TimeoutError as e:
+        print(f"couldn't connect to sat sim's api")
+        return -1
+    
+    return response
 
-def set_noise(noise):
-    ...
 def get_noise():
-    ...
+    try:
+        response = requests.get(f"https://{read_sat_ip()}/api/v1/status/1", headers={'Authorization': read_sat_token()}, verify=False)
+    except TimeoutError as e:
+        print(f"couldn't connect to sat sim's api")
+        return -1
+    
+    return round(response.json()["configuration"]["noise"]["level"], 1)
+
+
+def get_auth(ip, username="admin", password="admin"):
+    """A function to get an auth token for the api server
+
+    Args:
+        username (str): the username for the login page
+        password (str): the password for the login page
+        ip (str): the ip of the api server
+
+    Returns:
+        str: a string for the authorization header
+    """
+    try:
+        response = requests.post(f"https://{ip}/api/v1/login", json={"username": username, "password": password}, verify=False)
+    except TimeoutError as e:
+        print(f"couldn't connect to ip: {ip} ")
+        return -1
+    return f"Bearer {response.json()['token']}"
+
+
 
 def change_modcod(pls):
     """A function to get the current esno read by the novelsat
@@ -140,34 +180,22 @@ def change_modcod(pls):
     if "-L" in pls_dict['code']:
         pls_dict['code'] = pls_dict['code'][:-2]  # removes the -L
         pls_dict['modulation'] = pls_dict['modulation'] + "L"
-    print(pls_dict) # debug
     # print(snmp_get(".1.3.6.1.4.1.37576.1.0"))
+    mod = str_to_snmp_value[pls_dict['modulation']]
+    code = str_to_snmp_value[pls_dict['code']]
+    frame = str_to_snmp_value[pls_dict['frame']]
+    pilots = str_to_snmp_value[f"{pls_dict['pilots']}"]
 
-    asyncio.run(snmp_set(snmp_requests["mod"], str_to_snmp_value[pls_dict['modulation']]))
-    asyncio.run(snmp_set(snmp_requests["cod"], str_to_snmp_value[pls_dict['code']]))
-    asyncio.run(snmp_set(snmp_requests["frame"], str_to_snmp_value[pls_dict['frame']]))
-    asyncio.run(snmp_set(snmp_requests["pilots"], str_to_snmp_value[f"{pls_dict['pilots']}"]))
+    print()
+    print(pls_dict) # debug
+    print(f"setting: mod: {mod}, code: {code}, frame: {frame}, pilots: {pilots}")
+    print()
+
+    asyncio.run(snmp_set(snmp_requests["mod"], mod))
+    asyncio.run(snmp_set(snmp_requests["cod"], code))
+    asyncio.run(snmp_set(snmp_requests["frame"], frame))
+    asyncio.run(snmp_set(snmp_requests["pilots"], pilots))
     
-    print("SET!")
-# def get_auth(username, password, ip):
-#     """A function to get an auth token for the api server
-
-#     Args:
-#         username (str): the username for the login page
-#         password (str): the password for the login page
-#         ip (str): the ip of the api server
-
-#     Returns:
-#         str: a string for the authorization header
-#     """
-#     try:
-#         response = requests.post(f"http://{ip}/api/login", json={"username": username, "password": password})
-#     except TimeoutError as e:
-#         print(f"couldn't connect to ip: {ip} ")
-#         return -1
-#     return f"Bearer {response.json()['token']}"
-
-
 # def get_rx_status(token, ip):
 #     """A function that retrieves the rx status data of the device
 
@@ -180,7 +208,7 @@ def change_modcod(pls):
 #         fail:   int: -1 representing failed communication with the api server
 #     """
 #     try:
-#         data = requests.get(f"http://{ip}/api/settings", headers={'Authorization': token})
+#         data = requests.get(f"http://{ip}/api/settings", 0)
 #     except TimeoutError as e:
 #         print(f"No response from {ip}, error: {e}")
 #         return -1
@@ -244,6 +272,9 @@ def get_advanced_stats():
          }
 
 
+def get_modcod_grpc():
+    status = get_tc_status()
+    return status.periodic_report.modcod
 
 # def update_noise(token, ip, value):
 #     """A function that sets a fpga parameter according to the @data passed 

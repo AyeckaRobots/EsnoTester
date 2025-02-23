@@ -2,25 +2,23 @@ from SystemUtils import StaticVars
 from Requests import *
 from JsonHandler import *
 
-max_noise = 115232  # 1c220
-min_noise = 114688  # 1c000
+max_noise = -40  # 1c200
+min_noise = 25  # 1c000
+esno_offset = 0.3
 allowed_esno_error = StaticVars.esno_acceptable
-error_multiplier = 10
+error_multiplier = 1
 
 def print_noise_dict(distances):
     for key, value in dict.items(distances):         
-        print(f"esno distance: {key}, on noise: {value}, hex: {hex(value)}")
-        
+        print(f"esno distance: {key}, on noise: {value}")
 
-def get_esno_pls():
+
+def evaluate_esno_distance(pls):
     esno = get_esno()
-    
-    pls = get_modcod() # Novelsat
-    return esno, pls
+    while int(esno) == -10:
+        load(2)
+        esno = get_esno()
 
-
-def evaluate_esno():
-    esno, pls = get_esno_pls()
     
     exp_esno = float(read_esno_dict(pls))
     print("#####################")
@@ -28,7 +26,7 @@ def evaluate_esno():
     print(f"current esno: {esno}\nexp. esno: {exp_esno}")
     print("#####################")
 
-    return round(esno - exp_esno, 2), esno, pls, exp_esno
+    return round(esno - exp_esno - esno_offset, 2), exp_esno + esno_offset
 
 
 def get_modcod():
@@ -45,31 +43,42 @@ def set_initial_noise(pls):
     set_noise(initial)
 
 
-def adjustNoise():
-    pls = get_modcod()
-    set_initial_noise(pls)
-    
-    distance, current_esno, pls, expected_esno = evaluate_esno()
-    try:
-        esno_multiplier_rate = max(1, min(3, abs(4 / expected_esno)))
-    except ZeroDivisionError as e:
-        esno_multiplier_rate = 2
+def adjustNoise(pls):
+    first_noise = get_noise()
 
-    distances = {distance: get_noise()}
-    while abs(distance) > allowed_esno_error:
-        print_noise_dict(distances)
-            
-        new_noise = int(max(min_noise, min(max_noise, distances[distance] + distance*error_multiplier*esno_multiplier_rate)))
+    distance, exp_esno = evaluate_esno_distance(pls)
 
-        set_noise(new_noise)
-        
-        distance, current_esno, pls, expected_esno = evaluate_esno()
+    set_noise(round(first_noise + distance, 3))
+    current_noise = get_esno()
+
+    while abs(current_noise - exp_esno) > allowed_esno_error:
+        load(5)
+        current_noise = get_esno()
+        print(f"Current noise: {current_noise}")
+    # set_initial_noise(pls)
     
-        distances.update({distance: get_noise()})
+    # distance = evaluate_esno_distance(pls)
+    # # try:
+    # #     esno_multiplier_rate = max(1, min(3, abs(4 / expected_esno))) #######
+    # # except ZeroDivisionError as e:
+    # #     esno_multiplier_rate = 1
+    # esno_multiplier_rate = 1
+
+    # distances = {distance: get_noise()}
+    # while abs(distance) > allowed_esno_error:
+    #     print_noise_dict(distances)
+    #     load(5)
+    #     new_noise = int(max(min_noise, min(max_noise, distances[distance] + distance*error_multiplier*esno_multiplier_rate)))
+
+    #     set_noise(new_noise)
         
+    #     distance = evaluate_esno_distance(pls)
+    
+    #     distances.update({distance: get_noise()})
         
-    print_noise_dict(distances)
-    insert_initial_noise(pls, [*distances.values()][-1])
+    # print_noise_dict(distances)
+    # insert_initial_noise(pls, [*distances.values()][-1])
+
     return f"{pls}"
 
 

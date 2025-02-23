@@ -146,3 +146,30 @@ def update_target_ip(target_type, new_ip):
         jsonFile.seek(0)  # rewind
         json.dump(data, jsonFile, indent=4)
         jsonFile.truncate()
+
+
+def set_sat_sim_token(token):
+    with open(f"SystemUtils/IpToken.json", "r+") as jsonFile:
+        data = json.load(jsonFile)
+
+        data["sat_sim_token"] = token
+
+        jsonFile.seek(0)  # rewind
+        json.dump(data, jsonFile, indent=4)
+        jsonFile.truncate()
+
+    
+def read_sat_ip():
+    # target type is: modulator, receiver
+    with open(f"SystemUtils/IpToken.json") as jsonFile:
+
+        data = json.load(jsonFile)
+        return data["sat_sim_ip"]
+    
+    
+def read_sat_token():
+    # target type is: modulator, receiver
+    with open(f"SystemUtils/IpToken.json") as jsonFile:
+
+        data = json.load(jsonFile)
+        return data["sat_sim_token"]

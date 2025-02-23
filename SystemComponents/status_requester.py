@@ -2,7 +2,7 @@ import time
 import threading
 
 from SystemUtils.StaticVars import *
-from Requests import get_advanced_stats
+from Requests import get_advanced_stats, get_modcod_grpc
 from JsonHandler import insert_result_dict
 from SystemUtils.Utils import load
 import logging
@@ -47,7 +47,7 @@ def log_stats(info, current_bit_rate, current_esno, current_frame_counter):
         logging.warning(f"Missed frames! amount: {current_missed_counter - info['missed_counter'] - info['offset']}, esno: {current_esno}")
 
 
-def start_logging(pls=None, t=-999):
+def start_logging(start_missed, pls=None, t=-999):
     """A function that checks for missed frames and updates in bitrate and esno
     operating for @t time or endlessly if t=-999. 
 
@@ -59,26 +59,21 @@ def start_logging(pls=None, t=-999):
     """
     global current_missed_counter
     
-    load(2)
-    # reset_advanced_stats() # TODO implement
-    # load(5)
+    load(5)
+    current_missed_counter = start_missed
 
-    info = {"frame_counter":0 , "missed_counter":0 , "bit_rate":0 , "esno":0, "offset":0, 'done': False}
-    if pls:
-        threading.Thread(target=inputs, args=[info, pls]).start()
-    else:
-        threading.Thread(target=inputs, args=[info]).start()
-    
-    
+    info = {"frame_counter":0 , "missed_counter":0 , "bit_rate":0 , "esno":0, "offset": current_missed_counter, 'done': False}
+    # print(info)
+    # reset_missed(info)
 
     while t > 0 or t <= -999:
-        print("sending req")
+        print("~~ Sending request ~~")
         agg = get_advanced_stats()
 
         try:
             if agg == -1:
                 continue
-            # this is theoretical from here on out. needs testing for agg response.
+
             current_bit_rate = agg['bit_rate']
             current_esno = agg['esno']  # string (no decimal point, needs division by 10)
             current_frame_counter = agg['frame_counter']
@@ -88,13 +83,13 @@ def start_logging(pls=None, t=-999):
             info['missed_counter'] += 1
             t -= 5
             continue
+
+        current_esno = round(current_esno, 2)
         
         try:
             current_missed_counter = agg['missed_counter']
         except KeyError as e:
             current_missed_counter = 0
-            
-        current_esno = int(current_esno) / 10
 
         log_stats(info, current_bit_rate, current_esno, current_frame_counter)
         
@@ -112,33 +107,10 @@ def start_logging(pls=None, t=-999):
     
     
     insert_result_dict(pls, info["missed_counter"])
+    print()
+    print(f"Modcod on tc2: {get_modcod_grpc()}")
+    return current_missed_counter
     
-
-            
-def inputs(info: dict, pls):
-    """A function that checks for user input, if user
-    pressed i, print the current status of the device.
-    if user pressed r, reset the shown missed frames
-
-    Args:
-        info (dict): dictionary containing the information of the stats
-        psk (str, optional): the modulation
-        code (str, optional): the code
-    """
-    
-    # while not info['done']:
-    #     if keyboard.is_pressed('i'):
-    #         print(f"-----------------------------------------------\nCard Activity Report {datetime.today().strftime('%H:%M:%S')}")
-    #         print(f"Status:\nCurrent frame: {info['frame_counter']}\nAmount missed: {info['missed_counter']}\nCurrent esno {info['esno']}")
-
-    #         print(f"pls: {pls}")
-
-    #         print("-----------------------------------------------")
-    #         time.sleep(1)
-    #     if keyboard.is_pressed('r'):
-    #         reset_missed(info)
-    #         time.sleep(1)
-
 
 def reset_missed(info):
     """A function that resets the shown missed frame (only visual)

@@ -23,7 +23,7 @@ def set_pls_list(pls_list):
     return pls_list
 
 
-def start_noise_finder(token, ipaddr, pls_list):
+def start_noise_finder(pls_list):
     """A function that reaches to the sm1x web api and
     checks for each pls in @pls_list what the correct noise value is
 
@@ -33,8 +33,8 @@ def start_noise_finder(token, ipaddr, pls_list):
         pls_list (list): list of pls codes to iterate over
     """
     for pls in pls_list:
-        change_modcod(token, ipaddr, pls)
-        # pls = adjustNoise(token, ipaddr)
+        change_modcod(pls)
+        adjustNoise(pls)
         
         print("")
         print(f"Finished for pls: {pls}")
@@ -47,21 +47,21 @@ def main():
     a single pls code (pls is single-valued to modulation and code)
     or for each and every modulation and code (modcod)
     such that the target esno and the measured esno are almost identical
-    """
+    # """
 
-    modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {read_target_ip('modulator')}) ")
-    if modulator_ip == '':
-        modulator_ip = read_target_ip("modulator")
+    # modulator_ip = input(f"Enter the ip of the noise finder device. (press enter for {read_target_ip('modulator')}) ")
+    # if modulator_ip == '':
+    #     modulator_ip = read_target_ip("modulator")
 
-    modulator_token = get_token(modulator_ip)
+    # modulator_token = get_token(modulator_ip)
 
-    if not modulator_token:
-        return
+    # if not modulator_token:
+    #     return
 
-    update_target_ip('modulator', modulator_ip)
+    # update_target_ip('modulator', modulator_ip)
 
-    pls_list = set_pls_list(StaticVars.all_pls_simplified)
-    start_noise_finder(modulator_token, modulator_ip, pls_list)
+    # pls_list = set_pls_list(StaticVars.all_pls_simplified)
+    # start_noise_finder(modulator_token, modulator_ip, pls_list)
     
         
 if __name__ == "__main__":

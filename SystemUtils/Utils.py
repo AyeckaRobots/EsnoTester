@@ -4,7 +4,7 @@ import time
 
 def update_pls_list(standard):
     pls = s2x_starting_index
-    while pls not in all_pls_simplified:
+    while pls not in all_pls_simplified and pls <= 300:
         pls += 1
     if standard == 's2':
         return all_pls_simplified[:all_pls_simplified.index(pls)]
